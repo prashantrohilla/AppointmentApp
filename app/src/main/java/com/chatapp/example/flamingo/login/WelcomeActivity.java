@@ -1,0 +1,56 @@
+package com.chatapp.example.flamingo.login;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import com.chatapp.example.flamingo.models.Users;
+import com.chatapp.example.flamingo.phase2.HomeActivity;
+import com.google.firebase.database.FirebaseDatabase;
+import com.phone.DoctorAppointment.databinding.ActivityWelcomeBinding;
+
+public class WelcomeActivity extends AppCompatActivity {
+
+    ActivityWelcomeBinding binding;  // dont have to use findview id of views
+    FirebaseDatabase database;
+    ProgressDialog progressDialog; // loading
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding= ActivityWelcomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        getSupportActionBar().hide();
+        database= FirebaseDatabase.getInstance();
+
+        progressDialog=new ProgressDialog(WelcomeActivity.this);
+        progressDialog.setTitle("Creating Account");   // loading while creating account.
+        progressDialog.setMessage("We're creating your account..");
+
+        binding.nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                progressDialog.show();
+                String username= getIntent().getStringExtra("username");
+                String email= getIntent().getStringExtra("email");
+                String password= getIntent().getStringExtra("password");
+                String mobile= getIntent().getStringExtra("number");
+
+                Users user= new Users(username, email, mobile, password);         // taking username, email, password in database.
+                String id = getIntent().getStringExtra("uuid");
+
+                database.getReference().child("Users").child(id).setValue(user);   // it will create a user node in firebase containing userId / mail , password, username
+                Intent intent=new Intent(WelcomeActivity.this, HomeActivity.class);
+                progressDialog.hide();
+                startActivity(intent);
+                Toast.makeText(WelcomeActivity.this,"Account Created Successfully", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+}

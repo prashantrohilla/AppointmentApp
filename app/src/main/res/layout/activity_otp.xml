@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.chatapp.example.flamingo.login.OtpActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:lottie_rawRes="@raw/otp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/otp_verification"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:text="@string/we_will"
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_your"
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp" />
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/countryCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square"
+            android:hint="@string/countrycode"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            tools:ignore="RtlSymmetry,TextFields"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textAlignment="center"/>
+
+        <EditText
+            android:id="@+id/inputMobile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/number"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:textSize="16sp"
+            android:layout_weight="4"
+            android:background="@drawable/square"
+            tools:ignore="RtlSymmetry,TextFields"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+
+        <Button
+            android:id="@+id/buttonGetOTP"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/roundbutton"
+            android:text="@string/continu"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+</LinearLayout>

@@ -1,3 +1,48 @@
 <resources>
-    <string name="app_name">PhoneDirectory</string>
+    <string name="app_name">Flamingo</string>
+
+    // sign in
+    <string name="email_phone">Email / Phone</string>
+    <string name="sign_in">Log In</string>
+    <string name="dont_have_account">Not a member? Signup now</string>
+
+    // main sign up
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="or">-----OR-----</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already">Sign Up</string>
+    <string name="continu">Continue</string>
+    <string name="verified">Mobile Number Successfully Verified</string>
+
+    // otp
+    <string name="otp_verification">OTP VERIFICATION</string>
+    <string name="we_will">We will send an OTP to your mobile number</string>
+    <string name="enter_your">Enter Your Country Code And Mobile Number</string>
+    <string name="countrycode">91</string>
+    <string name="number">9876543210</string>
+
+    //otp next
+    <string name="enter_the_otp">Enter the OTP code sent to</string>
+    <string name="not_receive">Didn\'t receive the OTP</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="verify">Verify</string>
+
+    // fragment status
+    <string name="add_text">Add Text Status</string>
+    <string name="status_updates">Status Updates</string>
+    <string name="eemail">Email</string>
+
+    // chat detail
+    <string name="hello">Hello</string>
+    <string name="offline">Offline</string>
+    <string name="enter_your_message">Enter Your Message</string>
+
+
+    <string name="reserved">Reserved For Future Work</string>
+    <string name="tap">Tap to Chat</string>
+    <string name="no_status">No Status</string>
+
+
 </resources>
