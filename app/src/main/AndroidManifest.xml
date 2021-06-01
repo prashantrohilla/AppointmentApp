@@ -5,14 +5,25 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Appointment"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.chatapp.example.flamingo.login.SignUpActivity"></activity>
+
+        <activity android:name="com.chatapp.example.flamingo.phase1.LoginActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.chatapp.example.flamingo.phase1.OtpActivity" />
+        <activity android:name="com.chatapp.example.flamingo.phase1.OtpNextActivity" />
+        <activity android:name="com.chatapp.example.flamingo.phase1.SignUpActivity" />
+        <activity android:name="com.chatapp.example.flamingo.phase1.WelcomeActivity" />
+
         <activity android:name="com.chatapp.example.flamingo.phase2.HomeActivity" />
         <activity android:name="com.chatapp.example.flamingo.phase2.ChatDetailActivity" />
-        <activity android:name="com.chatapp.example.flamingo.login.LoginActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

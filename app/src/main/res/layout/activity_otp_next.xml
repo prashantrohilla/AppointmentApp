@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.chatapp.example.flamingo.login.OtpActivity"
+    tools:context="com.chatapp.example.flamingo.phase1.OtpActivity"
     android:orientation="vertical"
     android:gravity="center">
 
