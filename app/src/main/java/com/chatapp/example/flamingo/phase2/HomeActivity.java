@@ -25,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         binding=ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container,new HomeFragment());
         transaction.commit();

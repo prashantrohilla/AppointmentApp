@@ -25,7 +25,6 @@ public class WelcomeActivity extends AppCompatActivity {
         binding = ActivityWelcomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        getSupportActionBar().hide();
         database = FirebaseDatabase.getInstance();
 
         progressDialog = new ProgressDialog(WelcomeActivity.this);

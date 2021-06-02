@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        getSupportActionBar().hide();
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();

@@ -17,8 +17,6 @@ public class SignUpActivity extends AppCompatActivity {
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        getSupportActionBar().hide();
-
         binding.signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

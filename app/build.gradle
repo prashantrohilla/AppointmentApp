@@ -44,7 +44,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-core'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
-    implementation 'com.google.android.libraries.places:places:1.0.0'
+    implementation 'com.google.android.libraries.places:places:2.4.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'  // circular image
@@ -59,6 +59,7 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.7.0'
     implementation 'com.github.iammert:ReadableBottomBar:0.2'
     implementation 'com.github.MrNouri:DynamicSizes:1.0'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 
 
 }

@@ -39,7 +39,6 @@ public class OtpNextActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOtpNextBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().hide();
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
