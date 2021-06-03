@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.chatapp.example.flamingoapp.phase1.OtpActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@color/white">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation"
@@ -26,7 +27,8 @@
         android:textStyle="bold"
         android:layout_marginBottom="@dimen/_30mdp"
         android:layout_marginTop="@dimen/_20mdp"
-        android:fontFamily="@font/oxygen"/>
+        android:fontFamily="@font/oxygen"
+        android:textColor="@color/blue"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -37,7 +39,8 @@
         android:text="@string/we_will"
         android:textSize="@dimen/_12font_mdp"
         android:layout_marginBottom="@dimen/_10mdp"
-        android:fontFamily="@font/oxygen"/>
+        android:fontFamily="@font/oxygen"
+        android:textColor="@color/quantum_grey600"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -48,7 +51,8 @@
         android:text="@string/enter_your"
         android:textSize="@dimen/_12font_mdp"
         android:layout_marginBottom="@dimen/_18mdp"
-        android:fontFamily="@font/oxygen"/>
+        android:fontFamily="@font/oxygen"
+        android:textColor="@color/quantum_grey600"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,7 +75,8 @@
             android:importantForAutofill="no"
             android:inputType="number"
             android:textAlignment="center"
-            android:fontFamily="@font/oxygen"/>
+            android:fontFamily="@font/oxygen"
+            android:textColorHint="@color/quantum_grey600"/>
 
         <EditText
             android:id="@+id/inputMobile"
@@ -88,7 +93,8 @@
             android:importantForAutofill="no"
             android:inputType="number"
             android:textAlignment="center"
-            android:fontFamily="@font/oxygen"/>
+            android:fontFamily="@font/oxygen"
+            android:textColorHint="@color/quantum_grey600"/>
 
     </LinearLayout>
 
@@ -99,18 +105,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_30mdp">
 
-        <Button
+        <TextView
             android:id="@+id/buttonGetOTP"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35font_mdp"
-            android:background="@drawable/roundbutton"
+            android:background="@drawable/buttongrad1"
             android:text="@string/continu"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/_14font_mdp"
             android:textStyle="bold"
-            android:padding="@dimen/_5mdp"
+            android:padding="@dimen/_6mdp"
             android:fontFamily="@font/oxygen"
+            android:textAllCaps="true"
             />
 
         <ProgressBar

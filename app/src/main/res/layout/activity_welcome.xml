@@ -6,18 +6,19 @@
     android:layout_height="match_parent"
     tools:context="com.chatapp.example.flamingoapp.phase1.WelcomeActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@color/white">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation"
-        android:layout_width="@dimen/_180mdp"
-        android:layout_height="@dimen/_180mdp"
-        app:lottie_rawRes="@raw/hello"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        android:layout_marginBottom="@dimen/_28mdp"
-        />
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation"
+            android:layout_width="@dimen/_180mdp"
+            android:layout_height="@dimen/_180mdp"
+            app:lottie_rawRes="@raw/hello"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:layout_margin="@dimen/_5mdp"
+            />
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,23 +27,22 @@
         android:textStyle="bold"
         android:layout_marginBottom="@dimen/_18mdp"
         android:text="@string/verified"
-        android:fontFamily="@font/oxygen"/>
+        android:fontFamily="@font/oxygen"
+        android:textColor="@color/blue"/>
 
 
-    <Button
+    <TextView
         android:id="@+id/nextBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/_120mdp"
         android:layout_height="@dimen/_35mdp"
-        android:background="@drawable/roundbutton"
+        android:background="@drawable/buttongrad1"
         android:text="@string/continu"
-        android:textColor="@color/white"
+        android:textAllCaps="true"
         android:textSize="@dimen/_14font_mdp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        android:paddingTop="@dimen/_8mdp"
-        android:paddingBottom="@dimen/_8mdp"
-        android:paddingStart="@dimen/_20mdp"
-        android:paddingEnd="@dimen/_20mdp"
-        tools:ignore="RtlSymmetry"
+        android:padding="@dimen/_6mdp"
         android:fontFamily="@font/oxygen"/>
 
 

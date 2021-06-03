@@ -6,7 +6,8 @@
 
     <color name="purple200">#FFBB86FC</color>
     <color name="purple500">#FF6200EE</color>
-    <color name="grey">#d3d3d3</color>
+    <color name="textcolor">#d3d3d3</color>
+    <color name="gray">#cdc9c9</color>
     <color name="teal200">#FF03DAC5</color>
     <color name="teal700">#FF018786</color>
 
@@ -18,4 +19,8 @@
     <color name="cssgreen2">#72afd3</color>
     <color name="blue">#4E65FF</color>
     <color name="black">#000000</color>
+
+    <color name="gradient1">#F8ADC2</color>
+    <color name="gradient2">#C361D2</color>
+    <color name="gradient3">#BD59D3</color>
 </resources>

@@ -8,6 +8,7 @@
     tools:context="com.chatapp.example.flamingoapp.phase1.SignUpActivity"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@color/white"
     >
 
 
@@ -43,7 +44,8 @@
             android:textStyle="bold"
             android:drawableStart="@drawable/userc"
             android:drawablePadding="@dimen/_18mdp"
-            tools:ignore="Autofill" />
+            tools:ignore="Autofill"
+            android:textColorHint="@color/quantum_grey600"/>
 
         <EditText
             android:id="@+id/etEmail"
@@ -59,7 +61,8 @@
             android:layout_marginTop="@dimen/_18mdp"
             android:drawableStart="@drawable/email"
             android:drawablePadding="@dimen/_18mdp"
-            tools:ignore="Autofill" />
+            tools:ignore="Autofill"
+            android:textColorHint="@color/quantum_grey600"/>
 
         <EditText
             android:id="@+id/etPassword"
@@ -74,22 +77,24 @@
             android:textStyle="bold"
             android:drawableStart="@drawable/lock"
             android:drawablePadding="@dimen/_18mdp"
-            tools:ignore="Autofill" />
+            tools:ignore="Autofill"
+            android:textColorHint="@color/quantum_grey600"/>
 
-
-        <Button
+        <TextView
             android:id="@+id/signupbtn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35mdp"
+            android:background="@drawable/buttongrad1"
+            android:textAlignment="center"
             android:text="@string/continu"
+            android:textSize="@dimen/_16font_mdp"
             android:textColor="@color/white"
-            android:textSize="@dimen/_14font_mdp"
+            android:fontFamily="@font/oxygen"
+            android:textAllCaps="true"
+            android:padding="@dimen/_6mdp"
             android:textStyle="bold"
-            android:background="@drawable/roundbutton"
             android:layout_marginTop="@dimen/_30mdp"
-            android:padding="@dimen/_8mdp"
-            android:fontFamily="@font/oxygen"/>
-
+            />
 
 
     </LinearLayout>

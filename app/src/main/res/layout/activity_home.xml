@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.chatapp.example.flamingoapp.phase2.HomeActivity">
+    tools:context="com.chatapp.example.flamingoapp.phase2.HomeActivity"
+    android:background="@color/white">
 
 
     <FrameLayout
@@ -32,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:rbb_backgroundColor="@color/grey"
+        app:rbb_backgroundColor="@color/gray"
         app:rbb_indicatorColor="@color/blue"
         app:rbb_indicatorHeight="2dp"
         app:rbb_activeItemType="text"

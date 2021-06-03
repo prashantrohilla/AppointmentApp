@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context="com.chatapp.example.flamingoapp.phase1.OtpActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@color/white">
 
     <TextView
         android:layout_width="wrap_content"
@@ -14,7 +15,8 @@
         android:textSize="@dimen/_20font_mdp"
         android:textStyle="bold"
         android:layout_marginBottom="@dimen/_26mdp"
-        android:fontFamily="@font/oxygen"/>
+        android:fontFamily="@font/oxygen"
+        android:textColor="@color/blue"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,7 +24,8 @@
         android:text="@string/enter_the_otp"
         android:textSize="@dimen/_14font_mdp"
         android:layout_marginBottom="@dimen/_12mdp"
-        android:fontFamily="@font/oxygen"/>
+        android:fontFamily="@font/oxygen"
+        android:textColor="@color/quantum_grey600"/>
 
     <TextView
         android:id="@+id/textMobile"
@@ -32,7 +35,8 @@
         android:textSize="@dimen/_18font_mdp"
         android:textStyle="bold"
         android:layout_marginBottom="@dimen/_8mdp"
-        android:fontFamily="@font/oxygen"/>
+        android:fontFamily="@font/oxygen"
+        android:textColorHint="@color/quantum_grey600"/>
 
 
     <LinearLayout
@@ -147,8 +151,9 @@
             android:layout_height="wrap_content"
             android:text="@string/not_receive"
             android:textSize="@dimen/_16font_mdp"
-            android:layout_margin="@dimen/_2mdp"
-            android:fontFamily="@font/oxygen"/>
+            android:layout_margin="@dimen/_3mdp"
+            android:fontFamily="@font/oxygen"
+            android:textColor="@color/quantum_grey600"/>
 
         <TextView
             android:id="@+id/textResendOTP"
@@ -157,8 +162,9 @@
             android:text="@string/resend_otp"
             android:textSize="@dimen/_16font_mdp"
             android:textStyle="bold"
-            android:layout_margin="@dimen/_2mdp"
+            android:layout_margin="@dimen/_3mdp"
             android:fontFamily="@font/oxygen"
+            android:textColor="@color/blue"
             />
 
     </LinearLayout>
@@ -168,16 +174,19 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_18mdp">
 
-        <Button
+        <TextView
             android:id="@+id/buttonVerify"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35mdp"
-            android:background="@drawable/roundbutton"
+            android:background="@drawable/buttongrad1"
             android:textAlignment="center"
             android:text="@string/verify"
             android:textSize="@dimen/_16font_mdp"
             android:textColor="@color/white"
             android:fontFamily="@font/oxygen"
+            android:textAllCaps="true"
+            android:padding="@dimen/_6mdp"
+            android:textStyle="bold"
             />
 
         <ProgressBar

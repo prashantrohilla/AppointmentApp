@@ -14,7 +14,7 @@
 
     <tab
         drawable="@drawable/notification"
-        text="@string/notifications" />
+        text="@string/notification" />
 
     <tab
         drawable="@drawable/profile"
