@@ -17,6 +17,13 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
+         <androidx.appcompat.widget.LinearLayoutCompat
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+
+
+         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profilepic"
@@ -24,7 +31,8 @@
             android:layout_height="@dimen/_38mdp"
             android:layout_margin="@dimen/_4mdp"
             android:src="@drawable/user9"
-            app:civ_border_width="@dimen/_1mdp"/>
+            app:civ_border_width="@dimen/_1mdp"
+            app:civ_border_color="@color/white"/>
 
         <TextView
             android:id="@+id/etUserName"
@@ -48,7 +56,8 @@
             android:contentDescription="@string/search"
             android:paddingTop="@dimen/_5mdp"
             android:paddingBottom="@dimen/_5mdp"
-            android:src="@drawable/menu" />
+            android:src="@drawable/menu"
+            android:tint="@color/blue"/>
 
     </LinearLayout>
 
@@ -62,7 +71,8 @@
         android:scaleType="centerCrop"
         android:src="@drawable/user9"
         app:riv_border_width="@dimen/_1mdp"
-        app:riv_corner_radius="@dimen/_15mdp"/>
+        app:riv_corner_radius="@dimen/_15mdp"
+        app:riv_border_color="@color/blue"/>
 
 
     <LinearLayout

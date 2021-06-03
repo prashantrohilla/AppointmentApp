@@ -1,16 +1,15 @@
-package com.chatapp.example.flamingo.phase2;
+package com.chatapp.example.flamingoapp.phase2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.chatapp.example.flamingo.fragments.AddPostFragment;
-import com.chatapp.example.flamingo.fragments.HomeFragment;
-import com.chatapp.example.flamingo.fragments.NotificationFragment;
-import com.chatapp.example.flamingo.fragments.ProfileFragment;
-import com.chatapp.example.flamingo.fragments.SearchFragment;
+import com.chatapp.example.flamingoapp.fragments.AddPostFragment;
+import com.chatapp.example.flamingoapp.fragments.HomeFragment;
+import com.chatapp.example.flamingoapp.fragments.NotificationFragment;
+import com.chatapp.example.flamingoapp.fragments.ProfileFragment;
+import com.chatapp.example.flamingoapp.fragments.SearchFragment;
 import com.iammert.library.readablebottombar.ReadableBottomBar;
 import com.phone.DoctorAppointment.R;
 import com.phone.DoctorAppointment.databinding.ActivityHomeBinding;

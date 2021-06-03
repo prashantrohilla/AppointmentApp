@@ -1,4 +1,4 @@
-package com.chatapp.example.flamingo.models;
+package com.chatapp.example.flamingoapp.models;
 
 public class Users {
 

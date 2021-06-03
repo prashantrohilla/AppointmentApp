@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.chatapp.example.flamingo.phase2.HomeActivity">
+    tools:context="com.chatapp.example.flamingoapp.phase2.HomeActivity">
 
 
     <FrameLayout

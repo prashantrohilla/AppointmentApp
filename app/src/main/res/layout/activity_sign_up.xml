@@ -5,7 +5,7 @@
     android:id="@+id/mainSignUpActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.chatapp.example.flamingo.phase1.SignUpActivity"
+    tools:context="com.chatapp.example.flamingoapp.phase1.SignUpActivity"
     android:orientation="vertical"
     android:gravity="center"
     >
@@ -15,34 +15,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginRight="@dimen/_18mdp"
+        android:layout_marginLeft="@dimen/_18mdp"
         android:gravity="center_horizontal"
         tools:ignore="UselessParent">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animation"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="@dimen/_100mdp"
+            android:layout_height="@dimen/_100mdp"
             app:lottie_rawRes="@raw/chat"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/_8mdp"
             />
 
         <EditText
             android:id="@+id/etUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/_18mdp"
             android:ems="10"
             android:hint="@string/username"
             android:inputType="textPersonName"
-            android:padding="10dp"
+            android:padding="@dimen/_8mdp"
             android:background="@drawable/square"
             android:textStyle="bold"
             android:drawableStart="@drawable/userc"
-            android:drawablePadding="20dp"
+            android:drawablePadding="@dimen/_18mdp"
             tools:ignore="Autofill" />
 
         <EditText
@@ -52,42 +52,43 @@
             android:ems="10"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:padding="10dp"
+            android:padding="@dimen/_8mdp"
             android:background="@drawable/square"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="@dimen/_18mdp"
+            android:layout_marginTop="@dimen/_18mdp"
             android:drawableStart="@drawable/email"
-            android:drawablePadding="20dp"
+            android:drawablePadding="@dimen/_18mdp"
             tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="@dimen/_14mdp"
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:padding="10dp"
+            android:padding="@dimen/_8mdp"
             android:background="@drawable/square"
             android:textStyle="bold"
             android:drawableStart="@drawable/lock"
-            android:drawablePadding="20dp"
+            android:drawablePadding="@dimen/_18mdp"
             tools:ignore="Autofill" />
 
 
         <Button
             android:id="@+id/signupbtn"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/_35mdp"
             android:text="@string/continu"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="@dimen/_14font_mdp"
             android:textStyle="bold"
             android:background="@drawable/roundbutton"
-            android:layout_marginTop="40dp"
-            android:padding="10dp"/>
+            android:layout_marginTop="@dimen/_30mdp"
+            android:padding="@dimen/_8mdp"
+            android:fontFamily="@font/oxygen"/>
 
 
 
@@ -95,4 +96,3 @@
 
 
 </LinearLayout>
-

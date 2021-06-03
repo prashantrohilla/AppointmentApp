@@ -4,7 +4,7 @@
     // sign in
     <string name="email_phone">Email / Phone</string>
     <string name="sign_in">Log In</string>
-    <string name="dont_have_account">Not a member? Signup now</string>
+    <string name="dont_have_account">Not a member?   Signup now</string>
 
     // main sign up
     <string name="username">Username</string>
@@ -50,6 +50,7 @@
     <string name="notification">Notification</string>
     <string name="profile">Profile</string>
     <string name="text">100</string>
+    <string name="share_story">Share Story</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

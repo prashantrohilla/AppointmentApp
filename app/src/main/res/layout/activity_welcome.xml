@@ -4,44 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.chatapp.example.flamingo.phase1.WelcomeActivity"
+    tools:context="com.chatapp.example.flamingoapp.phase1.WelcomeActivity"
     android:orientation="vertical"
     android:gravity="center">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="@dimen/_180mdp"
+        android:layout_height="@dimen/_180mdp"
         app:lottie_rawRes="@raw/hello"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="@dimen/_28mdp"
         />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="@dimen/_16font_mdp"
         android:textStyle="bold"
-        android:layout_marginBottom="20dp"
-        android:text="@string/verified"/>
+        android:layout_marginBottom="@dimen/_18mdp"
+        android:text="@string/verified"
+        android:fontFamily="@font/oxygen"/>
 
 
     <Button
         android:id="@+id/nextBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_35mdp"
         android:background="@drawable/roundbutton"
         android:text="@string/continu"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="@dimen/_14font_mdp"
         android:textStyle="bold"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingStart="20dp"
+        android:paddingTop="@dimen/_8mdp"
+        android:paddingBottom="@dimen/_8mdp"
+        android:paddingStart="@dimen/_20mdp"
+        android:paddingEnd="@dimen/_20mdp"
         tools:ignore="RtlSymmetry"
-        android:paddingEnd="20dp"/>
+        android:fontFamily="@font/oxygen"/>
 
 
 

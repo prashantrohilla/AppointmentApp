@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:context="com.chatapp.example.flamingo.fragments.HomeFragment">
+    tools:context="com.chatapp.example.flamingoapp.fragments.HomeFragment">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -52,26 +52,67 @@
         </androidx.appcompat.widget.Toolbar>
 
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70mdp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toEndOf="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="@dimen/_60mdp"
+            android:layout_height="@dimen/_70mdp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/userPost"
+                android:layout_width="@dimen/_50mdp"
+                android:layout_height="@dimen/_50mdp"
+                app:civ_border_width="@dimen/_1mdp"
+                app:civ_border_color="@color/blue"
+                android:src="@drawable/user9"
+                app:riv_corner_radius="@dimen/_20mdp"/>
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="@dimen/_55mdp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_10font_mdp"
+                android:textStyle="bold"
+                android:text="@string/share_story"
+                android:fontFamily="@font/oxygen"
+                android:padding="@dimen/_2mdp"/>
+
+        </LinearLayout>
+
         <HorizontalScrollView
             android:id="@+id/storiesScrollView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50mdp"
-            android:layout_marginTop="50dp"
+            android:layout_height="match_parent"
             android:background="@color/grey"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/toolbar"
-            tools:ignore="ScrollViewCount"
-            >
+            tools:ignore="ScrollViewCount">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="vertical" />
+                android:orientation="vertical"
+                tools:ignore="UselessLeaf">
+
+
+            </LinearLayout>
 
         </HorizontalScrollView>
 
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -79,7 +120,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/storiesScrollView"
-        app:layout_constraintVertical_weight="1" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_weight="1"
+        android:layout_marginTop="@dimen/_5mdp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

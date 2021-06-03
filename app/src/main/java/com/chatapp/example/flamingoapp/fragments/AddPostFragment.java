@@ -1,4 +1,4 @@
-package com.chatapp.example.flamingo.fragments;
+package com.chatapp.example.flamingoapp.fragments;
 
 import android.os.Bundle;
 

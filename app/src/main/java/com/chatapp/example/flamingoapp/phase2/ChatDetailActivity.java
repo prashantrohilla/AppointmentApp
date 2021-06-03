@@ -1,4 +1,4 @@
-package com.chatapp.example.flamingo.phase2;
+package com.chatapp.example.flamingoapp.phase2;
 
 import androidx.appcompat.app.AppCompatActivity;
 

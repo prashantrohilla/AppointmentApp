@@ -1,4 +1,4 @@
-package com.chatapp.example.flamingo.phase1;
+package com.chatapp.example.flamingoapp.phase1;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -8,8 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.chatapp.example.flamingo.models.Users;
-import com.chatapp.example.flamingo.phase2.HomeActivity;
+import com.chatapp.example.flamingoapp.models.Users;
+import com.chatapp.example.flamingoapp.phase2.HomeActivity;
 import com.google.firebase.database.FirebaseDatabase;
 import com.phone.DoctorAppointment.databinding.ActivityWelcomeBinding;
 

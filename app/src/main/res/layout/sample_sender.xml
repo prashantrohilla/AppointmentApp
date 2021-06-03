@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginLeft="7dp"
+        android:background="@drawable/bg_sender"
+        android:maxWidth="300dp"
+        android:maxHeight="400dp"
+        android:minHeight="30dp"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginStart="10dp">
+
+            <ozaydin.serkan.com.image_zoom_view.ImageViewZoom
+                android:id="@+id/Image"
+                 android:visibility="gone"
+                android:layout_width="200dp"
+                android:background="@color/teal700"
+                android:layout_height="130dp"
+                />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="10dp">
+
+
+            <TextView
+                android:id="@+id/senderText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:maxWidth="270dp"
+                android:minWidth="50dp"
+                android:textColor="@color/teal700"
+                android:text="@string/username"
+                android:layout_margin="5dp"
+                tools:ignore="TextViewEdits" />
+
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="15dp">
+
+        <TextView
+            android:id="@+id/senderTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/teal700"
+            android:textSize="10sp"
+            android:layout_marginStart="5dp"
+            android:text="@string/username"
+            tools:ignore="ObsoleteLayoutParam,SmallSp" />
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+
+   <!-- right side guide line-->
+
+</RelativeLayout>

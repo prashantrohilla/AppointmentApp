@@ -1,4 +1,4 @@
-package com.chatapp.example.flamingo.phase1;
+package com.chatapp.example.flamingoapp.phase1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,8 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.chatapp.example.flamingo.models.Users;
-import com.chatapp.example.flamingo.phase2.HomeActivity;
+import com.chatapp.example.flamingoapp.models.Users;
+import com.chatapp.example.flamingoapp.phase2.HomeActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

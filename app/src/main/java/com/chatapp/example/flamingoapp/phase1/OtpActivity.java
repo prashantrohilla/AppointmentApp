@@ -1,4 +1,4 @@
-package com.chatapp.example.flamingo.phase1;
+package com.chatapp.example.flamingoapp.phase1;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.chatapp.example.flamingo.phase1.OtpActivity"
+    tools:context="com.chatapp.example.flamingoapp.phase1.OtpActivity"
     android:orientation="vertical"
     android:gravity="center">
 
@@ -11,168 +11,179 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/otp_verification"
-        android:textSize="22sp"
+        android:textSize="@dimen/_20font_mdp"
         android:textStyle="bold"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="@dimen/_26mdp"
+        android:fontFamily="@font/oxygen"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/enter_the_otp"
-        android:textSize="16sp"
-        android:layout_marginBottom="15dp"/>
+        android:textSize="@dimen/_14font_mdp"
+        android:layout_marginBottom="@dimen/_12mdp"
+        android:fontFamily="@font/oxygen"/>
 
     <TextView
         android:id="@+id/textMobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/number"
-        android:textSize="20sp"
+        android:textSize="@dimen/_18font_mdp"
         android:textStyle="bold"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="@dimen/_8mdp"
+        android:fontFamily="@font/oxygen"/>
 
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_marginTop="20dp"
-       android:layout_marginBottom="15dp"
-       android:gravity="center"
-       android:orientation="horizontal">
-
-       <EditText
-           android:id="@+id/inputCode1"
-           android:layout_width="45dp"
-           android:layout_height="45dp"
-           android:layout_margin="3dp"
-           android:background="@drawable/square"
-           android:gravity="center"
-           android:imeOptions="actionNext"
-           android:importantForAutofill="no"
-           android:inputType="number"
-           android:maxLength="1"
-           android:textSize="22sp"
-           tools:ignore="LabelFor" />
-
-       <EditText
-           android:id="@+id/inputCode2"
-           android:layout_width="45dp"
-           android:layout_height="45dp"
-           android:gravity="center"
-           android:imeOptions="actionNext"
-           android:importantForAutofill="no"
-           android:inputType="number"
-           android:maxLength="1"
-           android:textSize="22sp"
-           android:background="@drawable/square"
-           tools:ignore="LabelFor"
-           android:layout_margin="3dp"/>
-
-       <EditText
-           android:id="@+id/inputCode3"
-           android:layout_width="45dp"
-           android:layout_height="45dp"
-           android:layout_margin="3dp"
-           android:background="@drawable/square"
-           android:gravity="center"
-           android:imeOptions="actionNext"
-           android:importantForAutofill="no"
-           android:inputType="number"
-           android:maxLength="1"
-           android:textSize="22sp"
-           tools:ignore="LabelFor" />
-
-       <EditText
-           android:id="@+id/inputCode4"
-           android:layout_width="45dp"
-           android:layout_height="45dp"
-           android:gravity="center"
-           android:imeOptions="actionNext"
-           android:importantForAutofill="no"
-           android:inputType="number"
-           android:maxLength="1"
-           android:textSize="22sp"
-           android:background="@drawable/square"
-           tools:ignore="LabelFor"
-           android:layout_margin="3dp"/>
-
-       <EditText
-           android:id="@+id/inputCode5"
-           android:layout_width="45dp"
-           android:layout_height="45dp"
-           android:gravity="center"
-           android:imeOptions="actionNext"
-           android:importantForAutofill="no"
-           android:inputType="number"
-           android:maxLength="1"
-           android:textSize="22sp"
-           android:background="@drawable/square"
-           tools:ignore="LabelFor"
-           android:layout_margin="3dp"/>
-
-       <EditText
-           android:id="@+id/inputCode6"
-           android:layout_width="45dp"
-           android:layout_height="45dp"
-           android:gravity="center"
-           android:imeOptions="actionNext"
-           android:importantForAutofill="no"
-           android:inputType="number"
-           android:maxLength="1"
-           android:textSize="22sp"
-          android:background="@drawable/square"
-           tools:ignore="LabelFor"
-           android:layout_margin="3dp"/>
-       
-   </LinearLayout>
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center"
-    android:layout_marginBottom="20dp">
-    
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/not_receive"
-        android:textSize="17sp"
-        android:layout_margin="3dp"
-        />
+        android:layout_marginTop="@dimen/_20mdp"
+        android:layout_marginBottom="@dimen/_15mdp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textResendOTP"
-        android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/inputCode1"
+            android:layout_width="@dimen/_35mdp"
+            android:layout_height="@dimen/_35mdp"
+            android:layout_margin="@dimen/_2mdp"
+            android:background="@drawable/square"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="@dimen/_20font_mdp"
+            tools:ignore="LabelFor"
+            android:fontFamily="@font/oxygen"/>
+
+        <EditText
+            android:id="@+id/inputCode2"
+            android:layout_width="@dimen/_35mdp"
+            android:layout_height="@dimen/_35mdp"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="@dimen/_20font_mdp"
+            android:background="@drawable/square"
+            tools:ignore="LabelFor"
+            android:layout_margin="@dimen/_2mdp"
+            android:fontFamily="@font/oxygen"/>
+
+        <EditText
+            android:id="@+id/inputCode3"
+            android:layout_width="@dimen/_35mdp"
+            android:layout_height="@dimen/_35mdp"
+            android:layout_margin="@dimen/_2mdp"
+            android:background="@drawable/square"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="@dimen/_20font_mdp"
+            tools:ignore="LabelFor"
+            android:fontFamily="@font/oxygen"/>
+
+        <EditText
+            android:id="@+id/inputCode4"
+            android:layout_width="@dimen/_35mdp"
+            android:layout_height="@dimen/_35mdp"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="@dimen/_20font_mdp"
+            android:background="@drawable/square"
+            tools:ignore="LabelFor"
+            android:layout_margin="@dimen/_2mdp"
+            android:fontFamily="@font/oxygen"/>
+
+        <EditText
+            android:id="@+id/inputCode5"
+            android:layout_width="@dimen/_35mdp"
+            android:layout_height="@dimen/_35mdp"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="@dimen/_20font_mdp"
+            android:background="@drawable/square"
+            tools:ignore="LabelFor"
+            android:layout_margin="@dimen/_2mdp"
+            android:fontFamily="@font/oxygen"/>
+
+        <EditText
+            android:id="@+id/inputCode6"
+            android:layout_width="@dimen/_35mdp"
+            android:layout_height="@dimen/_35mdp"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="@dimen/_20font_mdp"
+            android:background="@drawable/square"
+            tools:ignore="LabelFor"
+            android:layout_margin="@dimen/_2mdp"
+            android:fontFamily="@font/oxygen"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/resend_otp"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:layout_margin="3dp"
-        />
-    
-</LinearLayout>
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/_18mdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_receive"
+            android:textSize="@dimen/_16font_mdp"
+            android:layout_margin="@dimen/_2mdp"
+            android:fontFamily="@font/oxygen"/>
+
+        <TextView
+            android:id="@+id/textResendOTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resend_otp"
+            android:textSize="@dimen/_16font_mdp"
+            android:textStyle="bold"
+            android:layout_margin="@dimen/_2mdp"
+            android:fontFamily="@font/oxygen"
+            />
+
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp">
+        android:layout_margin="@dimen/_18mdp">
 
         <Button
             android:id="@+id/buttonVerify"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/_35mdp"
             android:background="@drawable/roundbutton"
             android:textAlignment="center"
             android:text="@string/verify"
-            android:textSize="18sp"
+            android:textSize="@dimen/_16font_mdp"
             android:textColor="@color/white"
+            android:fontFamily="@font/oxygen"
             />
 
         <ProgressBar
             android:id="@+id/progressBar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/_36mdp"
+            android:layout_height="@dimen/_36mdp"
             android:layout_gravity="center"
             android:visibility="gone"/>
 
