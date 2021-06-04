@@ -28,7 +28,7 @@
     <TextView
         android:id="@+id/userName"
         android:layout_width="@dimen/_55mdp"
-        android:layout_height="@dimen/_20mdp"
+        android:layout_height="@dimen/_18mdp"
         android:textSize="@dimen/_10font_mdp"
         android:textStyle="bold"
         android:text="@string/share_story"

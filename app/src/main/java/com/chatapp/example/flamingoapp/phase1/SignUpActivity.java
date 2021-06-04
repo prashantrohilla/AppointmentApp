@@ -44,6 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
                 i.putExtra("email", binding.etEmail.getText().toString());
                 i.putExtra("username", binding.etUserName.getText().toString());
                 i.putExtra("password", binding.etPassword.getText().toString());
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
             }
         });
