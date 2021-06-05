@@ -108,7 +108,6 @@ public class ChatAdapter extends RecyclerView.Adapter {
              }
          });
 
-
          if(holder.getClass()==SenderViewHolder.class)     // showing sender msg
          {
              String message = null;
@@ -145,7 +144,6 @@ public class ChatAdapter extends RecyclerView.Adapter {
                  ((ReceiverViewHolder)holder).receiverMsg.setVisibility(View.GONE);
                  Picasso.get().load(messageModel.getImageUrl()).placeholder(R.drawable.photo2).into(viewHolder.receiverImage);
              }
-
          }
     }
 
@@ -181,7 +179,7 @@ public class ChatAdapter extends RecyclerView.Adapter {
     public String decrypt(String data) throws Exception
     {
         String AES="AES";
-        String password="helloworld";
+        String password="terminator";
         SecretKeySpec key=generateKey(password);
         Cipher c=Cipher.getInstance(AES);
         c.init(Cipher.DECRYPT_MODE,key);

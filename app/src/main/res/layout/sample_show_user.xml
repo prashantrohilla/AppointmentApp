@@ -4,52 +4,65 @@
     android:id="@+id/userdetail"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical">
 
-    >
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profile_image"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/user"
-        app:civ_border_width="2dp"
-        app:civ_border_color="@color/white"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:padding="5dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_vertical">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/userNameList"
-            android:text="@string/username"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            />
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="@dimen/_60mdp"
+            android:layout_height="@dimen/_60mdp"
+            android:src="@drawable/user2"
+            app:civ_border_width="@dimen/_1mdp"
+            app:civ_border_color="@color/white"
+            android:layout_marginLeft="@dimen/_3mdp"
+            android:layout_marginRight="@dimen/_3mdp"
+            android:tint="@color/white"
+            android:padding="@dimen/_3mdp"/>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/lastMessage"
-            android:text="@string/tap"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:textStyle="bold"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/userNameList"
+                android:text="@string/username"
+                android:textSize="@dimen/_14font_mdp"
+                android:textStyle="bold"
+                android:paddingTop="@dimen/_3mdp"
+                android:paddingBottom="@dimen/_3mdp"
+                android:fontFamily="@font/oxygen"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lastMessage"
+                android:text="@string/tap"
+                android:paddingTop="@dimen/_1mdp"
+                android:paddingBottom="@dimen/_1mdp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:fontFamily="@font/oxygen"/>
+
+        </LinearLayout>
 
     </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/blue"/>
+        android:background="@color/white"/>
 
 </LinearLayout>

@@ -3,7 +3,7 @@ package com.chatapp.example.flamingoapp.models;
 public class MessageModel {
 
     String uID;
-    String message , lastMessage , messageId , imageUrl,s;
+    String message, lastMessage, messageId, imageUrl, s;
     Long time;
 
     public String getImageUrl() {
@@ -44,7 +44,7 @@ public class MessageModel {
         this.message = message;
     }
 
-    public MessageModel(){}    // we have to make empty constructor when we use firebase
+    public MessageModel() {    }    // we have to make empty constructor when we use firebase
 
     public String getuID() {
         return uID;
@@ -77,6 +77,5 @@ public class MessageModel {
     public void setLastMessage(String lastMessage) {
         this.lastMessage = lastMessage;
     }
-
 
 }

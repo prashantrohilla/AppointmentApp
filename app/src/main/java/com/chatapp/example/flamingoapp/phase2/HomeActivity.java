@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.chatapp.example.flamingoapp.fragments.AddPostFragment;
 import com.chatapp.example.flamingoapp.fragments.HomeFragment;
@@ -12,7 +14,6 @@ import com.chatapp.example.flamingoapp.fragments.NotificationFragment;
 import com.chatapp.example.flamingoapp.fragments.ProfileFragment;
 import com.chatapp.example.flamingoapp.fragments.SearchFragment;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
-import com.iammert.library.readablebottombar.ReadableBottomBar;
 import com.phone.DoctorAppointment.R;
 import com.phone.DoctorAppointment.databinding.ActivityHomeBinding;
 
@@ -29,6 +30,15 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+        binding.chatSection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(HomeActivity.this, ChatListActivity.class);
+                startActivity(i);
+            }
+        });
 
 
         bottomNavigation=findViewById(R.id.bottomNavigation);

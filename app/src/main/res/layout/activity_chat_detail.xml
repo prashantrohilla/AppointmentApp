@@ -1,9 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/grad1"
     tools:context="com.chatapp.example.flamingoapp.phase2.ChatDetailActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/_5mdp"
+        android:id="@+id/layout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+         android:layout_alignParentTop="true">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/whitearrow"
+            tools:ignore="ContentDescription" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileimage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@id/back"
+            android:src="@drawable/user2" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/profileimage"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="170dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@id/profileimage"
+                android:text="@string/hello"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="ObsoleteLayoutParam" />
+
+            <TextView
+                android:id="@+id/userStatus"
+                android:layout_width="170dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@id/profileimage"
+                android:text="@string/offline"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:ignore="ObsoleteLayoutParam" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/call"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_toStartOf="@+id/video"
+            android:src="@drawable/call"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/video"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/video"
+            tools:ignore="ContentDescription" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_below="@+id/layout1"
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2mdp"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/_5mdp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/chatLinearLayout"
+        android:layout_below="@+id/view"
+        android:layout_marginTop="@dimen/_5mdp"/>
+
+    <LinearLayout
+        android:id="@+id/chatLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50mdp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+         android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30mdp"
+            android:background="@drawable/whitebackground"
+            android:gravity="center_vertical"
+            android:layout_margin="@dimen/_10mdp">
+
+            <EditText
+                android:id="@+id/etMessage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/enter_your_message"
+                android:padding="@dimen/_5mdp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext"
+                android:layout_margin="2dp"
+                tools:ignore="NestedWeights,RtlSymmetry,TextFields"
+                android:autofillHints="ignore"
+                android:paddingStart="@dimen/_10mdp"/>
+
+            <ImageView
+                android:id="@+id/attachment"
+                android:layout_width="@dimen/_18mdp"
+                android:layout_height="@dimen/_20mdp"
+                android:background="@drawable/attachment"
+                android:layout_marginStart="5dp"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/camera"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/photocamera"
+                android:layout_margin="10dp"
+                tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/sendMessage"
+            android:layout_width="@dimen/_30mdp"
+            android:layout_height="@dimen/_30mdp"
+            android:src="@drawable/rightar"
+            android:layout_marginEnd="@dimen/_10mdp"
+            android:contentDescription="@string/search" />
+
+    </LinearLayout>
+
+</RelativeLayout>
