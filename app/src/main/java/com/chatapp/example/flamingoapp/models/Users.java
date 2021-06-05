@@ -2,8 +2,21 @@ package com.chatapp.example.flamingoapp.models;
 
 public class Users {
 
-    String profilepic, userName, mail, password, userId, lastMessage, status , phoneNumber, statusImage;
+    String profilepic, userName, mail, password, userId, lastMessage, status , phoneNumber, statusImage, userBio;
 
+
+    public Users(String profilepic, String userName, String mail, String password, String userId, String lastMessage, String status, String phoneNumber, String statusImage, String userBio) {
+        this.profilepic = profilepic;
+        this.userName = userName;
+        this.mail = mail;
+        this.password = password;
+        this.userId = userId;
+        this.lastMessage = lastMessage;
+        this.status = status;
+        this.phoneNumber = phoneNumber;
+        this.statusImage = statusImage;
+        this.userBio = userBio;
+    }
 
     public Users(String profilepic, String userName, String mail, String password, String userId, String lastMessage, String status, String phoneNumber, String statusImage) {
         this.profilepic = profilepic;
@@ -97,6 +110,11 @@ public class Users {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    public String getUserBio() { return userBio; }
+
+    public void setUserBio(String userBio) { this.userBio = userBio; }
+
 
 }
 

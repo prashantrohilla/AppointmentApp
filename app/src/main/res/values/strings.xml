@@ -50,6 +50,12 @@
     <string name="notification">Notification</string>
     <string name="profile">Profile</string>
     <string name="text">100</string>
+    <string name="bio">I like travel and food.</string>
+    <string name="posts">Posts</string>
+    <string name="likes">Likes</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
     <string name="type_username">Type Username</string>
     <string name="share_story">Share Story</string>
     <string name="your_messages">Your Messages</string>

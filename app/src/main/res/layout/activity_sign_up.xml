@@ -8,7 +8,6 @@
     tools:context="com.chatapp.example.flamingoapp.phase1.SignUpActivity"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/white"
     >
 
 

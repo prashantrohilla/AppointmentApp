@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.chatapp.example.flamingoapp.phase1.OtpActivity"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="@color/white">
+    android:gravity="center">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation"

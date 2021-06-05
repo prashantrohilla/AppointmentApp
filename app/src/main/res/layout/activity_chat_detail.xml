@@ -18,17 +18,18 @@
         <ImageView
             android:id="@+id/back"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/_35mdp"
             android:layout_alignParentStart="true"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="@dimen/_8mdp"
             android:src="@drawable/whitearrow"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            android:layout_marginTop="@dimen/_2mdp"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileimage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
+            android:layout_width="@dimen/_40mdp"
+            android:layout_height="@dimen/_40mdp"
+            android:layout_marginEnd="@dimen/_8mdp"
             android:layout_toEndOf="@id/back"
             android:src="@drawable/user2" />
 
@@ -41,27 +42,27 @@
 
             <TextView
                 android:id="@+id/userName"
-                android:layout_width="170dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/_140mdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3mdp"
+                android:layout_marginEnd="@dimen/_8mdp"
                 android:layout_toEndOf="@id/profileimage"
                 android:text="@string/hello"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="@dimen/_14mdp"
                 android:textStyle="bold"
                 tools:ignore="ObsoleteLayoutParam" />
 
             <TextView
                 android:id="@+id/userStatus"
-                android:layout_width="170dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/_140mdp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
                 android:layout_toEndOf="@id/profileimage"
                 android:text="@string/offline"
                 android:textColor="@color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/_12font_mdp"
                 android:textStyle="bold"
                 android:visibility="gone"
                 tools:ignore="ObsoleteLayoutParam" />
@@ -72,8 +73,8 @@
         <ImageView
             android:id="@+id/call"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_marginStart="20dp"
+            android:layout_height="@dimen/_35mdp"
+            android:layout_marginStart="@dimen/_15font_mdp"
             android:layout_toStartOf="@+id/video"
             android:src="@drawable/call"
             tools:ignore="ContentDescription" />
@@ -81,11 +82,11 @@
         <ImageView
             android:id="@+id/video"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/_35mdp"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="@dimen/_12mdp"
+            android:layout_marginTop="@dimen/_3mdp"
+            android:layout_marginEnd="@dimen/_8mdp"
             android:src="@drawable/video"
             tools:ignore="ContentDescription" />
 
@@ -142,15 +143,15 @@
                 android:layout_width="@dimen/_18mdp"
                 android:layout_height="@dimen/_20mdp"
                 android:background="@drawable/attachment"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="@dimen/_3mdp"
                 tools:ignore="ContentDescription" />
 
             <ImageView
                 android:id="@+id/camera"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="@dimen/_18mdp"
+                android:layout_height="@dimen/_18mdp"
                 android:background="@drawable/photocamera"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/_9mdp"
                 tools:ignore="ContentDescription" />
 
         </LinearLayout>

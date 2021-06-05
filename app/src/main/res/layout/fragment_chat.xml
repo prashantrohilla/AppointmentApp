@@ -26,6 +26,7 @@
             android:padding="5dp"
             android:background="@drawable/textback"
             tools:ignore="Autofill"
+            android:textColor="@color/white"
             android:fontFamily="@font/oxygen"
             android:textColorHint="@color/quantum_grey600"
             android:layout_weight="1"

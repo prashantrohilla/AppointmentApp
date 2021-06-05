@@ -6,8 +6,7 @@
         android:layout_height="match_parent"
         tools:context="com.chatapp.example.flamingoapp.phase1.LoginActivity"
         android:orientation="vertical"
-        android:gravity="center"
-        android:background="@color/white">
+        android:gravity="center">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,7 +43,7 @@
                 android:ems="10"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
-                android:padding="10dp"
+                android:padding="@dimen/_8mdp"
                 android:background="@drawable/square"
                 tools:ignore="Autofill"
                 android:fontFamily="@font/oxygen"
@@ -58,7 +57,7 @@
                 android:ems="10"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:padding="10dp"
+                android:padding="@dimen/_8mdp"
                 android:background="@drawable/square"
                 tools:ignore="Autofill"
                 android:fontFamily="@font/oxygen"
