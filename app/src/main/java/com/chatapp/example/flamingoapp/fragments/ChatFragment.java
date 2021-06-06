@@ -55,7 +55,6 @@ public class ChatFragment extends Fragment {
                     binding.searchText.setError("Enter a username !!");
                     return;
 
-
                 }
             }
         });

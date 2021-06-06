@@ -22,7 +22,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             tools:ignore="UselessParent">
 
 
@@ -94,24 +94,27 @@
 
             </HorizontalScrollView>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1mdp"
-                android:layout_marginTop="@dimen/mines3mdp"
-                android:background="@color/white" />
-
         </LinearLayout>
 
     </LinearLayout>
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1mdp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        android:layout_marginBottom="@dimen/_5mdp"/>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_8mdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_weight="1"
-        android:layout_marginTop="@dimen/_5mdp"/>
+        app:layout_constraintVertical_weight="1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

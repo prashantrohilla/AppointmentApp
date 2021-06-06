@@ -28,7 +28,7 @@
             tools:ignore="Autofill"
             android:textColor="@color/white"
             android:fontFamily="@font/oxygen"
-            android:textColorHint="@color/quantum_grey600"
+            android:textColorHint="@color/white"
             android:layout_weight="1"
             android:textAlignment="center"/>
 

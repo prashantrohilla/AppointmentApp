@@ -7,6 +7,7 @@
     tools:context="com.chatapp.example.flamingoapp.fragments.ProfileFragment">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -14,49 +15,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             android:padding="@dimen/_10mdp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="@dimen/_70mdp"
+                android:layout_height="@dimen/_70mdp"
+                android:src="@drawable/user9"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="@dimen/_2mdp" />
 
-                <LinearLayout
-                    android:layout_width="@dimen/_74mdp"
-                    android:layout_height="@dimen/_74mdp"
-                    android:background="@drawable/grad2"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_2mdp">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/userPost"
-                        android:layout_width="@dimen/_70mdp"
-                        android:layout_height="@dimen/_70mdp"
-                        android:src="@drawable/user9"
-                        app:civ_border_color="@color/white"
-                        app:civ_border_width="@dimen/_1mdp" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/addPostButton"
-                    android:layout_width="@dimen/_15mdp"
-                    android:layout_height="@dimen/_15mdp"
-                    android:layout_marginStart="@dimen/_20mdp"
-                    android:layout_marginTop="@dimen/mines18mdp"
-                    android:background="@drawable/plus"
-                    android:contentDescription="@string/search" />
-
-
-            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -68,25 +41,24 @@
                     android:id="@+id/postText"
                     android:layout_width="@dimen/_70mdp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/oxygen"
                     android:text="@string/text"
+                    android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_16mdp"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:fontFamily="@font/oxygen"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/followersText"
-                    android:layout_toEndOf="@+id/postText"
                     android:layout_width="@dimen/_70mdp"
                     android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/postText"
+                    android:fontFamily="@font/oxygen"
                     android:text="@string/text"
+                    android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_16mdp"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:fontFamily="@font/oxygen"
-                    />
+                    android:textStyle="bold" />
 
 
                 <TextView
@@ -94,49 +66,47 @@
                     android:layout_width="@dimen/_70mdp"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/followersText"
+                    android:fontFamily="@font/oxygen"
                     android:text="@string/text"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_16mdp"
-                    android:fontFamily="@font/oxygen"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/post"
                     android:layout_width="@dimen/_70mdp"
                     android:layout_height="wrap_content"
-                    android:text="@string/posts"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14mdp"
-                    android:fontFamily="@font/oxygen"
                     android:layout_below="@+id/postText"
-                    android:textAlignment="center" />
+                    android:fontFamily="@font/oxygen"
+                    android:text="@string/posts"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14mdp" />
 
                 <TextView
                     android:id="@+id/followers"
-                    android:layout_toEndOf="@+id/postText"
                     android:layout_width="@dimen/_70mdp"
                     android:layout_height="wrap_content"
-                    android:text="@string/followers"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14mdp"
                     android:layout_below="@+id/followersText"
+                    android:layout_toEndOf="@+id/postText"
                     android:fontFamily="@font/oxygen"
+                    android:text="@string/followers"
                     android:textAlignment="center"
-                    />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14mdp" />
 
                 <TextView
                     android:id="@+id/likes"
                     android:layout_width="@dimen/_70mdp"
                     android:layout_height="wrap_content"
-                    android:text="@string/likes"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14mdp"
-                    android:textAlignment="center"
                     android:layout_below="@+id/followersText"
                     android:layout_toEndOf="@+id/followers"
                     android:fontFamily="@font/oxygen"
-                    />
+                    android:text="@string/likes"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14mdp" />
 
 
             </RelativeLayout>
@@ -147,49 +117,87 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginStart="@dimen/_15mdp"
-            android:layout_marginEnd="@dimen/_15mdp">
+            android:layout_marginEnd="@dimen/_15mdp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/oxygen"
                 android:text="@string/username"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14mdp"
-                android:fontFamily="@font/oxygen"
-                />
+                android:textSize="@dimen/_14mdp" />
 
             <TextView
                 android:id="@+id/userBio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/oxygen"
                 android:text="@string/bio"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14mdp"
+                android:textSize="@dimen/_14mdp" />
+
+            <TextView
+                android:id="@+id/userLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/oxygen"
-                />
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14mdp"
+                android:visibility="gone"/>
+
 
             <TextView
                 android:id="@+id/editProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/edit_profile"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14mdp"
+                android:layout_marginTop="@dimen/_20mdp"
                 android:background="@drawable/buttongrad1"
                 android:fontFamily="@font/oxygen"
-                android:textAllCaps="true"
                 android:padding="@dimen/_5mdp"
+                android:text="@string/edit_profile"
                 android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14mdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttongrad1"
+                android:fontFamily="@font/oxygen"
+                android:padding="@dimen/_5mdp"
+                android:text="@string/logout"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14mdp"
                 android:textStyle="bold"
-                android:layout_marginTop="@dimen/_20mdp"
-                />
+               android:layout_marginTop="@dimen/_10mdp"/>
+
 
         </LinearLayout>
 
 
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/gallery"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        android:layout_marginTop="@dimen/_15mdp">
+
+
+    </FrameLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="com.chatapp.example.flamingoapp.phase2.SettingsActivity"></activity>
         <activity android:name="com.chatapp.example.flamingoapp.phase2.ChatListActivity" />
         <activity android:name="com.chatapp.example.flamingoapp.phase1.LoginActivity">
             <intent-filter>

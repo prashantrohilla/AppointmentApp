@@ -2,7 +2,7 @@ package com.chatapp.example.flamingoapp.models;
 
 public class Users {
 
-    String profilepic, userName, mail, password, userId, lastMessage, status , phoneNumber, statusImage, userBio;
+    String profilepic, userName, mail, password, userId, lastMessage, status , phoneNumber, statusImage, userBio, userlink;
 
 
     public Users(String profilepic, String userName, String mail, String password, String userId, String lastMessage, String status, String phoneNumber, String statusImage, String userBio) {
@@ -115,6 +115,9 @@ public class Users {
 
     public void setUserBio(String userBio) { this.userBio = userBio; }
 
+    public String getUserlink() { return userlink; }
+
+    public void setUserlink(String userlink) { this.userlink = userlink; }
 
 }
 

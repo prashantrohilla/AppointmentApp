@@ -49,10 +49,19 @@
     <string name="add">Add Post</string>
     <string name="notification">Notification</string>
     <string name="profile">Profile</string>
+    <string name="name">Name</string>
+    <string name="user_bio">Bio</string>
+    <string name="logout">Logout</string>
     <string name="text">100</string>
+    <string name="write_something_about_yoursef">Write something about yourself.</string>
+
     <string name="bio">I like travel and food.</string>
     <string name="posts">Posts</string>
     <string name="likes">Likes</string>
+    <string name="save">Save</string>
+    <string name="website_or_link">Website or Link</string>
+    <string name="link">www.youtube.com</string>
+
     <string name="edit_profile">Edit Profile</string>
     <string name="followers">Followers</string>
     <string name="following">Following</string>
