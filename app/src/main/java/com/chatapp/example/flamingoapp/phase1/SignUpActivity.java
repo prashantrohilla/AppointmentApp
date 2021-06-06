@@ -20,11 +20,18 @@ public class SignUpActivity extends AppCompatActivity {
         binding.signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (binding.fullName.getText().toString().isEmpty()) {
+                    binding.fullName.setError("Enter your Full name!!");
+                    return;
+                }
                 if (binding.etUserName.getText().toString().isEmpty()) {
                     binding.etUserName.setError("Enter your username!!");
                     return;
                 }
-
+                if(binding.etUserName.getText().toString().contains(" ")){
+                    binding.etUserName.setError("Username must have no space!!");
+                    return;
+                }
                 if (binding.etEmail.getText().toString().isEmpty()) {
                     binding.etEmail.setError("Enter your email!!");
                     return;
@@ -35,7 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
                 if (binding.etPassword.getText().toString().length() <= 7) {
-                    binding.etPassword.setError("Enter your password in more than 8 characters!!");
+                    binding.etPassword.setError("Password must have 8 characters!!");
                     return;
                 }
 
@@ -43,6 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Intent i = new Intent(SignUpActivity.this, OtpActivity.class);
                 i.putExtra("email", binding.etEmail.getText().toString());
                 i.putExtra("username", binding.etUserName.getText().toString());
+                i.putExtra("fullName", binding.fullName.getText().toString());
                 i.putExtra("password", binding.etPassword.getText().toString());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);

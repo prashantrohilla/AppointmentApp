@@ -44,7 +44,8 @@ public class MessageModel {
         this.message = message;
     }
 
-    public MessageModel() {    }    // we have to make empty constructor when we use firebase
+    public MessageModel() {
+    }    // we have to make empty constructor when we use firebase
 
     public String getuID() {
         return uID;

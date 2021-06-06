@@ -101,8 +101,8 @@ public class LoginActivity extends AppCompatActivity {
         if (auth.getCurrentUser() != null)                    // if user is logged in then it will show main activity and not signIn activity
         {
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+            finish();
         }
 
     }

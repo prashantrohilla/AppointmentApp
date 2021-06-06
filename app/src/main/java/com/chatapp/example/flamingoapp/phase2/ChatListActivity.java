@@ -22,17 +22,17 @@ public class ChatListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityChatListBinding.inflate(getLayoutInflater());
+        binding = ActivityChatListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        ChatFragment chatFragment=new ChatFragment();
+        ChatFragment chatFragment = new ChatFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.frameLayout, chatFragment).commit();
 
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent i=new Intent(ChatListActivity.this, HomeActivity.class);
-               startActivity(i);
+                Intent i = new Intent(ChatListActivity.this, HomeActivity.class);
+                startActivity(i);
             }
         });
 

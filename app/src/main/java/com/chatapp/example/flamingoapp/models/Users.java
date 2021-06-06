@@ -2,7 +2,7 @@ package com.chatapp.example.flamingoapp.models;
 
 public class Users {
 
-    String profilepic, userName, mail, password, userId, lastMessage, status , phoneNumber, statusImage, userBio, userlink;
+    String profilepic, userName, mail, password, userId, lastMessage, status, phoneNumber, statusImage, userBio, userLink, fullName;
 
 
     public Users(String profilepic, String userName, String mail, String password, String userId, String lastMessage, String status, String phoneNumber, String statusImage, String userBio) {
@@ -18,17 +18,14 @@ public class Users {
         this.userBio = userBio;
     }
 
-    public Users(String profilepic, String userName, String mail, String password, String userId, String lastMessage, String status, String phoneNumber, String statusImage) {
-        this.profilepic = profilepic;
+    public Users(String userName, String mail, String password, String phoneNumber, String fullName) {
         this.userName = userName;
         this.mail = mail;
         this.password = password;
-        this.userId = userId;
-        this.lastMessage = lastMessage;
-        this.status = status;
         this.phoneNumber = phoneNumber;
-        this.statusImage = statusImage;
+        this.fullName = fullName;
     }
+
 
     public String getStatusImage() {
         return statusImage;
@@ -46,14 +43,9 @@ public class Users {
         this.status = status;
     }
 
-    public Users(){}    // Signup constructor   using this in firebase in signup activity
-    public Users(String userName, String mail, String phoneNumber, String password) {
-        this.userName = userName;
-        this.mail = mail;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-    }
-    
+    public Users() {
+    }    // Signup constructor   using this in firebase in signup activity
+
 
     public String getProfilepic() {
         return profilepic;
@@ -111,13 +103,29 @@ public class Users {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getUserBio() { return userBio; }
+    public String getUserBio() {
+        return userBio;
+    }
 
-    public void setUserBio(String userBio) { this.userBio = userBio; }
+    public void setUserBio(String userBio) {
+        this.userBio = userBio;
+    }
 
-    public String getUserlink() { return userlink; }
+    public String getUserLink() {
+        return userLink;
+    }
 
-    public void setUserlink(String userlink) { this.userlink = userlink; }
+    public void setUserLink(String userLink) {
+        this.userLink = userLink;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
 }
 

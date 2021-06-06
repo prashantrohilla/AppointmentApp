@@ -40,8 +40,9 @@ public class WelcomeActivity extends AppCompatActivity {
                 String email = getIntent().getStringExtra("email");
                 String password = getIntent().getStringExtra("password");
                 String mobile = getIntent().getStringExtra("number");
+                String fullName = getIntent().getStringExtra("fullName");
 
-                Users user = new Users(username, email, mobile, password);         // taking username, email, password in database.
+                Users user = new Users(username, email, password, mobile, fullName);         // taking username, email, password in database.
                 String id = getIntent().getStringExtra("uuid");
 
                 database.getReference().child("Users").child(id).setValue(user);   // it will create a user node in firebase containing userId / mail , password, username

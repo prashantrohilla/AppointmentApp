@@ -28,49 +28,57 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityHomeBinding.inflate(getLayoutInflater());
+        binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
 
         binding.chatSection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(HomeActivity.this, ChatListActivity.class);
+                Intent i = new Intent(HomeActivity.this, ChatListActivity.class);
                 startActivity(i);
             }
         });
 
 
-        bottomNavigation=findViewById(R.id.bottomNavigation);
-        bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.home));
-        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.search));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.add));
-        bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.notification));
-        bottomNavigation.add(new MeowBottomNavigation.Model(5,R.drawable.profile));
+        bottomNavigation = findViewById(R.id.bottomNavigation);
+        bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.home));
+        bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.search));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.add));
+        bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.notification));
+        bottomNavigation.add(new MeowBottomNavigation.Model(5, R.drawable.profile));
 
-        bottomNavigation.show(1,true);
+        bottomNavigation.show(1, true);
         replace(new HomeFragment());
         bottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
             @Override
             public Unit invoke(MeowBottomNavigation.Model model) {
 
-                switch(model.getId())
-                {
-                    case 1: replace(new HomeFragment()); break;
-                    case 2: replace(new SearchFragment()); break;
-                    case 3: replace(new AddPostFragment()); break;
-                    case 4: replace(new NotificationFragment()); break;
-                    case 5: replace(new ProfileFragment()); break;
+                switch (model.getId()) {
+                    case 1:
+                        replace(new HomeFragment());
+                        break;
+                    case 2:
+                        replace(new SearchFragment());
+                        break;
+                    case 3:
+                        replace(new AddPostFragment());
+                        break;
+                    case 4:
+                        replace(new NotificationFragment());
+                        break;
+                    case 5:
+                        replace(new ProfileFragment());
+                        break;
                 }
                 return null;
             }
         });
     }
 
-    private void replace(Fragment fragment)
-    {
-        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frameLyout,fragment);
+    private void replace(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frameLyout, fragment);
         transaction.commit();
     }
 }

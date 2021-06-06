@@ -43,8 +43,10 @@ public class OtpNextActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
 
-        binding.textMobile.setText(String.format("+91-%s", getIntent()   // showing number on textview
-                .getStringExtra("number")));
+        String number = getIntent().getStringExtra("number");
+        String countryCode = getIntent().getStringExtra("countryCode");
+        String mobile = "+" + countryCode + number;
+        binding.textMobile.setText(mobile);
 
         inputCode1 = findViewById(R.id.inputCode1);
         inputCode2 = findViewById(R.id.inputCode2);
@@ -86,6 +88,7 @@ public class OtpNextActivity extends AppCompatActivity {
                                         String number = getIntent().getStringExtra("number");
                                         String countryCode = getIntent().getStringExtra("countryCode");
                                         String username = getIntent().getStringExtra("username");
+                                        String fullName = getIntent().getStringExtra("fullName");
 
                                         String mobile = "+" + countryCode + number;
 
@@ -103,6 +106,7 @@ public class OtpNextActivity extends AppCompatActivity {
                                         intent.putExtra("number", mobile);              // sending number
                                         intent.putExtra("uuid", FirebaseAuth.getInstance().getUid());
                                         intent.putExtra("username", username);
+                                        intent.putExtra("fullName", fullName);
                                         intent.putExtra("email", email);
                                         intent.putExtra("password", password);
                                         startActivity(intent);

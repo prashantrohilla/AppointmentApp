@@ -43,10 +43,10 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding=  FragmentProfileBinding.inflate(inflater, container, false);
+        binding = FragmentProfileBinding.inflate(inflater, container, false);
 
-        auth=FirebaseAuth.getInstance();
-        database=FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
 
         binding.editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +60,10 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 auth.signOut();// user logout
                 Toast.makeText(getContext(), "You have been logged out.", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent();
                 startActivity(new Intent(getContext(), LoginActivity.class));
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
             }
         });
 
@@ -68,13 +71,17 @@ public class ProfileFragment extends Fragment {
                 addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Users users=snapshot.getValue(Users.class);
+                        Users users = snapshot.getValue(Users.class);
                         assert users != null;
                         Picasso.get().load(users.getProfilepic())
-                                .placeholder(R.drawable.user)
+                                .placeholder(R.drawable.user2)
                                 .into(binding.profilePic);
-                        binding.userName.setText(users.getUserName());
-                       // binding.userBio.setText(users.getUserBio());
+                        binding.userName.setText(users.getFullName());
+                        binding.uName.setText(users.getUserName());
+                        binding.userBio.setText(users.getUserBio());
+                        binding.userLink.setText(users.getUserLink());
+
+
                     }
 
                     @Override

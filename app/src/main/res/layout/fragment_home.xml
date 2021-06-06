@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/grad1"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    android:background="@drawable/grad1"
     tools:context="com.chatapp.example.flamingoapp.fragments.HomeFragment">
 
 
@@ -44,7 +44,7 @@
                         android:layout_width="@dimen/_50mdp"
                         android:layout_height="@dimen/_50mdp"
                         android:layout_margin="@dimen/_2mdp"
-                        android:src="@drawable/user9"
+                        android:src="@drawable/user2"
                         app:civ_border_color="@color/white"
                         app:civ_border_width="@dimen/_1mdp" />
 
@@ -102,9 +102,9 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1mdp"
+        android:layout_marginBottom="@dimen/_5mdp"
         android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        android:layout_marginBottom="@dimen/_5mdp"/>
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -117,4 +117,4 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_weight="1" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

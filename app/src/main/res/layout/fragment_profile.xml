@@ -26,7 +26,7 @@
                 android:id="@+id/profile_pic"
                 android:layout_width="@dimen/_70mdp"
                 android:layout_height="@dimen/_70mdp"
-                android:src="@drawable/user9"
+                android:src="@drawable/user2"
                 app:civ_border_color="@color/white"
                 app:civ_border_width="@dimen/_2mdp" />
 
@@ -121,8 +121,9 @@
             android:layout_marginEnd="@dimen/_15mdp"
             android:orientation="vertical">
 
+
             <TextView
-                android:id="@+id/userName"
+                android:id="@+id/uName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/oxygen"
@@ -131,11 +132,19 @@
                 android:textSize="@dimen/_14mdp" />
 
             <TextView
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/oxygen"
+                android:text="@string/fullname"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14mdp" />
+
+            <TextView
                 android:id="@+id/userBio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/oxygen"
-                android:text="@string/bio"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14mdp" />
 
@@ -145,8 +154,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/oxygen"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14mdp"
-                android:visibility="gone"/>
+                android:textSize="@dimen/_14mdp" />
 
 
             <TextView
@@ -168,6 +176,7 @@
                 android:id="@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10mdp"
                 android:background="@drawable/buttongrad1"
                 android:fontFamily="@font/oxygen"
                 android:padding="@dimen/_5mdp"
@@ -176,8 +185,7 @@
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14mdp"
-                android:textStyle="bold"
-               android:layout_marginTop="@dimen/_10mdp"/>
+                android:textStyle="bold" />
 
 
         </LinearLayout>
@@ -189,15 +197,14 @@
         android:id="@+id/gallery"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_15mdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        android:layout_marginTop="@dimen/_15mdp">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
 
     </FrameLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

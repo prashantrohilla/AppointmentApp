@@ -27,6 +27,7 @@ public class OtpActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         final String username = getIntent().getStringExtra("username");
+        final String fullName = getIntent().getStringExtra("fullName");
         final String email = getIntent().getStringExtra("email");
         final String password = getIntent().getStringExtra("password");
 
@@ -75,6 +76,7 @@ public class OtpActivity extends AppCompatActivity {
                                 i.putExtra("number", inputMobile.getText().toString());  // taking number
                                 i.putExtra("verificationId", verificationId);
                                 i.putExtra("username", username);
+                                i.putExtra("fullName", fullName);
                                 i.putExtra("email", email);
                                 i.putExtra("password", password);
                                 i.putExtra("countryCode", code.getText().toString());

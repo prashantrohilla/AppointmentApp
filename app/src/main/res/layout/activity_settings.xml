@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.chatapp.example.flamingoapp.phase2.SettingsActivity"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.chatapp.example.flamingoapp.phase2.SettingsActivity">
 
     <ImageView
         android:id="@+id/back"
         android:layout_width="@dimen/_20mdp"
         android:layout_height="@dimen/_20mdp"
-        android:background="@drawable/arrow"
-        android:layout_marginBottom="@dimen/mines20mdp"
-        android:layout_marginTop="@dimen/_10mdp"
         android:layout_marginStart="@dimen/_10mdp"
+        android:layout_marginTop="@dimen/_10mdp"
+        android:layout_marginBottom="@dimen/mines20mdp"
+        android:background="@drawable/arrow"
         android:contentDescription="@string/bio" />
 
     <RelativeLayout
@@ -25,13 +25,13 @@
 
 
         <LinearLayout
-            android:layout_centerHorizontal="true"
             android:id="@+id/linear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_10mdp"
             android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:layout_marginBottom="@dimen/_10mdp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -41,17 +41,17 @@
                 android:padding="@dimen/_2mdp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/userPost"
+                    android:id="@+id/showProfilePic"
                     android:layout_width="@dimen/_90mdp"
                     android:layout_height="@dimen/_90mdp"
-                    android:src="@drawable/user9"
+                    android:src="@drawable/user2"
                     app:civ_border_color="@color/white"
                     app:civ_border_width="@dimen/_1mdp" />
 
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/addPostButton"
+                android:id="@+id/addProfilePic"
                 android:layout_width="@dimen/_20mdp"
                 android:layout_height="@dimen/_20mdp"
                 android:layout_marginStart="@dimen/_24mdp"
@@ -61,110 +61,139 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/fullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_marginBottom="@dimen/_15mdp"
+            android:background="@drawable/square"
+            android:ems="10"
+            android:fontFamily="@font/oxygen"
+            android:inputType="text"
+            android:padding="@dimen/_8mdp"
+            android:text="@string/fullname"
+            tools:ignore="Autofill,LabelFor" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linear"
+            android:layout_marginStart="@dimen/_6mdp"
+            android:layout_marginBottom="@dimen/mines8mdp"
+            android:background="@color/white"
+            android:fontFamily="@font/oxygen"
+            android:paddingStart="@dimen/_5mdp"
+            android:paddingEnd="@dimen/_5mdp"
+            android:text="@string/fullname"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_12font_mdp" />
+
+        <EditText
             android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/text1"
             android:layout_marginBottom="@dimen/_15mdp"
+            android:background="@drawable/square"
             android:ems="10"
+            android:fontFamily="@font/oxygen"
             android:inputType="text"
             android:padding="@dimen/_8mdp"
-            android:background="@drawable/square"
-            tools:ignore="Autofill,LabelFor"
-            android:fontFamily="@font/oxygen"
-            android:layout_below="@id/text1"
-            android:text="@string/username" />
+            android:text="@string/username"
+            tools:ignore="Autofill,LabelFor" />
 
         <TextView
             android:id="@+id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/username"
-            android:textColor="@color/blue"
-            android:fontFamily="@font/oxygen"
+            android:layout_below="@id/fullName"
+            android:layout_marginStart="@dimen/_6mdp"
             android:layout_marginBottom="@dimen/mines8mdp"
             android:background="@color/white"
-            android:textSize="@dimen/_12font_mdp"
+            android:fontFamily="@font/oxygen"
             android:paddingStart="@dimen/_5mdp"
             android:paddingEnd="@dimen/_5mdp"
-            android:layout_marginStart="@dimen/_6mdp"
-            android:layout_below="@id/linear" />
-
+            android:text="@string/username"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_12font_mdp" />
 
         <EditText
-            android:id="@+id/userBio"
+            android:id="@+id/editBio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/text2"
             android:layout_marginBottom="@dimen/_15mdp"
+            android:background="@drawable/square"
             android:ems="10"
+            android:fontFamily="@font/oxygen"
             android:inputType="text"
             android:padding="@dimen/_8mdp"
-            android:background="@drawable/square"
-            tools:ignore="Autofill,LabelFor"
-            android:fontFamily="@font/oxygen"
-            android:layout_below="@id/text2"
-            android:text="@string/bio" />
+            android:text="@string/bio"
+            tools:ignore="Autofill,LabelFor" />
 
         <TextView
             android:id="@+id/text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/user_bio"
-            android:textColor="@color/blue"
-            android:fontFamily="@font/oxygen"
+            android:layout_below="@+id/editName"
+            android:layout_marginStart="@dimen/_6mdp"
             android:layout_marginBottom="@dimen/mines8mdp"
             android:background="@color/white"
-            android:textSize="@dimen/_12font_mdp"
+            android:fontFamily="@font/oxygen"
             android:paddingStart="@dimen/_5mdp"
             android:paddingEnd="@dimen/_5mdp"
-            android:layout_marginStart="@dimen/_6mdp"
-            android:layout_below="@+id/editName" />
+            android:text="@string/user_bio"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_12font_mdp" />
 
 
         <EditText
-            android:id="@+id/userLink"
+            android:id="@+id/editLink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/link"
             android:layout_marginBottom="@dimen/_15mdp"
+            android:background="@drawable/square"
             android:ems="10"
+            android:fontFamily="@font/oxygen"
             android:inputType="text"
             android:padding="@dimen/_8mdp"
-            android:background="@drawable/square"
-            tools:ignore="Autofill,LabelFor"
-            android:fontFamily="@font/oxygen"
-            android:layout_below="@id/link"
-            android:text="@string/link" />
+            android:text="@string/link"
+            tools:ignore="Autofill,LabelFor" />
 
         <TextView
             android:id="@+id/link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/website_or_link"
-            android:textColor="@color/blue"
-            android:fontFamily="@font/oxygen"
+            android:layout_below="@+id/editBio"
+            android:layout_marginStart="@dimen/_6mdp"
             android:layout_marginBottom="@dimen/mines8mdp"
             android:background="@color/white"
-            android:textSize="@dimen/_12font_mdp"
+            android:fontFamily="@font/oxygen"
             android:paddingStart="@dimen/_5mdp"
             android:paddingEnd="@dimen/_5mdp"
-            android:layout_marginStart="@dimen/_6mdp"
-            android:layout_below="@+id/userBio" />
+            android:text="@string/website_or_link"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_12font_mdp" />
 
 
         <TextView
-            android:layout_below="@+id/userLink"
             android:id="@+id/saveButton"
+
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35mdp"
-            android:text="@string/save"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_14mdp"
-            android:textStyle="bold"
+            android:layout_below="@+id/editLink"
+            android:layout_marginTop="@dimen/_10mdp"
             android:background="@drawable/buttongrad1"
             android:fontFamily="@font/oxygen"
-            android:textAlignment="center"
             android:padding="@dimen/_6mdp"
+            android:text="@string/save"
+            android:textAlignment="center"
             android:textAllCaps="true"
-            android:layout_marginTop="@dimen/_10mdp"/>
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14mdp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
