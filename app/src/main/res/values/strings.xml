@@ -29,6 +29,7 @@
     <string name="not_receive">Didn\'t receive the OTP</string>
     <string name="resend_otp">Resend OTP</string>
     <string name="verify">Verify</string>
+    <string name="smartreply">Smart Reply</string>
 
     // fragment status
     <string name="add_text">Add Text Status</string>
