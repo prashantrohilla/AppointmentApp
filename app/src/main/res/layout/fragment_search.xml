@@ -1,13 +1,54 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_search"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/grad1"
     tools:context="com.chatapp.example.flamingoapp.fragments.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/_15mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <EditText
+            android:id="@+id/searchUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/textback"
+            android:ems="10"
+            android:fontFamily="@font/oxygen"
+            android:hint="@string/type_username"
+            android:inputType="textNoSuggestions"
+            android:paddingTop="5dp"
+            android:paddingBottom="@dimen/_5mdp"
+            android:paddingStart="@dimen/_10mdp"
+            android:paddingEnd="@dimen/_10mdp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textStyle="bold"
+            tools:ignore="Autofill,RtlSymmetry"
+            android:drawableStart="@drawable/search1"
+            android:drawablePadding="@dimen/_5mdp"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,10 @@ public class SignUpActivity extends AppCompatActivity {
                     binding.fullName.setError("Enter your Full name!!");
                     return;
                 }
+                if (binding.fullName.getText().toString().length()>40) {
+                    binding.fullName.setError("Full name must  be in less than 40 letters !!");
+                    return;
+                }
                 if (binding.etUserName.getText().toString().isEmpty()) {
                     binding.etUserName.setError("Enter your username!!");
                     return;
@@ -32,6 +36,11 @@ public class SignUpActivity extends AppCompatActivity {
                     binding.etUserName.setError("Username must have no space!!");
                     return;
                 }
+                if(binding.etUserName.getText().toString().length()>40){
+                    binding.etUserName.setError("Username must  be in less than 40 letters !!");
+                    return;
+                }
+
                 if (binding.etEmail.getText().toString().isEmpty()) {
                     binding.etEmail.setError("Enter your email!!");
                     return;
@@ -49,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                 Intent i = new Intent(SignUpActivity.this, OtpActivity.class);
                 i.putExtra("email", binding.etEmail.getText().toString());
-                i.putExtra("username", binding.etUserName.getText().toString());
+                i.putExtra("username", binding.etUserName.getText().toString().toLowerCase());
                 i.putExtra("fullName", binding.fullName.getText().toString());
                 i.putExtra("password", binding.etPassword.getText().toString());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

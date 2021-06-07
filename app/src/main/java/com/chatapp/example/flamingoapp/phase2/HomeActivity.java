@@ -5,15 +5,19 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.chatapp.example.flamingoapp.fragments.AddPostFragment;
 import com.chatapp.example.flamingoapp.fragments.HomeFragment;
 import com.chatapp.example.flamingoapp.fragments.NotificationFragment;
 import com.chatapp.example.flamingoapp.fragments.ProfileFragment;
 import com.chatapp.example.flamingoapp.fragments.SearchFragment;
+import com.chatapp.example.flamingoapp.phase1.LoginActivity;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.google.firebase.auth.FirebaseAuth;
 import com.phone.DoctorAppointment.R;
 import com.phone.DoctorAppointment.databinding.ActivityHomeBinding;
 
@@ -24,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
 
     ActivityHomeBinding binding;
     MeowBottomNavigation bottomNavigation;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        auth = FirebaseAuth.getInstance();
 
         binding.chatSection.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +46,16 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        binding.logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth.signOut();// user logout
+                Toast.makeText(HomeActivity.this, "You have been logged out.", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(HomeActivity.this,LoginActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         bottomNavigation = findViewById(R.id.bottomNavigation);
         bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.home));
@@ -68,6 +84,9 @@ public class HomeActivity extends AppCompatActivity {
                         replace(new NotificationFragment());
                         break;
                     case 5:
+                        SharedPreferences.Editor editor=getSharedPreferences("PREFS",MODE_PRIVATE).edit();
+                        editor.putString("profileId",FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        editor.apply();
                         replace(new ProfileFragment());
                         break;
                 }

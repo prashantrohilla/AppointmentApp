@@ -172,21 +172,6 @@
                 android:textSize="@dimen/_14mdp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/logout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10mdp"
-                android:background="@drawable/buttongrad1"
-                android:fontFamily="@font/oxygen"
-                android:padding="@dimen/_5mdp"
-                android:text="@string/logout"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14mdp"
-                android:textStyle="bold" />
-
 
         </LinearLayout>
 

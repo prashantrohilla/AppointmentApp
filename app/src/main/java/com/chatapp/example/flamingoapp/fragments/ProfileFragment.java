@@ -55,17 +55,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        binding.logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                auth.signOut();// user logout
-                Toast.makeText(getContext(), "You have been logged out.", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent();
-                startActivity(new Intent(getContext(), LoginActivity.class));
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(i);
-            }
-        });
 
         database.getReference().child("Users").child(Objects.requireNonNull(auth.getUid())).
                 addListenerForSingleValueEvent(new ValueEventListener() {

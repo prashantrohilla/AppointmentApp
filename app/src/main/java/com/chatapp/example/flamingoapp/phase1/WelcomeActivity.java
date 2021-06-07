@@ -49,6 +49,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 Intent intent = new Intent(WelcomeActivity.this, HomeActivity.class);
                 progressDialog.hide();
                 startActivity(intent);
+                finish();
                 Toast.makeText(WelcomeActivity.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
             }
         });
