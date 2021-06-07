@@ -16,6 +16,7 @@ import android.widget.EditText;
 
 import com.chatapp.example.flamingoapp.adapters.FollowAdapter;
 import com.chatapp.example.flamingoapp.models.Users;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,8 +35,10 @@ import java.util.List;
 public class SearchFragment extends Fragment {
 
     private FollowAdapter followAdapter;
-    private List<Users> mUsers;
+    ArrayList<Users> mUsers =new ArrayList<>();
     EditText searchUser;
+    FragmentSearchBinding binding;
+    FirebaseDatabase database;
 
 
     public SearchFragment() {
@@ -46,87 +49,36 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-         View view=inflater.inflate(R.layout.fragment_search, container, false);
+        binding=  FragmentSearchBinding.inflate(inflater, container, false);
+        database = FirebaseDatabase.getInstance();                                               // not giving this have given error at 2 hour
+        final FollowAdapter adapter=new FollowAdapter(getContext(), mUsers);                         // setting adapter
+        binding.searchRecyclerView.setAdapter(adapter);                                            // setting adapter on recycler
 
-         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-         recyclerView.setHasFixedSize(true);
-         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager layoutManager= new LinearLayoutManager(getContext());
+        binding.searchRecyclerView.setLayoutManager(layoutManager);
 
-         searchUser= view.findViewById(R.id.searchUser);
-
-         mUsers=new ArrayList<>();
-         followAdapter=new FollowAdapter(getContext(),mUsers);
-         recyclerView.setAdapter(followAdapter);
-
-         readUsers();
-         searchUser.addTextChangedListener(new TextWatcher() {
-             @Override
-             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-             }
-
-             @Override
-             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                 searchUsers(charSequence.toString().toLowerCase());
-             }
-
-             @Override
-             public void afterTextChanged(Editable editable) {
-
-             }
-         });
-
-         return view;
-    }
-
-    private void searchUsers(String s)
-    {
-        Query query= FirebaseDatabase.getInstance().getReference("Users")
-                .orderByChild("userName").startAt(s).endAt(s+"\uf8ff");
-
-        query.addValueEventListener(new ValueEventListener() {
+        database.getReference().child("Users").addValueEventListener(new ValueEventListener() {  // getting list of users from database
             @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                mUsers.clear();
-
-                for(DataSnapshot snapshot1: snapshot.getChildren())
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mUsers.clear();                                                                    // taking data snapshot from firebase
+                for(DataSnapshot dataSnapshot : snapshot.getChildren())
                 {
-                    Users user=snapshot1.getValue(Users.class);
-                    mUsers.add(user);
+                    // to avoid slow loading
+                    Users users = dataSnapshot.getValue(Users.class);
+                    users.setUserId(dataSnapshot.getKey());                                     // getting user name on base of user id from firebase
+                    if(!users.getUserId().equals(FirebaseAuth.getInstance().getUid()))  // not showing current login user
+                        mUsers.add(users);
                 }
-
-                followAdapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-    }
 
-    private void readUsers()
-    {
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Users");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if(searchUser.getText().toString().equals(""))
-                {
-                    mUsers.clear();
-                    for(DataSnapshot snapshot1: snapshot.getChildren())
-                    {
-                        Users user=snapshot1.getValue(Users.class);
-                        mUsers.add(user);
-                    }
-                    followAdapter.notifyDataSetChanged();
-                }
-            }
+        return binding.getRoot();
 
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-            }
-        });
     }
 }

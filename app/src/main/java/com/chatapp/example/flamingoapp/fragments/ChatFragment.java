@@ -49,7 +49,6 @@ public class ChatFragment extends Fragment {
         binding.searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = binding.searchText.getText().toString();
                 if (binding.searchText.getText().toString().isEmpty()) {
                     binding.searchText.setError("Enter a username !!");
                     return;
