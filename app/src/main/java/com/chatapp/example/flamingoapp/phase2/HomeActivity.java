@@ -38,6 +38,8 @@ public class HomeActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
+
+
         binding.chatSection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,10 +52,11 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 auth.signOut();// user logout
+                finishAffinity();
                 Toast.makeText(HomeActivity.this, "You have been logged out.", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(HomeActivity.this,LoginActivity.class);
                 startActivity(i);
-                finish();
+
             }
         });
 

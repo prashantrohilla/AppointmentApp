@@ -50,7 +50,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 progressDialog.hide();
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK & Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-                finish();
                 Toast.makeText(WelcomeActivity.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
             }
         });

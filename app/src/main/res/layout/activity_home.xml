@@ -55,6 +55,7 @@
             android:contentDescription="@string/search"
             android:padding="5dp"
             app:srcCompat="@drawable/messenger"
+            android:layout_marginEnd="@dimen/_5mdp"
             />
     </LinearLayout>
 

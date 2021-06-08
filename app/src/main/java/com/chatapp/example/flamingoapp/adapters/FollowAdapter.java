@@ -37,7 +37,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class FollowAdapter extends RecyclerView.Adapter<FollowAdapter.ViewHolder>{
 
     Context mContext;
-    ArrayList<Users> mUsers;
+    static ArrayList<Users> mUsers;
     FirebaseUser firebaseUser;
 
 

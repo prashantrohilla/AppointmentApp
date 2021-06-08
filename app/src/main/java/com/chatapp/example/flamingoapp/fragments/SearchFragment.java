@@ -3,6 +3,7 @@ package com.chatapp.example.flamingoapp.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,12 +36,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment{
 
-    private FollowAdapter followAdapter;
+    static FollowAdapter followAdapter;
     ArrayList<Users> mUsers =new ArrayList<>();
     FragmentSearchBinding binding;
     FirebaseDatabase database;
+    ArrayList<Users> mUser=new ArrayList<>();
 
 
     public SearchFragment() {
@@ -52,67 +54,84 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding=  FragmentSearchBinding.inflate(inflater, container, false);
-        database = FirebaseDatabase.getInstance();                                               // not giving this have given error at 2 hour
-        FollowAdapter adapter=new FollowAdapter(getContext(), mUsers);                         // setting adapter
-        binding.searchRecyclerView.setAdapter(adapter);// setting adapter on recycler
+        database = FirebaseDatabase.getInstance();// not giving this have given error at 2 hour
 
-        LinearLayoutManager layoutManager= new LinearLayoutManager(getContext());
-        binding.searchRecyclerView.setLayoutManager(layoutManager);
+        Search(null);
 
-        database.getReference().child("Users").addValueEventListener(new ValueEventListener() {  // getting list of users from database
+        binding.searchUser.addTextChangedListener(new TextWatcher() {   // to show typing status
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                mUsers.clear();                                                                    // taking data snapshot from firebase
-                for(DataSnapshot dataSnapshot : snapshot.getChildren())
-                {
-                    // to avoid slow loading
-                    Users users = dataSnapshot.getValue(Users.class);
-                    users.setUserId(dataSnapshot.getKey());                                     // getting user name on base of user id from firebase
-                    if(!users.getUserId().equals(FirebaseAuth.getInstance().getUid()))  // not showing current login user
-                        mUsers.add(users);
-                }
-                adapter.notifyDataSetChanged();
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                  Search(charSequence.toString().toLowerCase());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
 
             }
+
         });
-
-        binding.searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String userName = binding.searchUser.getText().toString();
-                FirebaseDatabase.getInstance().getReference("Users").orderByChild("username").equalTo(userName).addListenerForSingleValueEvent(
-                        new ValueEventListener() {
-
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                                Log.i(Constants.TAG, "dataSnapshot value = " + dataSnapshot.getValue());
-
-                                if (dataSnapshot.exists()) {
-
-                                    // User Exists
-                                    // Do your stuff here if user already exists
-                                    Toast.makeText(getContext(), "Username already exists. Please try other username.", Toast.LENGTH_SHORT).show();
-
-                                } else {
-
-                                    // User Not Yet Exists
-                                    // Do your stuff here if user not yet exists
-                                }
-                            }
-                            @Override
-                            public void onCancelled (DatabaseError databaseError){
-
-                            }
-                        });
-            }
-        });
-
         return binding.getRoot();
+    }
+
+    public void Search(String newText) {
+        if (newText != null)
+        {
+            mUser.clear();
+            for (Users user : mUsers)
+            {
+                if (user.getUserName().contains(newText))
+                {
+                    mUser.add(user);
+                }
+            }
+
+            FollowAdapter adapter=new FollowAdapter(getContext(), mUser);                         // setting adapter
+            binding.searchRecyclerView.setAdapter(adapter);// setting adapter on recycler
+            binding.searchRecyclerView.setHasFixedSize(true);
+
+            binding.searchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),
+                    RecyclerView.VERTICAL,false));
+            adapter.notifyDataSetChanged();
+
+        }
+        else
+        {
+            database.getReference().child("Users").addValueEventListener(new ValueEventListener() {  // getting list of users from database
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    mUser.clear();                                                                    // taking data snapshot from firebase
+                    for(DataSnapshot dataSnapshot : snapshot.getChildren())
+                    {
+                        // to avoid slow loading
+                        Users users = dataSnapshot.getValue(Users.class);
+                        assert users != null;
+                        users.setUserId(dataSnapshot.getKey());                                     // getting user name on base of user id from firebase
+                        if(!users.getUserId().equals(FirebaseAuth.getInstance().getUid()))  // not showing current login user
+                            mUsers.add(users);
+                    }
+
+                    FollowAdapter adapter=new FollowAdapter(getContext(), mUsers);                         // setting adapter
+                    binding.searchRecyclerView.setAdapter(adapter);// setting adapter on recycler
+                    binding.searchRecyclerView.setHasFixedSize(true);
+
+                    binding.searchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),
+                            RecyclerView.VERTICAL,false));
+                    adapter.notifyDataSetChanged();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+
     }
 
 }
