@@ -48,6 +48,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 database.getReference().child("Users").child(id).setValue(user);   // it will create a user node in firebase containing userId / mail , password, username
                 Intent intent = new Intent(WelcomeActivity.this, HomeActivity.class);
                 progressDialog.hide();
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK & Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
                 Toast.makeText(WelcomeActivity.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();

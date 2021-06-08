@@ -13,7 +13,7 @@
         android:layout_marginStart="@dimen/_30mdp"
         android:layout_marginEnd="@dimen/_30mdp"
         android:layout_marginTop="@dimen/_5mdp"
-        android:layout_marginBottom="@dimen/_20mdp"
+        android:layout_marginBottom="@dimen/_15mdp"
         android:gravity="center_vertical">
 
         <EditText
@@ -43,6 +43,12 @@
             android:paddingStart="@dimen/_2mdp"/>
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1mdp"
+        android:background="@drawable/grad2"
+        android:layout_marginBottom="@dimen/_5mdp"/>
 
     <com.cooltechworks.views.shimmer.ShimmerRecyclerView
         android:id="@+id/chatRecyclerView"

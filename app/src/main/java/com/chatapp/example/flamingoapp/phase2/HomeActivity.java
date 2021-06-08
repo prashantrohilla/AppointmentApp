@@ -84,9 +84,6 @@ public class HomeActivity extends AppCompatActivity {
                         replace(new NotificationFragment());
                         break;
                     case 5:
-                        SharedPreferences.Editor editor=getSharedPreferences("PREFS",MODE_PRIVATE).edit();
-                        editor.putString("profileId",FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        editor.apply();
                         replace(new ProfileFragment());
                         break;
                 }

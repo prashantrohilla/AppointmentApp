@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.chatapp.example.flamingoapp.adapters.FollowAdapter;
 import com.chatapp.example.flamingoapp.models.Users;
@@ -23,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.Constants;
 import com.phone.DoctorAppointment.R;
 import com.phone.DoctorAppointment.databinding.FragmentSearchBinding;
 
@@ -36,7 +39,6 @@ public class SearchFragment extends Fragment {
 
     private FollowAdapter followAdapter;
     ArrayList<Users> mUsers =new ArrayList<>();
-    EditText searchUser;
     FragmentSearchBinding binding;
     FirebaseDatabase database;
 
@@ -51,8 +53,8 @@ public class SearchFragment extends Fragment {
         // Inflate the layout for this fragment
         binding=  FragmentSearchBinding.inflate(inflater, container, false);
         database = FirebaseDatabase.getInstance();                                               // not giving this have given error at 2 hour
-        final FollowAdapter adapter=new FollowAdapter(getContext(), mUsers);                         // setting adapter
-        binding.searchRecyclerView.setAdapter(adapter);                                            // setting adapter on recycler
+        FollowAdapter adapter=new FollowAdapter(getContext(), mUsers);                         // setting adapter
+        binding.searchRecyclerView.setAdapter(adapter);// setting adapter on recycler
 
         LinearLayoutManager layoutManager= new LinearLayoutManager(getContext());
         binding.searchRecyclerView.setLayoutManager(layoutManager);
@@ -78,7 +80,39 @@ public class SearchFragment extends Fragment {
             }
         });
 
-        return binding.getRoot();
+        binding.searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String userName = binding.searchUser.getText().toString();
+                FirebaseDatabase.getInstance().getReference("Users").orderByChild("username").equalTo(userName).addListenerForSingleValueEvent(
+                        new ValueEventListener() {
 
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                Log.i(Constants.TAG, "dataSnapshot value = " + dataSnapshot.getValue());
+
+                                if (dataSnapshot.exists()) {
+
+                                    // User Exists
+                                    // Do your stuff here if user already exists
+                                    Toast.makeText(getContext(), "Username already exists. Please try other username.", Toast.LENGTH_SHORT).show();
+
+                                } else {
+
+                                    // User Not Yet Exists
+                                    // Do your stuff here if user not yet exists
+                                }
+                            }
+                            @Override
+                            public void onCancelled (DatabaseError databaseError){
+
+                            }
+                        });
+            }
+        });
+
+        return binding.getRoot();
     }
+
 }

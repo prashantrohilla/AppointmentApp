@@ -6,190 +6,194 @@
     android:background="@drawable/grad1"
     tools:context="com.chatapp.example.flamingoapp.fragments.ProfileFragment">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="@dimen/_10mdp">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_pic"
-                android:layout_width="@dimen/_70mdp"
-                android:layout_height="@dimen/_70mdp"
-                android:src="@drawable/user2"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="@dimen/_2mdp" />
-
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10mdp">
-
-
-                <TextView
-                    android:id="@+id/postText"
-                    android:layout_width="@dimen/_70mdp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/oxygen"
-                    android:text="@string/text"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16mdp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/followersText"
-                    android:layout_width="@dimen/_70mdp"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/postText"
-                    android:fontFamily="@font/oxygen"
-                    android:text="@string/text"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16mdp"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:id="@+id/likesText"
-                    android:layout_width="@dimen/_70mdp"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/followersText"
-                    android:fontFamily="@font/oxygen"
-                    android:text="@string/text"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16mdp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/post"
-                    android:layout_width="@dimen/_70mdp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/postText"
-                    android:fontFamily="@font/oxygen"
-                    android:text="@string/posts"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14mdp" />
-
-                <TextView
-                    android:id="@+id/followers"
-                    android:layout_width="@dimen/_70mdp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/followersText"
-                    android:layout_toEndOf="@+id/postText"
-                    android:fontFamily="@font/oxygen"
-                    android:text="@string/followers"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14mdp" />
-
-                <TextView
-                    android:id="@+id/likes"
-                    android:layout_width="@dimen/_70mdp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/followersText"
-                    android:layout_toEndOf="@+id/followers"
-                    android:fontFamily="@font/oxygen"
-                    android:text="@string/likes"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14mdp" />
-
-
-            </RelativeLayout>
-
-
-        </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_15mdp"
-            android:layout_marginEnd="@dimen/_15mdp"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-
-            <TextView
-                android:id="@+id/uName"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/oxygen"
-                android:text="@string/username"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14mdp" />
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10mdp">
 
-            <TextView
-                android:id="@+id/userName"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_pic"
+                    android:layout_width="@dimen/_70mdp"
+                    android:layout_height="@dimen/_70mdp"
+                    android:src="@drawable/user2"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="@dimen/_2mdp" />
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10mdp">
+
+
+                    <TextView
+                        android:id="@+id/postText"
+                        android:layout_width="@dimen/_70mdp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/oxygen"
+                        android:text="@string/text"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16mdp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/followersText"
+                        android:layout_width="@dimen/_70mdp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/postText"
+                        android:fontFamily="@font/oxygen"
+                        android:text="@string/text"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16mdp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/likesText"
+                        android:layout_width="@dimen/_70mdp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/followersText"
+                        android:fontFamily="@font/oxygen"
+                        android:text="@string/text"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16mdp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/post"
+                        android:layout_width="@dimen/_70mdp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/postText"
+                        android:fontFamily="@font/oxygen"
+                        android:text="@string/posts"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14mdp" />
+
+                    <TextView
+                        android:id="@+id/followers"
+                        android:layout_width="@dimen/_70mdp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/followersText"
+                        android:layout_toEndOf="@+id/postText"
+                        android:fontFamily="@font/oxygen"
+                        android:text="@string/followers"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14mdp" />
+
+                    <TextView
+                        android:id="@+id/likes"
+                        android:layout_width="@dimen/_70mdp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/followersText"
+                        android:layout_toEndOf="@+id/followers"
+                        android:fontFamily="@font/oxygen"
+                        android:text="@string/likes"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14mdp" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/oxygen"
-                android:text="@string/fullname"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14mdp" />
+                android:layout_marginStart="@dimen/_15mdp"
+                android:layout_marginEnd="@dimen/_15mdp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/userBio"
+
+                <TextView
+                    android:id="@+id/uName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oxygen"
+                    android:text="@string/username"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14mdp" />
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oxygen"
+                    android:text="@string/fullname"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14mdp" />
+
+                <TextView
+                    android:id="@+id/userBio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oxygen"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14mdp" />
+
+                <TextView
+                    android:id="@+id/userLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oxygen"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14mdp" />
+
+
+                <TextView
+                    android:id="@+id/editProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20mdp"
+                    android:background="@drawable/buttongrad1"
+                    android:fontFamily="@font/oxygen"
+                    android:padding="@dimen/_5mdp"
+                    android:text="@string/edit_profile"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14mdp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:id="@+id/gallery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/oxygen"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14mdp" />
+                android:layout_marginTop="@dimen/_15mdp">
 
-            <TextView
-                android:id="@+id/userLink"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/oxygen"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14mdp" />
+            </FrameLayout>
 
-
-            <TextView
-                android:id="@+id/editProfile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20mdp"
-                android:background="@drawable/buttongrad1"
-                android:fontFamily="@font/oxygen"
-                android:padding="@dimen/_5mdp"
-                android:text="@string/edit_profile"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14mdp"
-                android:textStyle="bold" />
 
 
         </LinearLayout>
-
-
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/gallery"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_15mdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-
-    </FrameLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,9 +37,14 @@
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textStyle="bold"
-            tools:ignore="Autofill,RtlSymmetry"
-            android:drawableStart="@drawable/search1"
-            android:drawablePadding="@dimen/_5mdp"/>
+            tools:ignore="Autofill,RtlSymmetry" />
+
+        <ImageView
+            android:id="@+id/search_button"
+            android:layout_width="@dimen/_22mdp"
+            android:layout_height="@dimen/_22mdp"
+            android:background="@drawable/search1"
+            android:layout_marginStart="@dimen/_10mdp"/>
 
     </LinearLayout>
 

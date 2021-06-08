@@ -1,6 +1,7 @@
 package com.chatapp.example.flamingoapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chatapp.example.flamingoapp.fragments.ProfileFragment;
 import com.chatapp.example.flamingoapp.fragments.SearchFragment;
 import com.chatapp.example.flamingoapp.models.Users;
+import com.chatapp.example.flamingoapp.phase3.UserProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -77,11 +79,21 @@ public class FollowAdapter extends RecyclerView.Adapter<FollowAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editor= mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit();
-                editor.putString("profileId",user.getUserId());
-                editor.apply();
+             //   SharedPreferences.Editor editor= mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit();
+            //    editor.putString("profileId",user.getUserId());
+            //    editor.apply();
 
-          ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLyout,new ProfileFragment()).commit();
+        //  ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLyout,new ProfileFragment()).commit();
+
+                Intent intent = new Intent(mContext, UserProfileActivity.class);
+                intent.putExtra("userId", user.getUserId());
+                intent.putExtra("profilePic", user.getProfilepic());
+                intent.putExtra("userName", user.getUserName());
+                intent.putExtra("fullName", user.getFullName());
+                intent.putExtra("userBio", user.getUserBio());
+                intent.putExtra("userLink", user.getUserLink());
+                mContext.startActivity(intent);
+
             }
         });
 
@@ -157,6 +169,7 @@ public class FollowAdapter extends RecyclerView.Adapter<FollowAdapter.ViewHolder
             }
         });
     }
+
 }
 
 
