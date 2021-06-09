@@ -54,18 +54,14 @@
 
     </LinearLayout>
 
-    <com.makeramen.roundedimageview.RoundedImageView
+    <com.chatapp.example.flamingoapp.phase2.SquareImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_220mdp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15mdp"
         android:layout_marginEnd="@dimen/_15mdp"
         android:contentDescription="@string/search"
-        android:scaleType="fitCenter"
-        android:src="@drawable/user9"
-        app:riv_border_width="@dimen/_1mdp"
-        app:riv_corner_radius="@dimen/_15mdp"
-        app:riv_border_color="@color/blue"/>
+        android:scaleType="fitCenter" />
 
     <TextView
         android:id="@+id/description"
