@@ -68,7 +68,7 @@
 
 
                     <TextView
-                        android:id="@+id/likesText"
+                        android:id="@+id/followingText"
                         android:layout_width="@dimen/_70mdp"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/followersText"
@@ -103,13 +103,13 @@
                         android:textSize="@dimen/_14mdp" />
 
                     <TextView
-                        android:id="@+id/likes"
+                        android:id="@+id/following"
                         android:layout_width="@dimen/_70mdp"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/followersText"
                         android:layout_toEndOf="@+id/followers"
                         android:fontFamily="@font/oxygen"
-                        android:text="@string/likes"
+                        android:text="@string/following"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14mdp" />

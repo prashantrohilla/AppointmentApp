@@ -38,8 +38,6 @@ public class HomeActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-
-
         binding.chatSection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,7 +66,8 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigation.add(new MeowBottomNavigation.Model(5, R.drawable.profile));
 
         bottomNavigation.show(1, true);
-        replace(new HomeFragment());
+        { replace(new HomeFragment());
+        getSupportActionBar().hide();}
         bottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
             @Override
             public Unit invoke(MeowBottomNavigation.Model model) {
@@ -76,18 +75,23 @@ public class HomeActivity extends AppCompatActivity {
                 switch (model.getId()) {
                     case 1:
                         replace(new HomeFragment());
+                        getSupportActionBar().hide();
                         break;
                     case 2:
                         replace(new SearchFragment());
+                        getSupportActionBar().hide();
                         break;
                     case 3:
                         replace(new AddPostFragment());
+                        binding.layout1.setVisibility(View.INVISIBLE);
                         break;
                     case 4:
                         replace(new NotificationFragment());
+                        getSupportActionBar().hide();
                         break;
                     case 5:
                         replace(new ProfileFragment());
+                        getSupportActionBar().hide();
                         break;
                 }
                 return null;

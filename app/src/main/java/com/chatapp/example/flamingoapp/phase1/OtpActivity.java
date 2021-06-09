@@ -25,7 +25,7 @@ public class OtpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOtpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        getSupportActionBar().hide();
         final String username = getIntent().getStringExtra("username");
         final String fullName = getIntent().getStringExtra("fullName");
         final String email = getIntent().getStringExtra("email");

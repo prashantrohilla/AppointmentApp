@@ -59,12 +59,15 @@
 
     <string name="bio">I like travel and food.</string>
     <string name="posts">Posts</string>
+    <string name="post">Post</string>
     <string name="likes">Likes</string>
     <string name="save">Save</string>
     <string name="website_or_link">Website or Link</string>
     <string name="link">www.youtube.com</string>
     <string name="follow">Follow</string>
     <string name="message">Message</string>
+    <string name="browse_images">Browse Images</string>
+    <string name="description">Description</string>
 
     <string name="edit_profile">Edit Profile</string>
     <string name="followers">Followers</string>

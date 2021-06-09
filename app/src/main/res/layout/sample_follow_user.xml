@@ -65,7 +65,7 @@
         <TextView
             android:id="@+id/followButton"
             android:text="@string/follow"
-            android:layout_width="@dimen/_70mdp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/textback"
             android:paddingStart="@dimen/_10mdp"

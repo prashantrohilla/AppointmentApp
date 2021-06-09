@@ -54,7 +54,7 @@ public class ChatDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityChatDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        getSupportActionBar().hide();
         storage = FirebaseStorage.getInstance();
         database = FirebaseDatabase.getInstance();
         dialog = new ProgressDialog(this);

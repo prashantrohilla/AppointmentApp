@@ -24,7 +24,7 @@ public class ChatListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityChatListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        getSupportActionBar().hide();
         ChatFragment chatFragment = new ChatFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.frameLayout, chatFragment).commit();
 

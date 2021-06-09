@@ -17,13 +17,6 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-         <androidx.appcompat.widget.LinearLayoutCompat
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
-
-
-
-         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profilepic"
@@ -57,7 +50,7 @@
             android:paddingTop="@dimen/_5mdp"
             android:paddingBottom="@dimen/_5mdp"
             android:src="@drawable/menu"
-            android:tint="@color/blue"/>
+            app:tint="@color/blue" />
 
     </LinearLayout>
 
@@ -68,18 +61,26 @@
         android:layout_marginStart="@dimen/_15mdp"
         android:layout_marginEnd="@dimen/_15mdp"
         android:contentDescription="@string/search"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:src="@drawable/user9"
         app:riv_border_width="@dimen/_1mdp"
         app:riv_corner_radius="@dimen/_15mdp"
         app:riv_border_color="@color/blue"/>
 
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20mdp"
+        android:text="@string/description"
+        android:textSize="@dimen/_14font_mdp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15mdp"
-        android:layout_marginTop="@dimen/_5mdp"
+        android:layout_marginTop="@dimen/mines10mdp"
         android:layout_marginEnd="@dimen/_8mdp"
         android:orientation="horizontal"
         android:baselineAligned="false">
@@ -96,7 +97,8 @@
                 android:layout_height="@dimen/_30mdp"
                 android:contentDescription="@string/search"
                 android:padding="8dp"
-                android:src="@drawable/heart" />
+                android:src="@drawable/heart"
+                app:tint="@color/blue" />
 
             <TextView
                 android:id="@+id/likeText"
@@ -123,7 +125,8 @@
                 android:layout_height="@dimen/_30mdp"
                 android:contentDescription="@string/search"
                 android:padding="@dimen/_5mdp"
-                android:src="@drawable/comment" />
+                android:src="@drawable/comment"
+                app:tint="@color/blue"/>
 
             <TextView
                 android:id="@+id/commentText"
@@ -152,7 +155,8 @@
                 android:layout_height="@dimen/_30mdp"
                 android:contentDescription="@string/search"
                 android:padding="@dimen/_6mdp"
-                android:src="@drawable/tag" />
+                android:src="@drawable/tag"
+                app:tint="@color/blue"/>
 
         </LinearLayout>
     </LinearLayout>

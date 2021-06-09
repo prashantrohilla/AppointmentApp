@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.chatapp.example.flamingoapp.phase2.ChatDetailActivity;
 import com.chatapp.example.flamingoapp.phase2.ChatListActivity;
 import com.chatapp.example.flamingoapp.phase2.HomeActivity;
 import com.phone.DoctorAppointment.R;
@@ -21,6 +22,7 @@ public class UserProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityUserProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().hide();
 
         String userId = getIntent().getStringExtra("userId");
         String profilePic = getIntent().getStringExtra("profilePic");
@@ -36,6 +38,7 @@ public class UserProfileActivity extends AppCompatActivity {
         binding.userBio.setText(userBio);
         binding.userLink.setText(userLink);
 
+
         binding.chatSection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,6 +52,18 @@ public class UserProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(UserProfileActivity.this, HomeActivity.class);
                 startActivity(i);
+            }
+        });
+
+
+        binding.message.setOnClickListener(new View.OnClickListener() {  // sending user data to chat detail activity
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserProfileActivity.this, ChatDetailActivity.class);
+                intent.putExtra("userId", userId);
+                intent.putExtra("profilePic", profilePic);
+                intent.putExtra("userName", userName);
+                startActivity(intent);
             }
         });
 

@@ -1,13 +1,69 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.chatapp.example.flamingoapp.fragments.AddPostFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/cancelPost"
+            android:layout_width="@dimen/_40mdp"
+            android:layout_height="@dimen/_40mdp"
+            android:layout_marginStart="@dimen/_10mdp"
+            android:layout_marginTop="@dimen/_10mdp"
+            android:contentDescription="@string/save"
+            android:src="@drawable/close" />
+
+        <TextView
+            android:id="@+id/postButton"
+            android:layout_width="@dimen/_60mdp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_13mdp"
+            android:layout_marginEnd="@dimen/_10mdp"
+            android:background="@drawable/buttongrad1"
+            android:fontFamily="@font/oxygen"
+            android:gravity="center"
+            android:padding="@dimen/_6mdp"
+            android:text="@string/post"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14font_mdp"
+            android:textStyle="bold"
+            tools:ignore="RelativeOverlap" />
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/postImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_220mdp"
+        android:layout_margin="@dimen/_20mdp"
+        android:contentDescription="@string/search" />
+
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20mdp"
+        android:layout_marginEnd="@dimen/_20mdp"
+        android:background="@drawable/textback"
+        android:baselineAligned="false"
+        android:inputType="text"
+        android:padding="@dimen/_6mdp"
+        android:hint="@string/description"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14font_mdp"
+        tools:ignore="Autofill,LabelFor"
+        android:textColorHint="@color/white"/>
+
+
+</LinearLayout>
