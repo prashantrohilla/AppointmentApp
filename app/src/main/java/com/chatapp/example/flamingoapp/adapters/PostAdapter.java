@@ -79,6 +79,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             holder.description.setText(post.getDescription());
         }
 
+        // taking publisher info to bind it with user to get user more info
 
         publisherInfo(holder.profilePic, holder.userName, holder.publisher, post.getPublisher());
 

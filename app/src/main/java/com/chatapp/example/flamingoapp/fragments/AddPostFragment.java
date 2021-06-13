@@ -3,6 +3,7 @@ package com.chatapp.example.flamingoapp.fragments;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,9 +36,13 @@ import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
+
+import id.zelory.compressor.Compressor;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -53,6 +59,7 @@ public class AddPostFragment extends Fragment {
     String myUri ="";
     StorageTask uploadTask;
     StorageReference storageReference;            // firebase
+    byte[] new_image;
 
 
     @Override
@@ -63,6 +70,25 @@ public class AddPostFragment extends Fragment {
         {
             CropImage.ActivityResult result=CropImage.getActivityResult(data);
             imageUri=result.getUri();
+
+            //  image compression
+
+            File actualImage=new File(imageUri.getPath());
+            try {
+                Bitmap compressedImage = new Compressor(getContext())
+                        .setMaxWidth(640)
+                        .setMaxHeight(640)
+                        .setQuality(75)
+                        .compressToBitmap(actualImage);
+
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                compressedImage.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+                new_image = baos.toByteArray();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
 
             binding.postImage.setImageURI(imageUri);
         }
@@ -91,7 +117,7 @@ public class AddPostFragment extends Fragment {
         binding.postButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                uploadPost();
+                uploadPost(new_image);
             }
         });
 
@@ -107,7 +133,7 @@ public class AddPostFragment extends Fragment {
         return mime.getExtensionFromMimeType(resolver.getType(uri));
     }
 
-    public void uploadPost()
+    public void uploadPost(byte [] final_image)
     {
         ProgressDialog progressDialog=new ProgressDialog(getContext());
         progressDialog.setMessage("Posting");
@@ -118,9 +144,8 @@ public class AddPostFragment extends Fragment {
             StorageReference file=storageReference.child(System.currentTimeMillis()
                     +"."+getFileExtension(imageUri));
 
-            //  image compression
+            uploadTask= file.putBytes(final_image);
 
-            uploadTask= file.putFile(imageUri);
             uploadTask.continueWithTask(new Continuation() {
                 @Override
                 public Object then(@NonNull @NotNull Task task) throws Exception {
@@ -174,5 +199,7 @@ public class AddPostFragment extends Fragment {
         }
 
     }
+
+
 
 }
