@@ -79,11 +79,6 @@ public class FollowAdapter extends RecyclerView.Adapter<FollowAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   SharedPreferences.Editor editor= mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit();
-            //    editor.putString("profileId",user.getUserId());
-            //    editor.apply();
-
-        //  ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLyout,new ProfileFragment()).commit();
 
                 Intent intent = new Intent(mContext, UserProfileActivity.class);
                 intent.putExtra("userId", user.getUserId());

@@ -55,7 +55,7 @@
     </LinearLayout>
 
     <com.chatapp.example.flamingoapp.phase2.SquareImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15mdp"
@@ -63,21 +63,13 @@
         android:contentDescription="@string/search"
         android:scaleType="fitCenter" />
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20mdp"
-        android:text="@string/description"
-        android:textSize="@dimen/_14font_mdp"
-        />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15mdp"
-        android:layout_marginTop="@dimen/mines10mdp"
+        android:layout_marginTop="@dimen/_10mdp"
         android:layout_marginEnd="@dimen/_8mdp"
+        android:layout_marginBottom="@dimen/_10mdp"
         android:orientation="horizontal"
         android:baselineAligned="false">
 
@@ -156,6 +148,44 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/_20mdp"
+        android:layout_marginEnd="@dimen/_20mdp">
+
+        <TextView
+            android:id="@+id/publisher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/username"
+            android:textSize="@dimen/_14font_mdp"
+            android:layout_marginBottom="@dimen/_5mdp"
+            />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:textSize="@dimen/_14font_mdp"
+            android:layout_marginBottom="@dimen/_5mdp"
+            />
+
+
+        <TextView
+            android:id="@+id/seeComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/view_comments"
+            android:textSize="@dimen/_14font_mdp"
+            android:layout_marginBottom="@dimen/_5mdp"
+            />
+    </LinearLayout>
+
+
 
     <View
         android:layout_width="match_parent"

@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
-import com.airbnb.lottie.animation.content.Content;
 import com.chatapp.example.flamingoapp.phase2.HomeActivity;
 import com.chatapp.example.flamingoapp.phase2.SettingsActivity;
 import com.google.android.gms.tasks.Continuation;
@@ -29,14 +28,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
-import com.phone.DoctorAppointment.R;
 import com.phone.DoctorAppointment.databinding.FragmentAddPostBinding;
 import com.phone.DoctorAppointment.databinding.FragmentHomeBinding;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -63,6 +63,7 @@ public class AddPostFragment extends Fragment {
         {
             CropImage.ActivityResult result=CropImage.getActivityResult(data);
             imageUri=result.getUri();
+
             binding.postImage.setImageURI(imageUri);
         }
         else
@@ -73,7 +74,7 @@ public class AddPostFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentAddPostBinding.inflate(inflater, container, false);
@@ -95,7 +96,7 @@ public class AddPostFragment extends Fragment {
         });
 
         CropImage.activity().setAspectRatio(1,1)
-                .start(getContext(),this);
+                .start(Objects.requireNonNull(getContext()),this);
         return binding.getRoot();
     }
 
@@ -117,6 +118,9 @@ public class AddPostFragment extends Fragment {
             StorageReference file=storageReference.child(System.currentTimeMillis()
                     +"."+getFileExtension(imageUri));
 
+            //  image compression
+
+
             uploadTask= file.putFile(imageUri);
             uploadTask.continueWithTask(new Continuation() {
                 @Override
@@ -136,14 +140,14 @@ public class AddPostFragment extends Fragment {
                         Uri download= (Uri) task.getResult();
                         myUri=download.toString();
 
-                        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("posts");
+                        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Posts");
 
                         String postId= reference.push().getKey();
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("postId", postId);
                         hashMap.put("newPost", myUri);
                         hashMap.put("description",binding.description.getText().toString());
-                        hashMap.put("publishedBy", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        hashMap.put("publishedBy", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
 
                         reference.child(postId).setValue(hashMap);
                         progressDialog.dismiss();

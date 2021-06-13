@@ -38,7 +38,6 @@ import java.util.List;
 
 public class SearchFragment extends Fragment{
 
-    static FollowAdapter followAdapter;
     ArrayList<Users> mUsers =new ArrayList<>();
     FragmentSearchBinding binding;
     FirebaseDatabase database;

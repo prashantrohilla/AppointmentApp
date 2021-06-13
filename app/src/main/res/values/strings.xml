@@ -75,6 +75,7 @@
     <string name="type_username">Type Username</string>
     <string name="share_story">Share Story</string>
     <string name="your_messages">Your Messages</string>
+    <string name="view_comments">View All Comments</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
