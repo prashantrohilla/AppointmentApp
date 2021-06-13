@@ -1,4 +1,4 @@
-package com.chatapp.example.flamingoapp.fragments;
+    package com.chatapp.example.flamingoapp.fragments;
 
 import android.os.Bundle;
 
@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment{
         recyclerView.setAdapter(postAdapter);
 
 
-       // checkFollowing();
+       checkFollowing();
 
         return view;
     }
@@ -80,14 +80,15 @@ public class HomeFragment extends Fragment{
                 .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                 .child("following");
 
+        followingList.clear();
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
-                followingList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     followingList.add(snapshot.getKey());
                 }
-
+                postAdapter.notifyDataSetChanged();
                 readPost();
             }
 
@@ -101,10 +102,11 @@ public class HomeFragment extends Fragment{
     private void readPost(){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
 
+        postList.clear();
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
-                postList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Post post = snapshot.getValue(Post.class);
                     for (String id : followingList){
