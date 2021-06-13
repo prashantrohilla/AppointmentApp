@@ -2,7 +2,10 @@ package com.chatapp.example.flamingoapp.models;
 
 public class Users {
 
-    String profilepic, userName, mail, password, userId, lastMessage, status, phoneNumber,
+    String profilepic;
+    String userName;
+    String mail;
+    String password;  String userId, lastMessage, status, phoneNumber,
             statusImage, userBio, userLink, fullName, followers, following, posts;
 
 
@@ -51,6 +54,26 @@ public class Users {
         this.fullName = fullName;
     }
 
+    @Override
+    public String toString() {
+        return "Users{" +
+                "profilepic='" + profilepic + '\'' +
+                ", userName='" + userName + '\'' +
+                ", mail='" + mail + '\'' +
+                ", password='" + password + '\'' +
+                ", userId='" + userId + '\'' +
+                ", lastMessage='" + lastMessage + '\'' +
+                ", status='" + status + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", statusImage='" + statusImage + '\'' +
+                ", userBio='" + userBio + '\'' +
+                ", userLink='" + userLink + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", followers='" + followers + '\'' +
+                ", following='" + following + '\'' +
+                ", posts='" + posts + '\'' +
+                '}';
+    }
 
     public String getStatusImage() {
         return statusImage;

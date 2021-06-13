@@ -120,7 +120,6 @@ public class AddPostFragment extends Fragment {
 
             //  image compression
 
-
             uploadTask= file.putFile(imageUri);
             uploadTask.continueWithTask(new Continuation() {
                 @Override
@@ -145,9 +144,9 @@ public class AddPostFragment extends Fragment {
                         String postId= reference.push().getKey();
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("postId", postId);
-                        hashMap.put("newPost", myUri);
+                        hashMap.put("postImage", myUri);
                         hashMap.put("description",binding.description.getText().toString());
-                        hashMap.put("publishedBy", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
+                        hashMap.put("publisher", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
 
                         reference.child(postId).setValue(hashMap);
                         progressDialog.dismiss();

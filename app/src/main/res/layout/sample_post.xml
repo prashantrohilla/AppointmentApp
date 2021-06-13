@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_42mdp"
         android:layout_marginStart="@dimen/_10mdp"
-        android:layout_marginTop="@dimen/_4mdp"
         android:layout_marginEnd="@dimen/_10mdp"
         android:layout_marginBottom="@dimen/_4mdp"
         android:gravity="center_vertical"
@@ -23,9 +22,8 @@
             android:layout_width="@dimen/_38mdp"
             android:layout_height="@dimen/_38mdp"
             android:layout_margin="@dimen/_4mdp"
-            android:src="@drawable/user9"
             app:civ_border_width="@dimen/_1mdp"
-            app:civ_border_color="@color/white"/>
+            app:civ_border_color="@color/white" />
 
         <TextView
             android:id="@+id/etUserName"
@@ -37,7 +35,6 @@
             android:layout_marginBottom="@dimen/_4mdp"
             android:layout_weight="7"
             android:fontFamily="@font/oxygen_light"
-            android:text="@string/username"
             android:textSize="@dimen/_14font_mdp"
             android:textStyle="bold" />
 
@@ -50,7 +47,7 @@
             android:paddingTop="@dimen/_5mdp"
             android:paddingBottom="@dimen/_5mdp"
             android:src="@drawable/menu"
-            app:tint="@color/blue" />
+            />
 
     </LinearLayout>
 
@@ -77,7 +74,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
+            tools:ignore="UseCompoundDrawables"
+            >
 
             <ImageView
                 android:id="@+id/likeButton"
@@ -86,14 +84,13 @@
                 android:contentDescription="@string/search"
                 android:padding="8dp"
                 android:src="@drawable/heart"
-                app:tint="@color/blue" />
+                app:tint="@color/white" />
 
             <TextView
                 android:id="@+id/likeText"
                 android:layout_width="@dimen/_40mdp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="@string/text"
                 android:textSize="@dimen/_12font_mdp"
                 android:textStyle="bold"
                 tools:ignore="SmallSp"
@@ -114,14 +111,14 @@
                 android:contentDescription="@string/search"
                 android:padding="@dimen/_5mdp"
                 android:src="@drawable/comment"
-                app:tint="@color/blue"/>
+                app:tint="@color/white"
+                />
 
             <TextView
                 android:id="@+id/commentText"
                 android:layout_width="@dimen/_40mdp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="@string/text"
                 android:textSize="@dimen/_12font_mdp"
                 tools:ignore="SmallSp"
                 android:textStyle="bold"
@@ -141,10 +138,9 @@
                 android:id="@+id/tag"
                 android:layout_width="@dimen/_30mdp"
                 android:layout_height="@dimen/_30mdp"
-                android:contentDescription="@string/search"
                 android:padding="@dimen/_6mdp"
                 android:src="@drawable/tag"
-                app:tint="@color/blue"/>
+                app:tint="@color/white" />
 
         </LinearLayout>
     </LinearLayout>
@@ -153,6 +149,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="@dimen/mines10mdp"
         android:layout_marginStart="@dimen/_20mdp"
         android:layout_marginEnd="@dimen/_20mdp">
 
@@ -160,7 +157,6 @@
             android:id="@+id/publisher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/username"
             android:textSize="@dimen/_14font_mdp"
             android:layout_marginBottom="@dimen/_5mdp"
             />
@@ -169,7 +165,6 @@
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/description"
             android:textSize="@dimen/_14font_mdp"
             android:layout_marginBottom="@dimen/_5mdp"
             />
@@ -179,7 +174,6 @@
             android:id="@+id/seeComments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/view_comments"
             android:textSize="@dimen/_14font_mdp"
             android:layout_marginBottom="@dimen/_5mdp"
             />
@@ -190,6 +184,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1mdp"
-        android:background="@color/blue"/>
+        android:background="@color/white"
+        />
 
 </LinearLayout>
