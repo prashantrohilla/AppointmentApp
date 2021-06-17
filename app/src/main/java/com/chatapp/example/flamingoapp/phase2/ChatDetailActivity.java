@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +15,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.View;
+import android.widget.Toast;
 
 import com.chatapp.example.flamingoapp.adapters.ChatAdapter;
 import com.chatapp.example.flamingoapp.models.MessageModel;
@@ -27,11 +29,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.phone.DoctorAppointment.R;
 import com.phone.DoctorAppointment.databinding.ActivityChatDetailBinding;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,6 +47,8 @@ import java.util.Date;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+
+import id.zelory.compressor.Compressor;
 
 public class ChatDetailActivity extends AppCompatActivity {
 
@@ -48,6 +58,11 @@ public class ChatDetailActivity extends AppCompatActivity {
     FirebaseAuth auth;
     ProgressDialog dialog;
     String senderId, receiverId, senderRoom, receiverRoom;
+    Uri imageUri;
+    String myUri ="";
+    StorageTask<UploadTask.TaskSnapshot> uploadTask;
+    StorageReference storageReference;            // firebase
+    byte[] new_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,11 +217,9 @@ public class ChatDetailActivity extends AppCompatActivity {
         binding.attachment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/*");
-                startActivityForResult(intent, 25);
+                CropImage.activity()
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .start(ChatDetailActivity.this);
 
             }
         });
@@ -214,9 +227,9 @@ public class ChatDetailActivity extends AppCompatActivity {
         binding.camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {                                 // camera
-
-                //    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                //  startActivityForResult(intent,30);
+                CropImage.activity()
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .start(ChatDetailActivity.this);
             }
         });
 
@@ -240,59 +253,93 @@ public class ChatDetailActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {                     // getting image from gallery
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 25 || requestCode == 30) {
-            if (data != null) {
-                if (data.getData() != null) {
-                    Uri selectedImage = data.getData();
+        if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode==RESULT_OK)
+        {
+            CropImage.ActivityResult result=CropImage.getActivityResult(data);
+            imageUri=result.getUri();
 
+            //  image compression
 
-                    Calendar calendar = Calendar.getInstance();
-                    final StorageReference reference = storage.getReference().child("pictures").child(calendar.getTimeInMillis() + "");
-                    dialog.show();
-                    reference.putFile(selectedImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            dialog.dismiss();
-                            if (task.isSuccessful()) {
-                                reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {   // taking back image url
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        String filePath = uri.toString();
-                                        ;
-                                        String message = binding.etMessage.getText().toString();
-                                        Date date = new Date();
-                                        final MessageModel model = new MessageModel(senderId, message, date.getTime());   // taking sender msg and id
-                                        model.setTime(new Date().getTime());
-                                        model.setMessage("Photoz");                                  // to check image is sent
-                                        model.setImageUrl(filePath);
-                                        binding.etMessage.setText("");                                      // empty editText after send msg
+            File actualImage=new File(imageUri.getPath());
+            try {
+                Bitmap compressedImage = new Compressor(this)
+                        .setMaxWidth(640)
+                        .setMaxHeight(640)
+                        .setQuality(75)
+                        .compressToBitmap(actualImage);
 
-                                        database.getReference().child("chats").child(senderRoom)               // sender node work
-                                                .push().setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
-                                                // receiver node work  ,,, message will send on both sides , sender and receiver and editText also get empty
-                                                database.getReference().child("chats")
-                                                        .child(receiverRoom).push().setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void aVoid) {
-
-                                                    }
-                                                });
-                                            }
-                                        });
-
-
-                                    }
-                                });/////////
-
-                            }
-                        }
-                    });
-                }
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                compressedImage.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+                new_image = baos.toByteArray();
+                uploadPost(new_image);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
+           // binding.showProfilePic.setImageURI(imageUri);
         }
+        else
+        {
+            Toast.makeText(this,"Something gone wrong !!",Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void uploadPost(byte [] final_image)
+    {
+        if(imageUri !=null)
+        {
+            Calendar calendar = Calendar.getInstance();
+            final StorageReference reference = storage.getReference().child("pictures").child(calendar.getTimeInMillis() + "");
+
+            uploadTask=reference.putBytes(new_image);
+
+            uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    dialog.dismiss();
+                    if (task.isSuccessful()) {
+                        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {   // taking back image url
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                String filePath = uri.toString();
+                                String message = binding.etMessage.getText().toString();
+                                Date date = new Date();
+                                final MessageModel model = new MessageModel(senderId, message, date.getTime());   // taking sender msg and id
+                                model.setTime(new Date().getTime());
+                                model.setMessage("Photoz");                                  // to check image is sent
+                                model.setImageUrl(filePath);
+                                binding.etMessage.setText("");                                      // empty editText after send msg
+
+                                database.getReference().child("chats").child(senderRoom)               // sender node work
+                                        .push().setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        // receiver node work  ,,, message will send on both sides , sender and receiver and editText also get empty
+                                        database.getReference().child("chats")
+                                                .child(receiverRoom).push().setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+
+                                            }
+                                        });
+                                    }
+                                });
+
+
+                            }
+                        });/////////
+
+                    }
+                }
+            });
+        }
+
+         else
+        {
+            Toast.makeText(ChatDetailActivity.this,"No Image Selected" ,Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public String encrypt(String data) throws Exception {

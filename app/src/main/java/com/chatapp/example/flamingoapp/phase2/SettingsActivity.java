@@ -159,7 +159,7 @@ public class SettingsActivity extends AppCompatActivity {
         {
             Toast.makeText(this,"Something gone wrong !!",Toast.LENGTH_SHORT).show();
         }
-        
+
     }
 
     public void uploadPost(byte [] final_image)
