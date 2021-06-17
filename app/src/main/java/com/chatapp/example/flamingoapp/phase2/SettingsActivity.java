@@ -159,30 +159,7 @@ public class SettingsActivity extends AppCompatActivity {
         {
             Toast.makeText(this,"Something gone wrong !!",Toast.LENGTH_SHORT).show();
         }
-
-        if (data.getData() != null)               // image selected from gallery
-        {
-            Uri sFile = data.getData();
-            binding.showProfilePic.setImageURI(sFile);         // showing image to profile image  in settings activity
-
-            //  image compression
-
-            File actualImage = new File(sFile.getPath());
-            try {
-                Bitmap compressedImage = new Compressor(this)
-                        .setMaxWidth(640)
-                        .setMaxHeight(640)
-                        .setQuality(75)
-                        .compressToBitmap(actualImage);
-
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                compressedImage.compress(Bitmap.CompressFormat.JPEG, 50, baos);
-                new_image = baos.toByteArray();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        
     }
 
     public void uploadPost(byte [] final_image)
