@@ -83,18 +83,19 @@
                 android:layout_height="@dimen/_30mdp"
                 android:contentDescription="@string/search"
                 android:padding="8dp"
-                android:src="@drawable/heart"
-                app:tint="@color/white" />
+                app:tint="@color/white"
+                android:layout_marginEnd="@dimen/_2mdp"/>
 
             <TextView
                 android:id="@+id/likeText"
-                android:layout_width="@dimen/_40mdp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:textSize="@dimen/_12font_mdp"
                 android:textStyle="bold"
                 tools:ignore="SmallSp"
-                android:fontFamily="@font/oxygen_light"/>
+                android:fontFamily="@font/oxygen_light"
+                android:layout_marginEnd="@dimen/_3mdp"/>
 
         </LinearLayout>
 
@@ -111,12 +112,13 @@
                 android:contentDescription="@string/search"
                 android:padding="@dimen/_5mdp"
                 android:src="@drawable/comment"
+                android:layout_marginEnd="@dimen/_2mdp"
                 app:tint="@color/white"
                 />
 
             <TextView
                 android:id="@+id/commentText"
-                android:layout_width="@dimen/_40mdp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:textSize="@dimen/_12font_mdp"
