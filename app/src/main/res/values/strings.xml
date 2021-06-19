@@ -45,6 +45,7 @@
     <string name="reserved">Reserved For Future Work</string>
     <string name="tap">Tap to Chat</string>
     <string name="no_status">No Status</string>
+    <string name="langauge">Language not Supported</string>
 
     <string name="home">Home</string>
     <string name="search">Search</string>
@@ -55,6 +56,8 @@
     <string name="user_bio">Bio</string>
     <string name="logout">Logout</string>
     <string name="text">100</string>
+    <string name="addcomment">Add a comment..</string>
+    <string name="c">Comments</string>
     <string name="write_something_about_yoursef">Write something about yourself.</string>
 
     <string name="bio">I like travel and food.</string>

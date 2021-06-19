@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_60mdp"
+    android:gravity="center_vertical"
+    android:background="@drawable/buttongrad1"
+    android:layout_margin="@dimen/_5mdp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/commentprofilepic"
+        android:layout_width="@dimen/_35mdp"
+        android:layout_height="@dimen/_35mdp"
+        android:layout_margin="@dimen/_10mdp"/>
+
+    <LinearLayout
+        android:layout_toEndOf="@+id/commentprofilepic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/username"
+            android:textColor="@color/white"
+            android:fontFamily="@font/montserrat"
+            android:layout_marginTop="@dimen/_10mdp"
+            android:layout_marginEnd="@dimen/_10mdp"/>
+
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2mdp"
+            android:layout_marginEnd="@dimen/_10mdp"
+            android:layout_marginBottom="@dimen/_5mdp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/c"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+</RelativeLayout>

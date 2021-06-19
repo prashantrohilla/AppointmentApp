@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chatapp.example.flamingoapp.models.MessageModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.mlkit.nl.smartreply.SmartReplyGenerator;
+import com.google.mlkit.nl.smartreply.TextMessage;
 import com.phone.DoctorAppointment.R;
 import com.phone.DoctorAppointment.databinding.ActivityChatDetailBinding;
 import com.squareup.picasso.Picasso;
@@ -23,6 +25,7 @@ import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -38,6 +41,7 @@ public class ChatAdapter extends RecyclerView.Adapter {
     String recId;
     int SENDER_VIEW_TYPE = 1;
     int RECEIVER_VIEW_TYPE = 2;
+    public static ArrayList<TextMessage> conversation=new ArrayList<>();
 
 
     public ChatAdapter(ArrayList<MessageModel> messageModel, Context context) {
@@ -127,10 +131,14 @@ public class ChatAdapter extends RecyclerView.Adapter {
             String message = null;
             try {
                 message = decrypt(messageModel.getMessage());
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
             ((ReceiverViewHolder) holder).receiverMsg.setText(message);
+            if (!messageModel.getMessage().equals("Photoz")) {
+                conversation.add(TextMessage.createForRemoteUser(message, System.currentTimeMillis(), messageModel.getuID()));
+            }
             SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");                    // time
             ((ReceiverViewHolder) holder).receiverTime.setText(dateFormat.format(new Date(messageModel.getTime())));
             if (messageModel.getMessage().equals("Photoz"))                                                          // loading image in receiver view holder
@@ -140,6 +148,8 @@ public class ChatAdapter extends RecyclerView.Adapter {
                 ((ReceiverViewHolder) holder).receiverMsg.setVisibility(View.GONE);
                 Picasso.get().load(messageModel.getImageUrl()).placeholder(R.drawable.photo2).into(viewHolder.receiverImage);
             }
+
+
         }
     }
 

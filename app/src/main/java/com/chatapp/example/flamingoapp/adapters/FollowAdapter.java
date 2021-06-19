@@ -82,11 +82,6 @@ public class FollowAdapter extends RecyclerView.Adapter<FollowAdapter.ViewHolder
 
                 Intent intent = new Intent(mContext, UserProfileActivity.class);
                 intent.putExtra("userId", user.getUserId());
-                intent.putExtra("profilePic", user.getProfilepic());
-                intent.putExtra("userName", user.getUserName());
-                intent.putExtra("fullName", user.getFullName());
-                intent.putExtra("userBio", user.getUserBio());
-                intent.putExtra("userLink", user.getUserLink());
                 mContext.startActivity(intent);
 
             }
