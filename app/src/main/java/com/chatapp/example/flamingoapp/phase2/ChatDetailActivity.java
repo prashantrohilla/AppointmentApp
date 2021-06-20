@@ -53,7 +53,9 @@ import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -74,6 +76,7 @@ public class ChatDetailActivity extends AppCompatActivity {
     StorageTask<UploadTask.TaskSnapshot> uploadTask;
     byte[] new_image;
     SmartReplyGenerator smartReplyGenerator;
+    String smart="false";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +110,32 @@ public class ChatDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ChatDetailActivity.this, ChatListActivity.class);
                 startActivity(intent);
+            }
+        });
+
+
+        binding.smartReply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(smart.equals("true"))
+                {
+                    smart="false";
+                    Toast.makeText(ChatDetailActivity.this, "Smart Reply Off", Toast.LENGTH_SHORT).show();
+                    binding.smartReply.setBackgroundResource(R.drawable.sw);
+                }
+                else
+                {
+                    smart="true";
+                    Toast.makeText(ChatDetailActivity.this, "Smart Reply On", Toast.LENGTH_SHORT).show();
+                    binding.smartReply.setBackgroundResource(R.drawable.sb);
+                }
+
+
+                HashMap<String, Object> obj = new HashMap<>();
+                obj.put("smartReply", smart);
+
+                database.getReference().child("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()))
+                        .updateChildren(obj);
             }
         });
 
@@ -165,12 +194,18 @@ public class ChatDetailActivity extends AppCompatActivity {
         binding.etMessage.addTextChangedListener(new TextWatcher() {   // to show typing status
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                if(conversation.size()!=0 && smart.equals("true"))
+                {
+                    SmartReply();
+                }
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                SmartReply();
+                if(conversation.size()!=0 && smart.equals("true"))
+                {
+                    SmartReply();
+                }
 
             }
 
@@ -418,7 +453,7 @@ public class ChatDetailActivity extends AppCompatActivity {
             public void onSuccess(SmartReplySuggestionResult smartReplySuggestionResult) {
                 if(smartReplySuggestionResult.getStatus()==SmartReplySuggestionResult.STATUS_NOT_SUPPORTED_LANGUAGE)
                 {
-                    Toast.makeText(ChatDetailActivity.this, "Language not supported.", Toast.LENGTH_SHORT).show();
+
                 }
                 else if(smartReplySuggestionResult.getStatus()==SmartReplySuggestionResult.STATUS_SUCCESS)
                 {

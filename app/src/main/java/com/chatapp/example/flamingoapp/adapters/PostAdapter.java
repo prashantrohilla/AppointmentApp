@@ -35,6 +35,7 @@ import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -43,6 +44,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     Context mContext;
     List<Post> mPosts;
+    ArrayList<Users> mUsers;
 
 
     FirebaseUser firebaseUser;
@@ -86,6 +88,18 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         isLikes(post.getPostId(),holder.like);
         nrLikes(holder.likeText,post.getPostId());
         getComment(post.getPostId(), holder.commentText);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Post post=mPosts.get(position);
+                Intent intent = new Intent(mContext, UserProfileActivity.class);
+                intent.putExtra("userId", post.getPublisher());
+                mContext.startActivity(intent);
+
+            }
+        });
+
 
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,6 +215,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
             }
         });
+
     }
 
     private void nrLikes(final TextView likes,String postId)
@@ -225,14 +240,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private void publisherInfo(final ImageView image_profile, final TextView username, final TextView publisher, final String userid) {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(userid);
-        Log.d("refernce debug"," "+reference.getRoot());
-        Log.d("refernce debug"," username: "+username+" user id: "+userid+" publisher: "+publisher);
+       // Log.d("refernce debug"," "+reference.getRoot());
+      //  Log.d("refernce debug"," username: "+username+" user id: "+userid+" publisher: "+publisher);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                 Users user = dataSnapshot.getValue(Users.class);
-                Log.d("refernce debug"," "+user.toString());
+              //  Log.d("refernce debug"," "+user.toString());
                if(user!=null) {
                    Picasso.get().load(user.getProfilepic())
                            .placeholder(R.drawable.user2)

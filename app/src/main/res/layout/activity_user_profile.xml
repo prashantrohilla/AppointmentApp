@@ -130,7 +130,7 @@
 
 
                         <TextView
-                            android:id="@+id/likesText"
+                            android:id="@+id/followingText"
                             android:layout_width="@dimen/_70mdp"
                             android:layout_height="wrap_content"
                             android:layout_toEndOf="@+id/followersText"
@@ -171,7 +171,7 @@
                             android:layout_below="@+id/followersText"
                             android:layout_toEndOf="@+id/followers"
                             android:fontFamily="@font/oxygen"
-                            android:text="@string/likes"
+                            android:text="@string/following"
                             android:textAlignment="center"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_14mdp" />
@@ -214,9 +214,11 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/oxygen"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_14mdp" />
+                        android:textSize="@dimen/_14mdp"
+                        android:visibility="gone"/>
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/userLink"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -231,7 +233,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/follow"
+                            android:id="@+id/followButton"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:background="@drawable/buttongrad1"
@@ -239,7 +241,6 @@
                             android:padding="@dimen/_5mdp"
                             android:text="@string/follow"
                             android:textAlignment="center"
-                            android:textAllCaps="true"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_14mdp"
                             android:textStyle="bold"
@@ -261,26 +262,18 @@
                             android:textStyle="bold"
                             android:layout_weight="1"/>
 
-
                     </LinearLayout>
-
 
                 </LinearLayout>
 
 
-                <FrameLayout
-                    android:id="@+id/gallery"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_15mdp">
-
-                </FrameLayout>
-
-
+              <androidx.recyclerview.widget.RecyclerView
+                  android:id="@+id/galleryRecyclerView"
+                  android:layout_marginTop="@dimen/_10mdp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"/>
 
             </LinearLayout>
-
-
 
 
         </ScrollView>

@@ -5,8 +5,27 @@ public class Users {
     String profilepic;
     String userName;
     String mail;
-    String password;  String userId, lastMessage, status, phoneNumber,
-            statusImage, userBio, userLink, fullName, followers, following, posts;
+    String password;  String userId;
+    String lastMessage;
+    String status;
+    String phoneNumber;
+    String statusImage;
+    String userBio;
+    String userLink;
+    String fullName;
+    String followers;
+    String following;
+    String posts;
+
+    public String getSmartReply() {
+        return smartReply;
+    }
+
+    public void setSmartReply(String smartReply) {
+        this.smartReply = smartReply;
+    }
+
+    String smartReply;
 
 
     public Users(String profilepic, String userName, String mail, String password, String userId, String lastMessage, String status, String phoneNumber, String statusImage, String userBio) {

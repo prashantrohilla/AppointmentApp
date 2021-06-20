@@ -83,12 +83,22 @@
             android:id="@+id/video"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_35mdp"
-            android:layout_alignParentEnd="true"
+            android:layout_toStartOf="@+id/smartReply"
             android:layout_marginStart="@dimen/_12mdp"
             android:layout_marginTop="@dimen/_3mdp"
             android:layout_marginEnd="@dimen/_8mdp"
             android:src="@drawable/video"
             tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/smartReply"
+            android:layout_width="@dimen/_30mdp"
+            android:layout_height="@dimen/_30mdp"
+            android:layout_marginTop="@dimen/_3mdp"
+            android:layout_marginEnd="@dimen/_8mdp"
+            android:background="@drawable/sw"
+            tools:ignore="ContentDescription"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

@@ -152,7 +152,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/oxygen"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_14mdp" />
+                    android:textSize="@dimen/_14mdp"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/userLink"
@@ -160,7 +161,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/oxygen"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_14mdp" />
+                    android:textSize="@dimen/_14mdp"
+                    android:visibility="gone"/>
 
 
                 <TextView
