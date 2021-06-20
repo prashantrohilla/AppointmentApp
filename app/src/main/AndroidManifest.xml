@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.chatapp.example.flamingoapp.phase2.CommentActivity"></activity>
+        <activity android:name="com.chatapp.example.flamingoapp.phase3.UserPic"></activity>
+        <activity android:name="com.chatapp.example.flamingoapp.phase2.CommentActivity" />
         <activity android:name="com.chatapp.example.flamingoapp.phase3.UserProfileActivity" />
         <activity android:name="com.chatapp.example.flamingoapp.phase2.SettingsActivity" />
         <activity android:name="com.chatapp.example.flamingoapp.phase2.ChatListActivity" />

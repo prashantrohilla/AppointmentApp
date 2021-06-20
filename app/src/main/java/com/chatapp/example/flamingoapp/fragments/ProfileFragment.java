@@ -5,13 +5,20 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chatapp.example.flamingoapp.adapters.MyPhotoAdapter;
+import com.chatapp.example.flamingoapp.adapters.PostAdapter;
+import com.chatapp.example.flamingoapp.adapters.UsersAdapter;
 import com.chatapp.example.flamingoapp.models.Post;
 import com.chatapp.example.flamingoapp.models.Users;
 import com.chatapp.example.flamingoapp.phase1.LoginActivity;
@@ -27,10 +34,14 @@ import com.phone.DoctorAppointment.R;
 import com.phone.DoctorAppointment.databinding.ActivityLoginBinding;
 import com.phone.DoctorAppointment.databinding.FragmentChatBinding;
 import com.phone.DoctorAppointment.databinding.FragmentProfileBinding;
+import com.phone.DoctorAppointment.databinding.FragmentSearchBinding;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -43,12 +54,15 @@ public class ProfileFragment extends Fragment {
     FragmentProfileBinding binding;
     FirebaseAuth auth;
     FirebaseDatabase database;
+    MyPhotoAdapter myPhotoAdapter;
+    List<Post> postList;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentProfileBinding.inflate(inflater, container, false);
+        binding=  FragmentProfileBinding.inflate(inflater, container, false);
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -72,20 +86,20 @@ public class ProfileFragment extends Fragment {
                                 .into(binding.profilePic);
                         binding.userName.setText(users.getFullName());
                         binding.uName.setText(users.getUserName());
+                        binding.userBio.setText(users.getUserBio());
+                        binding.userLink.setText(users.getUserLink());
 
-                        if(users.getUserBio()!=null)
-                        {
-                            binding.userBio.setText(users.getUserBio());
-                            binding.userBio.setVisibility(View.VISIBLE);
-                        }
 
-                        if(users.getUserLink()!=null)
-                        {
-                            binding.userLink.setText(users.getUserLink());
-                            binding.userLink.setVisibility(View.VISIBLE);
-                        }
+                        binding.myPosts.setHasFixedSize(true);
+                        LinearLayoutManager mLayoutManager = new GridLayoutManager(getContext(), 3);
+                        binding.myPosts.setLayoutManager(mLayoutManager);
+
+                        postList = new ArrayList<>();
+                        myPhotoAdapter = new MyPhotoAdapter(getContext(), postList);
+                        binding.myPosts.setAdapter(myPhotoAdapter);
 
                         getFollowers();
+                        myPhotos();
 
                     }
 
@@ -156,5 +170,35 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+    }
+
+    private  void myPhotos()
+    {
+       DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Posts");
+
+       reference.addValueEventListener(new ValueEventListener() {  // getting list of users from database
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                postList.clear();                                                                   // taking data snapshot from firebase
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    // to avoid slow loading
+                   Post post= dataSnapshot.getValue(Post.class);
+                   if(post.getPublisher().equals(auth.getUid()))
+                   {
+                       postList.add(post);
+                   }
+                  //  Collections.reverse(postList);
+                    myPhotoAdapter.notifyDataSetChanged();
+                    Log.d("refernce debug"," "+postList.size());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }

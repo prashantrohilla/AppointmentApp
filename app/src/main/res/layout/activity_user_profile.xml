@@ -214,11 +214,9 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/oxygen"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_14mdp"
-                        android:visibility="gone"/>
+                        android:textSize="@dimen/_14mdp" />
 
                     <TextView
-                        android:visibility="gone"
                         android:id="@+id/userLink"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -268,7 +266,7 @@
 
 
               <androidx.recyclerview.widget.RecyclerView
-                  android:id="@+id/galleryRecyclerView"
+                  android:id="@+id/myPosts"
                   android:layout_marginTop="@dimen/_10mdp"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"/>

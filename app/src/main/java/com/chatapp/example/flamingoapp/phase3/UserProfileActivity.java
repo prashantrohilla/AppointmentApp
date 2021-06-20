@@ -2,6 +2,8 @@ package com.chatapp.example.flamingoapp.phase3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.chatapp.example.flamingoapp.adapters.MyPhotoAdapter;
 import com.chatapp.example.flamingoapp.models.Post;
 import com.chatapp.example.flamingoapp.models.Users;
 import com.chatapp.example.flamingoapp.phase2.ChatDetailActivity;
@@ -26,12 +29,17 @@ import com.phone.DoctorAppointment.R;
 import com.phone.DoctorAppointment.databinding.ActivityUserProfileBinding;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserProfileActivity extends AppCompatActivity {
 
     ActivityUserProfileBinding binding;
     String profilePic;
     String userName ;
     FirebaseUser auth;
+    MyPhotoAdapter myPhotoAdapter;
+    List<Post> postList;
 
 
     @Override
@@ -44,6 +52,17 @@ public class UserProfileActivity extends AppCompatActivity {
         String userId = getIntent().getStringExtra("userId");
         auth=FirebaseAuth.getInstance().getCurrentUser();
 
+
+        binding.myPosts.setHasFixedSize(true);
+        LinearLayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
+        binding.myPosts.setLayoutManager(mLayoutManager);
+
+        postList = new ArrayList<>();
+        myPhotoAdapter = new MyPhotoAdapter(getApplicationContext(), postList);
+        binding.myPosts.setAdapter(myPhotoAdapter);
+
+        myPhotos();
+
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference()
                             .child("Users").child(userId);
 
@@ -55,20 +74,12 @@ public class UserProfileActivity extends AppCompatActivity {
                             Picasso.get().load(user.getProfilepic()).placeholder(R.drawable.user2).into(binding.userPic);
                             binding.userName.setText(user.getUserName());
                             binding.userFullName.setText(user.getFullName());
+                            binding.userBio.setText(user.getUserBio());
+                            binding.userLink.setText(user.getUserLink());
 
-                            if(user.getUserBio()!=null)
-                            {
-                                binding.userBio.setText(user.getUserBio());
-                                binding.userBio.setVisibility(View.VISIBLE);
-                            }
-
-                            if(user.getUserLink()!=null)
-                            {
-                                binding.userLink.setText(user.getUserLink());
-                                binding.userLink.setVisibility(View.VISIBLE);
-                            }
                             profilePic=user.getProfilepic();
                             userName=user.getUserName();
+                            isFollowing(userId, binding.followButton);// passing id and button to method
                             getFollowers();
 
                         }
@@ -79,7 +90,7 @@ public class UserProfileActivity extends AppCompatActivity {
                         }
                     });
 
-        isFollowing(auth.getUid(), binding.followButton);// passing id and button to method
+
 
 
         binding.chatSection.setOnClickListener(new View.OnClickListener() {
@@ -212,11 +223,11 @@ public class UserProfileActivity extends AppCompatActivity {
             public void onDataChange(@NonNull @org.jetbrains.annotations.NotNull DataSnapshot snapshot) {
                 if(snapshot.child(userId).exists())
                 {
-                    button.setText("FOLLOWING");
+                    button.setText("following");
                 }
                 else
                 {
-                    button.setText("FOLLOW");
+                    button.setText("follow");
                 }
             }
 
@@ -225,5 +236,36 @@ public class UserProfileActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private  void myPhotos()
+    {
+        String userId = getIntent().getStringExtra("userId");
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Posts");
+
+        reference.addValueEventListener(new ValueEventListener() {  // getting list of users from database
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                postList.clear();                                                                   // taking data snapshot from firebase
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    // to avoid slow loading
+                    Post post= dataSnapshot.getValue(Post.class);
+                    if(post.getPublisher().equals(userId))
+                    {
+                        postList.add(post);
+                    }
+                    //  Collections.reverse(postList);
+                    myPhotoAdapter.notifyDataSetChanged();
+                    Log.d("refernce debug"," "+postList.size());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }

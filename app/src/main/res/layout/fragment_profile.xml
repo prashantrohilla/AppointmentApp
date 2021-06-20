@@ -18,7 +18,7 @@
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -152,8 +152,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/oxygen"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_14mdp"
-                    android:visibility="gone"/>
+                    android:textSize="@dimen/_14mdp" />
 
                 <TextView
                     android:id="@+id/userLink"
@@ -161,8 +160,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/oxygen"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_14mdp"
-                    android:visibility="gone"/>
+                    android:textSize="@dimen/_14mdp" />
 
 
                 <TextView
@@ -184,13 +182,11 @@
             </LinearLayout>
 
 
-            <FrameLayout
-                android:id="@+id/gallery"
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="@dimen/_10mdp"
+                android:id="@+id/myPosts"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15mdp">
-
-            </FrameLayout>
+                android:layout_height="wrap_content" />
 
 
 
