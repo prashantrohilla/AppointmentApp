@@ -88,6 +88,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         isLikes(post.getPostId(),holder.like);
         nrLikes(holder.likeText,post.getPostId());
         getComment(post.getPostId(), holder.commentText);
+        isSaved(post.getPostId(), holder.tag);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +97,24 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 Intent intent = new Intent(mContext, UserProfileActivity.class);
                 intent.putExtra("userId", post.getPublisher());
                 mContext.startActivity(intent);
+
+            }
+        });
+
+        holder.tag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(holder.tag.getTag().equals("save"))
+                {
+                    FirebaseDatabase.getInstance().getReference().child("Saves").child(firebaseUser.getUid())
+                            .child(post.getPostId()).setValue(true);
+                }
+                else
+                {
+                    FirebaseDatabase.getInstance().getReference().child("Saves").child(firebaseUser.getUid())
+                            .child(post.getPostId()).removeValue();
+                }
 
             }
         });
@@ -267,6 +286,36 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
             }
         });
+    }
+
+    private void isSaved(String postId, ImageView imageView)
+    {
+        FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference()
+                .child("Saves").child(firebaseUser.getUid());
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+               if(snapshot.child(postId).exists())
+               {
+                   imageView.setImageResource(R.drawable.tagwhite);
+                   imageView.setTag("saved");
+               }
+               else
+               {
+                   imageView.setImageResource(R.drawable.tag);
+                   imageView.setTag("save");
+               }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
+
     }
 
 }

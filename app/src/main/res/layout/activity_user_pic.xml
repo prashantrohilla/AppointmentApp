@@ -1,21 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.chatapp.example.flamingoapp.phase3.UserPic"
-    android:background="@color/black">
+    android:orientation="vertical"
+    tools:context="com.chatapp.example.flamingoapp.phase3.PostDetails"
+    android:background="@drawable/grad1"
+    android:gravity="center">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_42mdp"
+        android:layout_marginStart="@dimen/_10mdp"
+        android:layout_marginEnd="@dimen/_10mdp"
+        android:layout_marginBottom="@dimen/_4mdp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profilepic"
+            android:layout_width="@dimen/_38mdp"
+            android:layout_height="@dimen/_38mdp"
+            android:layout_margin="@dimen/_4mdp"
+            app:civ_border_width="@dimen/_1mdp"
+            app:civ_border_color="@color/white"
+            android:background="@drawable/user2"/>
+
+        <TextView
+            android:id="@+id/etUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/_5mdp"
+            android:layout_marginTop="@dimen/_4mdp"
+            android:layout_marginBottom="@dimen/_4mdp"
+            android:layout_weight="7"
+            android:fontFamily="@font/oxygen_light"
+            android:textSize="@dimen/_14font_mdp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="@dimen/_10mdp"
+            android:layout_height="@dimen/_30mdp"
+            android:layout_weight="1"
+            android:contentDescription="@string/search"
+            android:paddingTop="@dimen/_5mdp"
+            android:paddingBottom="@dimen/_5mdp"
+            android:src="@drawable/menu"
+            />
+
+    </LinearLayout>
 
     <com.chatapp.example.flamingoapp.phase2.SquareImageView
         android:id="@+id/post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/search"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:scaleType="fitCenter" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12mdp"
+        android:layout_marginTop="@dimen/_10mdp"
+        android:layout_marginEnd="@dimen/_8mdp"
+        android:layout_marginBottom="@dimen/_10mdp"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/likeButton"
+                android:layout_width="@dimen/_30mdp"
+                android:layout_height="@dimen/_30mdp"
+                android:contentDescription="@string/search"
+                android:padding="8dp"
+                app:tint="@color/white"
+                android:layout_marginEnd="@dimen/_2mdp"/>
+
+            <TextView
+                android:id="@+id/likeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/_12font_mdp"
+                android:textStyle="bold"
+                tools:ignore="SmallSp"
+                android:fontFamily="@font/oxygen_light"
+                android:layout_marginEnd="@dimen/_5mdp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/commentButton"
+                android:layout_width="@dimen/_30mdp"
+                android:layout_height="@dimen/_30mdp"
+                android:contentDescription="@string/search"
+                android:padding="@dimen/_5mdp"
+                android:src="@drawable/comment"
+                android:layout_marginEnd="@dimen/_2mdp"
+                app:tint="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/commentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/_12font_mdp"
+                tools:ignore="SmallSp"
+                android:textStyle="bold"
+                android:fontFamily="@font/oxygen_light"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:orientation="horizontal"
+            tools:ignore="RtlHardcoded">
+
+            <ImageView
+                android:id="@+id/tag"
+                android:layout_width="@dimen/_30mdp"
+                android:layout_height="@dimen/_30mdp"
+                android:padding="@dimen/_6mdp"
+                android:src="@drawable/tag"
+                app:tint="@color/white" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/mines10mdp"
+        android:layout_marginStart="@dimen/_20mdp"
+        android:layout_marginEnd="@dimen/_20mdp">
+
+        <TextView
+            android:id="@+id/publisher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14font_mdp"
+            android:layout_marginBottom="@dimen/_5mdp"
+            />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14font_mdp"
+            android:layout_marginBottom="@dimen/_5mdp"
+            />
+
+
+        <TextView
+            android:id="@+id/seeComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14font_mdp"
+            android:layout_marginBottom="@dimen/_5mdp"
+            />
+    </LinearLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1mdp"
+        android:background="@color/white"
+        android:layout_marginBottom="@dimen/_5mdp"
+        />
+
+</LinearLayout>

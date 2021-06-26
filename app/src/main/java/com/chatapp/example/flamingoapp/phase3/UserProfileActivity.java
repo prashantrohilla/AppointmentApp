@@ -91,8 +91,6 @@ public class UserProfileActivity extends AppCompatActivity {
                     });
 
 
-
-
         binding.chatSection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

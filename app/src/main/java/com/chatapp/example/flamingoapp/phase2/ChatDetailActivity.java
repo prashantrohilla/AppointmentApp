@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.chatapp.example.flamingoapp.adapters.ChatAdapter;
 import com.chatapp.example.flamingoapp.models.MessageModel;
+import com.chatapp.example.flamingoapp.models.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -76,7 +77,7 @@ public class ChatDetailActivity extends AppCompatActivity {
     StorageTask<UploadTask.TaskSnapshot> uploadTask;
     byte[] new_image;
     SmartReplyGenerator smartReplyGenerator;
-    String smart="false";
+    String smart = "false";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +87,7 @@ public class ChatDetailActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-        smartReplyGenerator= SmartReply.getClient();
+        smartReplyGenerator = SmartReply.getClient();
 
         storage = FirebaseStorage.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -117,15 +118,15 @@ public class ChatDetailActivity extends AppCompatActivity {
         binding.smartReply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(smart.equals("true"))
-                {
-                    smart="false";
+                if (smart.equals("true")) {
+                    smart = "false";
                     Toast.makeText(ChatDetailActivity.this, "Smart Reply Off", Toast.LENGTH_SHORT).show();
                     binding.smartReply.setBackgroundResource(R.drawable.sw);
-                }
-                else
-                {
-                    smart="true";
+                    binding.reply1.setVisibility(View.INVISIBLE);
+                    binding.reply2.setVisibility(View.INVISIBLE);
+                    binding.reply3.setVisibility(View.INVISIBLE);
+                } else {
+                    smart = "true";
                     Toast.makeText(ChatDetailActivity.this, "Smart Reply On", Toast.LENGTH_SHORT).show();
                     binding.smartReply.setBackgroundResource(R.drawable.sb);
                 }
@@ -150,6 +151,25 @@ public class ChatDetailActivity extends AppCompatActivity {
         senderRoom = senderId + receiverId;
         receiverRoom = receiverId + senderId;
 
+        database.getReference().child("Users").child(Objects.requireNonNull(auth.getUid())).
+                addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Users user = snapshot.getValue(Users.class);
+                        assert user!= null;
+                        if(user.getSmartReply().equals("true"))
+                        {
+                            smart = "true";
+                            binding.smartReply.setBackgroundResource(R.drawable.sb);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
         //for showing online offline
         database.getReference().child("presence").child(receiverId).addValueEventListener(new ValueEventListener() {
@@ -159,6 +179,7 @@ public class ChatDetailActivity extends AppCompatActivity {
                     String status = snapshot.getValue(String.class);
                     if (!status.isEmpty()) {
                         binding.userStatus.setText(status);
+
                     }
                 }
             }
@@ -184,6 +205,7 @@ public class ChatDetailActivity extends AppCompatActivity {
                         }
                         chatAdapter.notifyDataSetChanged();            // updating recyclerView continues
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                     }
@@ -194,17 +216,16 @@ public class ChatDetailActivity extends AppCompatActivity {
         binding.etMessage.addTextChangedListener(new TextWatcher() {   // to show typing status
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(conversation.size()!=0 && smart.equals("true"))
-                {
+                if (conversation.size() != 0 && smart.equals("true")) {
                     SmartReply();
                 }
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(conversation.size()!=0 && smart.equals("true"))
-                {
+                if (conversation.size() != 0 && smart.equals("true")) {
                     SmartReply();
+
                 }
 
             }
@@ -244,7 +265,6 @@ public class ChatDetailActivity extends AppCompatActivity {
                 final MessageModel model = new MessageModel(senderId, message, date.getTime());   // taking sender msg and id
                 model.setTime(new Date().getTime());
                 binding.etMessage.setText("");                                 // empty editText after send msg
-
 
 
                 database.getReference().child("chats").child(senderRoom)   // sender node work
@@ -323,14 +343,13 @@ public class ChatDetailActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {                     // getting image from gallery
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode==RESULT_OK)
-        {
-            CropImage.ActivityResult result=CropImage.getActivityResult(data);
-            imageUri=result.getUri();
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            imageUri = result.getUri();
 
             //  image compression
 
-            File actualImage=new File(imageUri.getPath());
+            File actualImage = new File(imageUri.getPath());
             try {
                 Bitmap compressedImage = new Compressor(this)
                         .setMaxWidth(640)
@@ -346,23 +365,19 @@ public class ChatDetailActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-           // binding.showProfilePic.setImageURI(imageUri);
-        }
-        else
-        {
-            Toast.makeText(this,"Something gone wrong !!",Toast.LENGTH_SHORT).show();
+            // binding.showProfilePic.setImageURI(imageUri);
+        } else {
+            Toast.makeText(this, "Something gone wrong !!", Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    public void uploadPost(byte [] final_image)
-    {
-        if(imageUri !=null)
-        {
+    public void uploadPost(byte[] final_image) {
+        if (imageUri != null) {
             Calendar calendar = Calendar.getInstance();
             final StorageReference reference = storage.getReference().child("pictures").child(calendar.getTimeInMillis() + "");
 
-            uploadTask=reference.putBytes(new_image);
+            uploadTask = reference.putBytes(new_image);
 
             uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -403,11 +418,8 @@ public class ChatDetailActivity extends AppCompatActivity {
                     }
                 }
             });
-        }
-
-         else
-        {
-            Toast.makeText(ChatDetailActivity.this,"No Image Selected" ,Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(ChatDetailActivity.this, "No Image Selected", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -446,50 +458,39 @@ public class ChatDetailActivity extends AppCompatActivity {
     }
 
 
-    public void SmartReply()
-    {
+    public void SmartReply() {
         smartReplyGenerator.suggestReplies(conversation).addOnSuccessListener(new OnSuccessListener<SmartReplySuggestionResult>() {
             @Override
             public void onSuccess(SmartReplySuggestionResult smartReplySuggestionResult) {
-                if(smartReplySuggestionResult.getStatus()==SmartReplySuggestionResult.STATUS_NOT_SUPPORTED_LANGUAGE)
-                {
+                if (smartReplySuggestionResult.getStatus() == SmartReplySuggestionResult.STATUS_NOT_SUPPORTED_LANGUAGE) {
 
-                }
-                else if(smartReplySuggestionResult.getStatus()==SmartReplySuggestionResult.STATUS_SUCCESS)
-                {
-                    String reply="";
-                    for(SmartReplySuggestion suggestion: smartReplySuggestionResult.getSuggestions())
-                    {
+                } else if (smartReplySuggestionResult.getStatus() == SmartReplySuggestionResult.STATUS_SUCCESS) {
+                    String reply = "";
+                    for (SmartReplySuggestion suggestion : smartReplySuggestionResult.getSuggestions()) {
 
-                        reply=reply+suggestion.getText()+"#";
+                        reply = reply + suggestion.getText() + "#";
 
-                        String r="";
-                        String s[]=new String[3];
-                        int n=0;
+                        String r = "";
+                        String s[] = new String[3];
+                        int n = 0;
                         char c;
-                        for(int i=0;i<reply.length()-1;i++)
-                        {
-                            c=reply.charAt(i);
-                            if(c!='#')
-                            {
-                                r+=c;
-                            }
-                            else
-                            {
-                                s[n]=r;
-                                r="";
+                        for (int i = 0; i < reply.length() - 1; i++) {
+                            c = reply.charAt(i);
+                            if (c != '#') {
+                                r += c;
+                            } else {
+                                s[n] = r;
+                                r = "";
                                 n++;
                             }
                         }
-                        s[n]=r;
-                        r="";
+                        s[n] = r;
+                        r = "";
 
-                        if(reply!=null)
-                        {
-                            binding.reply1.setVisibility(View.VISIBLE);
-                            binding.reply2.setVisibility(View.VISIBLE);
-                            binding.reply3.setVisibility(View.VISIBLE);
-                        }
+                        binding.reply1.setVisibility(View.VISIBLE);
+                        binding.reply2.setVisibility(View.VISIBLE);
+                        binding.reply3.setVisibility(View.VISIBLE);
+
 
                         binding.reply1.setText(s[0]);
                         binding.reply2.setText(s[1]);

@@ -25,6 +25,7 @@ import com.chatapp.example.flamingoapp.phase1.LoginActivity;
 import com.chatapp.example.flamingoapp.phase2.HomeActivity;
 import com.chatapp.example.flamingoapp.phase2.SettingsActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,6 +58,10 @@ public class ProfileFragment extends Fragment {
     MyPhotoAdapter myPhotoAdapter;
     List<Post> postList;
 
+    List<String> mySaves;
+    List<Post> postListSaves;
+    MyPhotoAdapter myPhotoAdapterSaves;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,40 +79,28 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        binding.postButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        database.getReference().child("Users").child(Objects.requireNonNull(auth.getUid())).
-                addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Users users = snapshot.getValue(Users.class);
-                        assert users != null;
-                        Picasso.get().load(users.getProfilepic())
-                                .placeholder(R.drawable.user2)
-                                .into(binding.profilePic);
-                        binding.userName.setText(users.getFullName());
-                        binding.uName.setText(users.getUserName());
-                        binding.userBio.setText(users.getUserBio());
-                        binding.userLink.setText(users.getUserLink());
+                binding.mySavePosts.setVisibility(View.INVISIBLE);
+                binding.myPosts.setVisibility(View.VISIBLE);
 
+            }
+        });
 
-                        binding.myPosts.setHasFixedSize(true);
-                        LinearLayoutManager mLayoutManager = new GridLayoutManager(getContext(), 3);
-                        binding.myPosts.setLayoutManager(mLayoutManager);
+        binding.tagButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.myPosts.setVisibility(View.INVISIBLE);
+                binding.mySavePosts.setVisibility(View.VISIBLE);
+            }
+        });
 
-                        postList = new ArrayList<>();
-                        myPhotoAdapter = new MyPhotoAdapter(getContext(), postList);
-                        binding.myPosts.setAdapter(myPhotoAdapter);
-
-                        getFollowers();
-                        myPhotos();
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+        userDetails();
+        savePosts();
+        getFollowers();
+        myPhotos();
 
         return binding.getRoot();
     }
@@ -200,5 +193,91 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+    }
+
+    private void readSaves()
+    {
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Posts");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for(DataSnapshot snapshot1:snapshot.getChildren())
+                {
+                    Post post=snapshot1.getValue(Post.class);
+                    postListSaves.add(post);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void userDetails()
+    {
+        database.getReference().child("Users").child(Objects.requireNonNull(auth.getUid())).
+                addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Users users = snapshot.getValue(Users.class);
+                        assert users != null;
+                        Picasso.get().load(users.getProfilepic())
+                                .placeholder(R.drawable.user2)
+                                .into(binding.profilePic);
+                        binding.userName.setText(users.getFullName());
+                        binding.uName.setText(users.getUserName());
+                        binding.userBio.setText(users.getUserBio());
+                        binding.userLink.setText(users.getUserLink());
+
+
+                        binding.myPosts.setHasFixedSize(true);
+                        LinearLayoutManager mLayoutManager = new GridLayoutManager(getContext(), 3);
+                        binding.myPosts.setLayoutManager(mLayoutManager);
+
+                        postList = new ArrayList<>();
+                        myPhotoAdapter = new MyPhotoAdapter(getContext(), postList);
+                        binding.myPosts.setAdapter(myPhotoAdapter);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+    private void savePosts()
+    {
+        mySaves=new ArrayList<>();
+        FirebaseUser  firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference saveReference=FirebaseDatabase.getInstance().getReference("Saves")
+                .child(firebaseUser.getUid());
+        saveReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for(DataSnapshot snapshot1: snapshot.getChildren())
+                {
+                    mySaves.add(snapshot1.getKey());
+                }
+
+                binding.mySavePosts.setHasFixedSize(true);
+                LinearLayoutManager mLayoutManager = new GridLayoutManager(getContext(), 3);
+                binding.mySavePosts.setLayoutManager(mLayoutManager);
+
+                postListSaves= new ArrayList<>();
+                myPhotoAdapter = new MyPhotoAdapter(getContext(), postListSaves);
+                binding.mySavePosts.setAdapter(myPhotoAdapter);
+
+                readSaves();
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
     }
 }

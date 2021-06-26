@@ -38,17 +38,6 @@
             android:textSize="@dimen/_14font_mdp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/menu"
-            android:layout_width="@dimen/_10mdp"
-            android:layout_height="@dimen/_30mdp"
-            android:layout_weight="1"
-            android:contentDescription="@string/search"
-            android:paddingTop="@dimen/_5mdp"
-            android:paddingBottom="@dimen/_5mdp"
-            android:src="@drawable/menu"
-            />
-
     </LinearLayout>
 
     <com.chatapp.example.flamingoapp.phase2.SquareImageView

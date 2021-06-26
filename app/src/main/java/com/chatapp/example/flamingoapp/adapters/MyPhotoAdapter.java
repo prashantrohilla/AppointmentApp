@@ -13,10 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.chatapp.example.flamingoapp.models.Post;
-import com.chatapp.example.flamingoapp.phase3.UserPic;
-import com.chatapp.example.flamingoapp.phase3.UserProfileActivity;
+import com.chatapp.example.flamingoapp.phase3.PostDetails;
 import com.phone.DoctorAppointment.R;
-import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -53,8 +51,9 @@ public class MyPhotoAdapter extends RecyclerView.Adapter<MyPhotoAdapter.ViewHold
             @Override
             public void onClick(View view) {
                 final Post post=mPosts.get(position);
-                Intent intent = new Intent(context, UserPic.class);
-                intent.putExtra("post", post.getPostImage());
+                Intent intent = new Intent(context, PostDetails.class);
+                intent.putExtra("postId", post.getPostId());
+                intent.putExtra("publisher", post.getPublisher());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
 

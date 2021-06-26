@@ -181,12 +181,67 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_10mdp"
+                android:layout_marginStart="@dimen/_15mdp"
+                android:layout_marginEnd="@dimen/_15mdp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:id="@+id/postButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@drawable/roundsquare"
+                    android:padding="@dimen/_5mdp"
+                    android:layout_marginEnd="@dimen/_10mdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20mdp"
+                        android:layout_height="@dimen/_20mdp"
+                        android:background="@drawable/dotsmenu"
+                        android:contentDescription="@string/profile" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/tagButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@drawable/roundsquare"
+                    android:padding="@dimen/_5mdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20mdp"
+                        android:layout_height="@dimen/_20mdp"
+                        android:background="@drawable/tag"
+                        android:contentDescription="@string/profile" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginTop="@dimen/_10mdp"
                 android:id="@+id/myPosts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="@dimen/_10mdp"
+                android:id="@+id/mySavePosts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
 
 
 
