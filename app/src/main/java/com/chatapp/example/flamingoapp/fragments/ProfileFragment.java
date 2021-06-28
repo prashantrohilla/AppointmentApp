@@ -56,11 +56,11 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth auth;
     FirebaseDatabase database;
     MyPhotoAdapter myPhotoAdapter;
+    MyPhotoAdapter mysavePhotoAdapter;
     List<Post> postList;
 
     List<String> mySaves;
     List<Post> postListSaves;
-    MyPhotoAdapter myPhotoAdapterSaves;
 
 
     @Override
@@ -85,22 +85,21 @@ public class ProfileFragment extends Fragment {
 
                 binding.mySavePosts.setVisibility(View.INVISIBLE);
                 binding.myPosts.setVisibility(View.VISIBLE);
-
             }
         });
 
         binding.tagButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 binding.myPosts.setVisibility(View.INVISIBLE);
                 binding.mySavePosts.setVisibility(View.VISIBLE);
             }
         });
 
         userDetails();
-        savePosts();
         getFollowers();
-        myPhotos();
+        savePosts();
 
         return binding.getRoot();
     }
@@ -155,7 +154,6 @@ public class ProfileFragment extends Fragment {
               }
                 binding.postText.setText(""+i);
 
-
             }
 
             @Override
@@ -180,7 +178,7 @@ public class ProfileFragment extends Fragment {
                    {
                        postList.add(post);
                    }
-                  //  Collections.reverse(postList);
+                     Collections.reverse(postList);
                     myPhotoAdapter.notifyDataSetChanged();
                     Log.d("refernce debug"," "+postList.size());
                 }
@@ -193,26 +191,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-    }
-
-    private void readSaves()
-    {
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Posts");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                for(DataSnapshot snapshot1:snapshot.getChildren())
-                {
-                    Post post=snapshot1.getValue(Post.class);
-                    postListSaves.add(post);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-            }
-        });
     }
 
     private void userDetails()
@@ -240,6 +218,8 @@ public class ProfileFragment extends Fragment {
                         myPhotoAdapter = new MyPhotoAdapter(getContext(), postList);
                         binding.myPosts.setAdapter(myPhotoAdapter);
 
+                        myPhotos();
+
                     }
 
                     @Override
@@ -264,13 +244,12 @@ public class ProfileFragment extends Fragment {
                 }
 
                 binding.mySavePosts.setHasFixedSize(true);
-                LinearLayoutManager mLayoutManager = new GridLayoutManager(getContext(), 3);
-                binding.mySavePosts.setLayoutManager(mLayoutManager);
+                LinearLayoutManager saveLayoutManager = new GridLayoutManager(getContext(), 3);
+                binding.mySavePosts.setLayoutManager(saveLayoutManager);
 
                 postListSaves= new ArrayList<>();
-                myPhotoAdapter = new MyPhotoAdapter(getContext(), postListSaves);
-                binding.mySavePosts.setAdapter(myPhotoAdapter);
-
+                mysavePhotoAdapter = new MyPhotoAdapter(getContext(), postListSaves);
+                binding.mySavePosts.setAdapter(mysavePhotoAdapter);
                 readSaves();
             }
 
@@ -280,4 +259,35 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
+
+    private void readSaves()
+    {
+        postListSaves.clear();
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Posts");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for(DataSnapshot snapshot1:snapshot.getChildren())
+                {
+                    Post post=snapshot1.getValue(Post.class);
+
+                    for(String id:mySaves)
+                    {
+                        if(post.getPostId().equals(id))
+                        {
+                            postListSaves.add(post);
+                        }
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
 }
