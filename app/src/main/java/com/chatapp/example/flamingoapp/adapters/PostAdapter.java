@@ -22,6 +22,7 @@ import com.chatapp.example.flamingoapp.fragments.SearchFragment;
 import com.chatapp.example.flamingoapp.models.Post;
 import com.chatapp.example.flamingoapp.models.Users;
 import com.chatapp.example.flamingoapp.phase2.CommentActivity;
+import com.chatapp.example.flamingoapp.phase3.FollowersActivity;
 import com.chatapp.example.flamingoapp.phase3.UserProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +37,7 @@ import com.squareup.picasso.Picasso;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -127,6 +129,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 {
                     FirebaseDatabase.getInstance().getReference().child("Likes")
                             .child(post.getPostId()).child(firebaseUser.getUid()).setValue(true);
+                    addNotifications(post.getPublisher(), post.getPostId());
                 }
                 else
                 {
@@ -152,6 +155,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 Intent intent= new Intent(mContext, CommentActivity.class);
                 intent.putExtra("postId",post.getPostId());
                 intent.putExtra("publisher",post.getPublisher());
+                mContext.startActivity(intent);
+            }
+        });
+
+        holder.likeText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(mContext, FollowersActivity.class);
+                intent.putExtra("Id",post.getPostId());
+                intent.putExtra("Title","likes");
                 mContext.startActivity(intent);
             }
         });
@@ -316,6 +329,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         });
 
 
+    }
+
+    private void addNotifications(String userid, String postid)
+    {
+        DatabaseReference reference=FirebaseDatabase.getInstance()
+                .getReference("Notifications").child(userid);
+
+        HashMap<String, Object> hashMap= new HashMap<>();
+        hashMap.put("userId",firebaseUser.getUid());
+        hashMap.put("comment","liked your post");
+        hashMap.put("postId",postid);
+        hashMap.put("isPost",true);
+        reference.push().setValue(hashMap);
     }
 
 }

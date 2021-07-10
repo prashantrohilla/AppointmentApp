@@ -24,6 +24,7 @@ import com.chatapp.example.flamingoapp.models.Users;
 import com.chatapp.example.flamingoapp.phase1.LoginActivity;
 import com.chatapp.example.flamingoapp.phase2.HomeActivity;
 import com.chatapp.example.flamingoapp.phase2.SettingsActivity;
+import com.chatapp.example.flamingoapp.phase3.FollowersActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -42,6 +43,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -94,6 +96,27 @@ public class ProfileFragment extends Fragment {
 
                 binding.myPosts.setVisibility(View.INVISIBLE);
                 binding.mySavePosts.setVisibility(View.VISIBLE);
+            }
+        });
+
+        binding.followersText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent=new Intent(getContext(), FollowersActivity.class);
+               intent.putExtra("Id",auth.getUid());
+               intent.putExtra("Title","followers");
+               startActivity(intent);
+            }
+        });
+
+        binding.followingText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), FollowersActivity.class);
+                intent.putExtra("Id",auth.getUid());
+                Log.d("send intent id", ""+auth.getUid());
+                intent.putExtra("Title","following");
+                startActivity(intent);
             }
         });
 
@@ -290,4 +313,17 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    private void addNotifications()
+    {
+        DatabaseReference reference=FirebaseDatabase.getInstance()
+                .getReference("Notifications").child(auth.getUid());
+
+        HashMap<String, Object> hashMap= new HashMap<>();
+        hashMap.put("userId",auth.getUid());
+        hashMap.put("comment","started following you");
+        hashMap.put("postId","");
+        hashMap.put("isPost",false);
+
+        reference.push().setValue(hashMap);
+    }
 }

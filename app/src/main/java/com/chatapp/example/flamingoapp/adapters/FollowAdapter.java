@@ -30,6 +30,7 @@ import com.squareup.picasso.Picasso;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -100,6 +101,7 @@ public class FollowAdapter extends RecyclerView.Adapter<FollowAdapter.ViewHolder
                     FirebaseDatabase.getInstance().getReference().child("Follow")
                             .child(user.getUserId()).child("followers").child(firebaseUser.getUid())
                             .setValue(true);
+                    addNotifications(user.getUserId());
                 }
                 else
                 {
@@ -160,6 +162,18 @@ public class FollowAdapter extends RecyclerView.Adapter<FollowAdapter.ViewHolder
         });
     }
 
+    private void addNotifications(String userid)
+    {
+        DatabaseReference reference=FirebaseDatabase.getInstance()
+                .getReference("Notifications").child(userid);
+
+        HashMap<String, Object> hashMap= new HashMap<>();
+        hashMap.put("userId",firebaseUser.getUid());
+        hashMap.put("comment","started following you");
+        hashMap.put("postId","");
+        hashMap.put("isPost",false);
+        reference.push().setValue(hashMap);
+    }
 }
 
 

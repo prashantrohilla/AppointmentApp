@@ -76,30 +76,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
                     Intent intent = new Intent(mContext, UserProfileActivity.class);
                     intent.putExtra("userId",comment.getPublisher() );
                     mContext.startActivity(intent);
-
-//                    DatabaseReference reference= FirebaseDatabase.getInstance().getReference()
-//                            .child("Users").child(comment.getPublisher());
-//
-//                    reference.addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-//                            Users user= snapshot.getValue(Users.class);
-//                            assert user != null;
-//                            Intent intent = new Intent(mContext, UserProfileActivity.class);
-//                            intent.putExtra("userId", user.getUserId());
-//                            intent.putExtra("profilePic", user.getProfilepic());
-//                            intent.putExtra("userName", user.getUserName());
-//                            intent.putExtra("fullName", user.getFullName());
-//                            intent.putExtra("userBio", user.getUserBio());
-//                            intent.putExtra("userLink", user.getUserLink());
-//                            mContext.startActivity(intent);
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
-//
-//                        }
-//                    });
                 }
 
             }

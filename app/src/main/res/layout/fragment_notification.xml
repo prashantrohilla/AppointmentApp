@@ -3,14 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.chatapp.example.flamingoapp.fragments.NotificationFragment">
+    tools:context="com.chatapp.example.flamingoapp.fragments.NotificationFragment"
+    android:background="@drawable/grad1">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
+        android:text="@string/notification"
+        android:textAllCaps="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
-        android:layout_marginBottom="@dimen/_5mdp"/>
+        android:layout_margin="@dimen/_10mdp"
+        android:fontFamily="@font/oxygen_light"
+        android:textSize="@dimen/_16font_mdp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notificationRecyclerView"
