@@ -1,4 +1,4 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,115 +6,28 @@
     android:background="@drawable/grad1"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:context="com.chatapp.example.flamingoapp.fragments.HomeFragment">
+    tools:context="com.chatapp.example.flamingoapp.fragments.HomeFragment"
+    android:orientation="vertical">
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/storiesRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
-
-
-            <LinearLayout
-                android:layout_width="@dimen/_62mdp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_1mdp"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/grad2"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/userPost"
-                        android:layout_width="@dimen/_50mdp"
-                        android:layout_height="@dimen/_50mdp"
-                        android:layout_margin="@dimen/_2mdp"
-                        android:src="@drawable/user2"
-                        app:civ_border_color="@color/white"
-                        app:civ_border_width="@dimen/_1mdp" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/addPostButton"
-                    android:layout_width="@dimen/_12mdp"
-                    android:layout_height="@dimen/_12mdp"
-                    android:layout_marginStart="@dimen/_18mdp"
-                    android:layout_marginTop="@dimen/mines15mdp"
-                    android:background="@drawable/plus"
-                    android:contentDescription="@string/search" />
-
-                <TextView
-                    android:id="@+id/myName"
-                    android:layout_width="@dimen/_55mdp"
-                    android:layout_height="@dimen/_18mdp"
-                    android:fontFamily="@font/oxygen"
-                    android:padding="@dimen/_2mdp"
-                    android:text="@string/share_story"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_10font_mdp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <HorizontalScrollView
-                android:id="@+id/storiesScrollView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/toolbar"
-                tools:ignore="ScrollViewCount">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    tools:ignore="UselessLeaf">
-
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
+        android:layout_height="wrap_content" />
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1mdp"
         android:layout_marginBottom="@dimen/_5mdp"
         android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/postRecyclerView" />
+        android:layout_marginTop="@dimen/_5mdp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/postRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_8mdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_weight="1" />
+        android:layout_weight="1"
+       />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
