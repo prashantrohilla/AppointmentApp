@@ -19,7 +19,9 @@ import android.widget.Toast;
 
 import com.chatapp.example.flamingoapp.adapters.FollowAdapter;
 import com.chatapp.example.flamingoapp.adapters.PostAdapter;
+import com.chatapp.example.flamingoapp.adapters.StoryAdapter;
 import com.chatapp.example.flamingoapp.models.Post;
+import com.chatapp.example.flamingoapp.models.Story;
 import com.chatapp.example.flamingoapp.models.Users;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -47,6 +49,10 @@ public class HomeFragment extends Fragment{
     RecyclerView recyclerView;
     PostAdapter postAdapter;
 
+    RecyclerView storyRecyclerView;
+    StoryAdapter storyAdapter;
+    List<Story> storyList;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -68,6 +74,14 @@ public class HomeFragment extends Fragment{
         postAdapter = new PostAdapter(getContext(), postList);
         recyclerView.setAdapter(postAdapter);
 
+        storyRecyclerView=view.findViewById(R.id.storiesRecyclerView);
+        storyRecyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
+                LinearLayoutManager.HORIZONTAL, false);
+        storyRecyclerView.setLayoutManager(linearLayoutManager);
+        storyList = new ArrayList<>();
+        storyAdapter = new StoryAdapter(getContext(), storyList);
+        storyRecyclerView.setAdapter(storyAdapter);
 
        checkFollowing();
 
@@ -89,6 +103,7 @@ public class HomeFragment extends Fragment{
                 }
                 postAdapter.notifyDataSetChanged();
                 readPost();
+                readStory();
             }
 
             @Override
@@ -125,4 +140,36 @@ public class HomeFragment extends Fragment{
         });
     }
 
+    private void readStory(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Story");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long timecurrent = System.currentTimeMillis();
+                storyList.clear();
+                storyList.add(new Story("", 0, 0, "",
+                        FirebaseAuth.getInstance().getCurrentUser().getUid()));
+                for (String id : followingList) {
+                    int countStory = 0;
+                    Story story = null;
+                    for (DataSnapshot snapshot : dataSnapshot.child(id).getChildren()) {
+                        story = snapshot.getValue(Story.class);
+                        if (timecurrent > story.getTimeStart() && timecurrent < story.getTimeEnd()) {
+                            countStory++;
+                        }
+                    }
+                    if (countStory > 0){
+                        storyList.add(story);
+                    }
+                }
+
+                storyAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }

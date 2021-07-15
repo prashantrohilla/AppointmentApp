@@ -10,10 +10,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.chatapp.example.flamingoapp.OptionsActivity"></activity>
+        <activity android:name="com.chatapp.example.flamingoapp.phase3.AddStoryActivity"></activity>
+        <activity android:name="com.chatapp.example.flamingoapp.phase3.StoryActivity" />
         <activity android:name="com.chatapp.example.flamingoapp.phase3.FollowersActivity" />
         <activity android:name="com.chatapp.example.flamingoapp.phase3.PostDetails" />
         <activity android:name="com.chatapp.example.flamingoapp.phase2.CommentActivity" />

@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.chatapp.example.flamingoapp.fragments.AddPostFragment">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/cancelStory"
+                android:layout_width="@dimen/_40mdp"
+                android:layout_height="@dimen/_40mdp"
+                android:layout_marginStart="@dimen/_10mdp"
+                android:layout_marginTop="@dimen/_10mdp"
+                android:contentDescription="@string/save"
+                android:src="@drawable/close" />
+
+            <TextView
+                android:id="@+id/storyButton"
+                android:layout_width="@dimen/_60mdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_13mdp"
+                android:layout_marginEnd="@dimen/_10mdp"
+                android:background="@drawable/buttongrad1"
+                android:fontFamily="@font/oxygen"
+                android:gravity="center"
+                android:padding="@dimen/_6mdp"
+                android:text="@string/post"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14font_mdp"
+                android:textStyle="bold"
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+
+        <com.chatapp.example.flamingoapp.phase2.SquareImageView
+            android:id="@+id/storyImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_20mdp"
+            android:contentDescription="@string/search"
+            />
+
+
+    </LinearLayout>

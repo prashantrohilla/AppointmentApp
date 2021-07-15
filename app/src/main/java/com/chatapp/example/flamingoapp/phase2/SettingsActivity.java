@@ -50,7 +50,6 @@ public class SettingsActivity extends AppCompatActivity {
     Uri imageUri;
     String myUri ="";
     StorageTask uploadTask;
-    StorageReference storageReference;            // firebase
     byte[] new_image;
 
     @Override
