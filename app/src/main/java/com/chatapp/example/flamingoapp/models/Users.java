@@ -5,7 +5,8 @@ public class Users {
     String profilepic;
     String userName;
     String mail;
-    String password;  String userId;
+    String password;
+    String userId;
     String lastMessage;
     String status;
     String phoneNumber;

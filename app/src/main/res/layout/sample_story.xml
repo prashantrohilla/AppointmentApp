@@ -19,7 +19,7 @@
             android:layout_width="@dimen/_50mdp"
             android:layout_height="@dimen/_50mdp"
             android:layout_margin="@dimen/_2mdp"
-            android:src="@drawable/user9"
+            android:src="@drawable/user2"
             app:civ_border_color="@color/white"
             app:civ_border_width="@dimen/_1mdp" />
 

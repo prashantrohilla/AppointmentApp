@@ -75,6 +75,7 @@ dependencies {
     implementation 'id.zelory:compressor:2.1.1'
     implementation 'com.google.mlkit:smart-reply:16.1.1'
     implementation 'com.github.shts:StoriesProgressView:3.0.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
 
 
 }

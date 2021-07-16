@@ -1,60 +1,60 @@
 package com.chatapp.example.flamingoapp.models;
 
 public class Story {
+    private String imageurl;
+    private long timestart;
+    private long timeend;
+    private String storyid;
+    private String userid;
 
-    private String imageUri;
-    private long timeStart;
-    private long timeEnd;
-    private String storyId;
-    private String userId;
-
-    public Story(){ }
-
-    public Story(String imageUri, long timeStart, long timeEnd, String storyId, String userId) {
-        this.imageUri = imageUri;
-        this.timeStart = timeStart;
-        this.timeEnd = timeEnd;
-        this.storyId = storyId;
-        this.userId = userId;
+    public Story(String imageurl, long timestart, long timeend, String storyid, String userid) {
+        this.imageurl = imageurl;
+        this.timestart = timestart;
+        this.timeend = timeend;
+        this.storyid = storyid;
+        this.userid = userid;
     }
 
-    public String getImageUri() {
-        return imageUri;
+    public Story() {
     }
 
-    public void setImageUri(String imageUri) {
-        this.imageUri = imageUri;
+    public String getImageurl() {
+        return imageurl;
     }
 
-    public long getTimeStart() {
-        return timeStart;
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
     }
 
-    public void setTimeStart(long timeStart) {
-        this.timeStart = timeStart;
+    public long getTimestart() {
+        return timestart;
     }
 
-    public long getTimeEnd() {
-        return timeEnd;
+    public void setTimestart(long timestart) {
+        this.timestart = timestart;
     }
 
-    public void setTimeEnd(long timeEnd) {
-        this.timeEnd = timeEnd;
+    public long getTimeend() {
+        return timeend;
     }
 
-    public String getStoryId() {
-        return storyId;
+    public void setTimeend(long timeend) {
+        this.timeend = timeend;
     }
 
-    public void setStoryId(String storyId) {
-        this.storyId = storyId;
+    public String getStoryid() {
+        return storyid;
     }
 
-    public String getUserId() {
-        return userId;
+    public void setStoryid(String storyid) {
+        this.storyid = storyid;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 }

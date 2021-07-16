@@ -154,7 +154,8 @@ public class HomeFragment extends Fragment{
                     Story story = null;
                     for (DataSnapshot snapshot : dataSnapshot.child(id).getChildren()) {
                         story = snapshot.getValue(Story.class);
-                        if (timecurrent > story.getTimeStart() && timecurrent < story.getTimeEnd()) {
+                        assert story != null;
+                        if (timecurrent > story.getTimestart() && timecurrent < story.getTimeend()) {
                             countStory++;
                         }
                     }

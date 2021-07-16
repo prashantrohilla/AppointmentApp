@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "248379896124",
+    "firebase_url": "https://phone-directory-b42f1-default-rtdb.firebaseio.com",
     "project_id": "phone-directory-b42f1",
     "storage_bucket": "phone-directory-b42f1.appspot.com"
   },

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +26,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.phone.DoctorAppointment.R;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+
 
 public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> {
 
@@ -57,25 +60,25 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull @NotNull final ViewHolder viewHolder, final int i) {
         final Story story = mStory.get(i);
 
-        userInfo(viewHolder, story.getUserId(), i);
+
+        userInfo(viewHolder, story.getUserid(), i);
 
         if (viewHolder.getAdapterPosition() != 0) {
-            seenStory(viewHolder, story.getUserId());
+            seenStory(viewHolder, story.getUserid());
         }
 
-        if (viewHolder.getAdapterPosition() == 0){
+        if (viewHolder.getAdapterPosition() == 0) {
             myStory(viewHolder.addStoryText, viewHolder.storyPlus, false);
         }
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (viewHolder.getAdapterPosition() == 0){
+                if (viewHolder.getAdapterPosition() == 0) {
                     myStory(viewHolder.addStoryText, viewHolder.storyPlus, true);
                 } else {
-                    // TODO: go to story
                     Intent intent = new Intent(mContext, StoryActivity.class);
-                    intent.putExtra("userid", story.getUserId());
+                    intent.putExtra("userid", story.getUserid());
                     mContext.startActivity(intent);
                 }
             }
@@ -85,11 +88,12 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         return mStory.size();
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView storyPhoto, storyPlus, storyPhotoSeen;
+   ImageView storyPhoto, storyPlus, storyPhotoSeen;
         TextView storyUsername, addStoryText;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
@@ -113,20 +117,31 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
     }
 
     private void userInfo(final ViewHolder viewHolder, final String userId, final int pos) {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                Log.d("1 story user id"," "+userId);
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
+        // Log.d("refernce debug"," "+reference.getRoot());
+        //  Log.d("refernce debug"," username: "+username+" user id: "+userid+" publisher: "+publisher);
+
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                 Users user = dataSnapshot.getValue(Users.class);
 
-                assert user != null;
-//                if(user.getProfilepic()!=null)
-//                {
-//                    Glide.with(mContext).load(user.getProfilepic()).into(viewHolder.storyPhoto);
-//                    if (pos != 0) {
-//                        Glide.with(mContext).load(user.getProfilepic()).into(viewHolder.storyPhotoSeen);
-//                        viewHolder.storyUsername.setText(user.getUserName());
-//                    }
+                      Log.d("2 story user id"," "+user.getUserId());
+
+//                        Picasso.get().load(user.getProfilepic()).placeholder(R.drawable.user2).into(viewHolder.storyPhoto);
+//                        if(pos!=0)
+//                        {
+//                            Picasso.get().load(user.getProfilepic()).placeholder(R.drawable.user2).into(viewHolder.storyPhotoSeen);
+//                            viewHolder.storyUsername.setText(user.getUserName());
+//                        }
+
+
+//                Glide.with(mContext).load(user.getProfilepic()).into(viewHolder.storyPhoto);
+//                if (pos != 0) {
+//                    Glide.with(mContext).load(user.getProfilepic()).into(viewHolder.storyPhotoSeen);
+//                    viewHolder.storyUsername.setText(user.getUserName());
 //                }
 
             }
@@ -148,7 +163,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
                 long timecurrent = System.currentTimeMillis();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Story story = snapshot.getValue(Story.class);
-                    if (timecurrent > story.getTimeStart() && timecurrent < story.getTimeEnd()) {
+                    if (timecurrent > story.getTimestart() && timecurrent < story.getTimeend()) {
                         count++;
                     }
                 }
@@ -207,7 +222,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     if (!snapshot.child("views")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .exists() && System.currentTimeMillis() < snapshot.getValue(Story.class).getTimeEnd()) {
+                            .exists() && System.currentTimeMillis() < snapshot.getValue(Story.class).getTimeend()) {
                         i++;
                     }
                 }
