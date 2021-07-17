@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/storyPhoto"
+            android:id="@+id/storyProfilePic"
             android:layout_width="@dimen/_50mdp"
             android:layout_height="@dimen/_50mdp"
             android:layout_margin="@dimen/_2mdp"
@@ -24,7 +24,7 @@
             app:civ_border_width="@dimen/_1mdp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/storyPhotoSeen"
+            android:id="@+id/storyPhotoSeen1"
             android:layout_width="@dimen/_50mdp"
             android:layout_height="@dimen/_50mdp"
             android:layout_margin="@dimen/_2mdp"
