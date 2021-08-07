@@ -4,6 +4,9 @@
     // sign in
     <string name="email_phone">Email / Phone</string>
     <string name="sign_in">Log In</string>
+    <string name="forgotpassword">Forget Password?</string>
+    <string name="forgotpassword2">Forget Password</string>
+    <string name="backtologin">Back To Login?</string>
     <string name="dont_have_account">Not a member?   Signup now</string>
 
     // main sign up

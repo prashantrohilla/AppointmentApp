@@ -125,10 +125,46 @@ public class ChatDetailActivity extends AppCompatActivity {
                     binding.reply1.setVisibility(View.INVISIBLE);
                     binding.reply2.setVisibility(View.INVISIBLE);
                     binding.reply3.setVisibility(View.INVISIBLE);
+
+                    database.getReference().child("Users").child(Objects.requireNonNull(auth.getUid())).
+                            addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    Users user = snapshot.getValue(Users.class);
+                                    assert user!= null;
+                                    {
+                                       user.setSmartReply("false");
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
                 } else {
                     smart = "true";
                     Toast.makeText(ChatDetailActivity.this, "Smart Reply On", Toast.LENGTH_SHORT).show();
                     binding.smartReply.setBackgroundResource(R.drawable.sb);
+                    database.getReference().child("Users").child(Objects.requireNonNull(auth.getUid())).
+                            addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    Users user = snapshot.getValue(Users.class);
+                                    assert user!= null;
+                                    {
+                                        user.setSmartReply("true");
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                 }
 
 
@@ -157,10 +193,15 @@ public class ChatDetailActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Users user = snapshot.getValue(Users.class);
                         assert user!= null;
-                        if(user.getSmartReply().equals("true"))
+                        if( user.getSmartReply().equals("true") )
                         {
                             smart = "true";
                             binding.smartReply.setBackgroundResource(R.drawable.sb);
+                        }
+                        else
+                        {
+                            smart = "false";
+                            binding.smartReply.setBackgroundResource(R.drawable.sw);
                         }
 
                     }

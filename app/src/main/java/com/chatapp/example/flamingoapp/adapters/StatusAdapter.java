@@ -14,14 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.chatapp.example.flamingoapp.models.Users;
-import com.chatapp.example.flamingoapp.phase3.FollowersActivity;
 import com.chatapp.example.flamingoapp.phase3.StoryImageActivity;
 import com.phone.DoctorAppointment.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
-import ozaydin.serkan.com.image_zoom_view.ImageViewZoom;
 
 public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.ViewHolder> {
 

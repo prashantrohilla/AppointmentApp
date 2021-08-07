@@ -7,24 +7,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.chatapp.example.flamingoapp.adapters.MyPhotoAdapter;
-import com.chatapp.example.flamingoapp.adapters.PostAdapter;
-import com.chatapp.example.flamingoapp.adapters.UsersAdapter;
 import com.chatapp.example.flamingoapp.models.Post;
 import com.chatapp.example.flamingoapp.models.Users;
-import com.chatapp.example.flamingoapp.phase1.LoginActivity;
-import com.chatapp.example.flamingoapp.phase2.HomeActivity;
 import com.chatapp.example.flamingoapp.phase2.SettingsActivity;
-import com.chatapp.example.flamingoapp.phase3.FollowersActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,10 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.phone.DoctorAppointment.R;
-import com.phone.DoctorAppointment.databinding.ActivityLoginBinding;
-import com.phone.DoctorAppointment.databinding.FragmentChatBinding;
 import com.phone.DoctorAppointment.databinding.FragmentProfileBinding;
-import com.phone.DoctorAppointment.databinding.FragmentSearchBinding;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -99,26 +88,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        binding.followersText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               Intent intent=new Intent(getContext(), FollowersActivity.class);
-               intent.putExtra("Id",auth.getUid());
-               intent.putExtra("Title","followers");
-               startActivity(intent);
-            }
-        });
 
-        binding.followingText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getContext(), FollowersActivity.class);
-                intent.putExtra("Id",auth.getUid());
-                Log.d("send intent id", ""+auth.getUid());
-                intent.putExtra("Title","following");
-                startActivity(intent);
-            }
-        });
 
         userDetails();
         getFollowers();

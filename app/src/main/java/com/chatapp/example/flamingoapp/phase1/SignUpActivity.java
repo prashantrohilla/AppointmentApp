@@ -20,76 +20,69 @@ public class SignUpActivity extends AppCompatActivity {
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getSupportActionBar().hide();
+
+
         binding.signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (binding.fullName.getText().toString().isEmpty()) {
-                    binding.fullName.setError("Enter your Full name!!");
+
+                String username=binding.signupUserName.getText().toString();
+                String fullname=binding.signupFullName.getText().toString();
+                String email=binding.signupEmail.getText().toString();
+                String password=binding.signupPassword.getText().toString();
+
+
+
+                if (username.isEmpty() ) {
+                    binding.signupUserName.setError("Enter a user name!!");
                     return;
                 }
-                if (binding.fullName.getText().toString().length()>40) {
-                    binding.fullName.setError("Full name must  be in less than 40 letters !!");
-                    return;
-                }
-                if (binding.etUserName.getText().toString().isEmpty()) {
-                    binding.etUserName.setError("Enter your username!!");
-                    return;
-                }
-                if(binding.etUserName.getText().toString().contains(" ")){
-                    binding.etUserName.setError("Username must have no space!!");
-                    return;
-                }
-                if(binding.etUserName.getText().toString().length()>40){
-                    binding.etUserName.setError("Username must  be in less than 40 letters !!");
+                if (username.length()<6 || username.length()>20) {
+                    binding.signupUserName.setError("User name must  be in 6-20 letters !!");
                     return;
                 }
 
-                if (binding.etEmail.getText().toString().isEmpty()) {
-                    binding.etEmail.setError("Enter your email!!");
-                    return;
-                }
-
-                String email = binding.etEmail.getText().toString().trim();
-
-                if(email.isEmpty())
+                if(username.contains(" "))
                 {
-                    binding.etEmail.setError("Enter your email!!");
+                    binding.signupUserName.setError("User name should not contain space !!");
+                    return;
+                }
+
+                if (binding.signupFullName.getText().toString().isEmpty() ) {
+                    binding.signupFullName.setError("Enter your Full name !!");
+                    return;
+                }
+
+                if (email.isEmpty()) {
+                    binding.signupEmail.setError("Enter your email !!");
                     return;
                 }
 
                 boolean mail=validateEmailAddress(email);
                 if(!mail)
                 {
-                    binding.etEmail.setError("Enter valid email address !!");
+                    binding.signupEmail.setError("Enter valid email address !!");
                     return;
                 }
 
-                String password=binding.etPassword.getText().toString().trim();
+                if (password.isEmpty()) {
+                    binding.signupPassword.setError("Enter your password !!");
+                    return;
+                }
 
                 boolean passwrd=validatePassword(password);
 
                 if(!passwrd)
                 {
-                    binding.etPassword.setError("Enter a strong password !!");
+                    binding.signupPassword.setError("Enter a strong password with special character and symbols!!");
                     return;
                 }
-
-
-                if (binding.etPassword.getText().toString().isEmpty()) {
-                    binding.etPassword.setError("Enter your password!!");
-                    return;
-                }
-                if (binding.etPassword.getText().toString().length() <= 7) {
-                    binding.etPassword.setError("Password must have 8 characters!!");
-                    return;
-                }
-
 
                 Intent i = new Intent(SignUpActivity.this, OtpActivity.class);
-                i.putExtra("email", binding.etEmail.getText().toString());
-                i.putExtra("username", binding.etUserName.getText().toString().toLowerCase());
-                i.putExtra("fullName", binding.fullName.getText().toString());
-                i.putExtra("password", binding.etPassword.getText().toString());
+                i.putExtra("email", email);
+                i.putExtra("username", username.toLowerCase());
+                i.putExtra("fullName",fullname);
+                i.putExtra("password", password);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
             }

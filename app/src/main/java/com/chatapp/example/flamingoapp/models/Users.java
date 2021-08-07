@@ -66,6 +66,15 @@ public class Users {
         this.posts = posts;
     }
 
+    public Users(String userName, String mail, String password, String phoneNumber, String fullName, String smartReply) {
+        this.userName = userName;
+        this.mail = mail;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.fullName = fullName;
+        this.smartReply = smartReply;
+    }
+
     public Users(String userName, String mail, String password, String phoneNumber, String fullName) {
         this.userName = userName;
         this.mail = mail;

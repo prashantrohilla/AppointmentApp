@@ -31,7 +31,7 @@
             />
 
         <EditText
-            android:id="@+id/etUserName"
+            android:id="@+id/signupUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_18mdp"
@@ -47,7 +47,7 @@
             android:textColorHint="@color/quantum_grey600"/>
 
         <EditText
-            android:id="@+id/fullName"
+            android:id="@+id/signupFullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_18mdp"
@@ -63,7 +63,7 @@
             android:textColorHint="@color/quantum_grey600"/>
 
         <EditText
-            android:id="@+id/etEmail"
+            android:id="@+id/signupEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -79,37 +79,64 @@
             tools:ignore="Autofill"
             android:textColorHint="@color/quantum_grey600"/>
 
-        <EditText
-            android:id="@+id/etPassword"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_14mdp"
-            android:ems="10"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:padding="@dimen/_8mdp"
+            android:orientation="horizontal"
             android:background="@drawable/square"
-            android:textStyle="bold"
-            android:drawableStart="@drawable/lock"
-            android:drawablePadding="@dimen/_18mdp"
-            tools:ignore="Autofill"
-            android:textColorHint="@color/quantum_grey600"/>
+            android:gravity="center_vertical"
+            android:layout_marginBottom="@dimen/_14mdp">
 
-        <TextView
-            android:id="@+id/signupbtn"
+            <ImageView
+                android:layout_width="@dimen/_25mdp"
+                android:layout_height="@dimen/_25mdp"
+                android:background="@drawable/lock"
+                android:layout_marginStart="@dimen/_8mdp"
+                android:contentDescription="@string/search" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                android:layout_marginStart="@dimen/_10mdp">
+
+                <EditText
+                    android:id="@+id/signupPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35mdp"
+                    android:hint="@string/password"
+                    tools:ignore="Autofill"
+                    android:textStyle="bold"
+                    android:inputType="textPassword"
+                    android:textColorHint="@color/quantum_grey600"
+                    android:textSize="@dimen/_14mdp"
+                    android:paddingBottom="@dimen/_20mdp"
+                    android:paddingStart="@dimen/_5mdp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:layout_marginTop="@dimen/_20mdp"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_35mdp"
-            android:background="@drawable/buttongrad1"
-            android:textAlignment="center"
-            android:text="@string/continu"
-            android:textSize="@dimen/_16font_mdp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/oxygen"
-            android:textAllCaps="true"
-            android:padding="@dimen/_6mdp"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/_30mdp"
-            />
+            android:layout_height="@dimen/_35mdp">
+            <TextView
+                android:id="@+id/signupbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttongrad1"
+                android:textAlignment="center"
+                android:text="@string/continu"
+                android:textSize="@dimen/_16font_mdp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/oxygen"
+                android:textAllCaps="true"
+                android:padding="@dimen/_6mdp"
+                android:textStyle="bold"
+                />
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
 
     </LinearLayout>

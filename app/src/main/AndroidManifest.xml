@@ -13,10 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.chatapp.example.flamingoapp.phase3.StoryImageActivity"></activity>
+        <activity android:name="com.chatapp.example.flamingoapp.phase1.ForgotPasswordActivity"></activity>
+        <activity android:name="com.chatapp.example.flamingoapp.phase3.StoryImageActivity" />
         <activity android:name="com.chatapp.example.flamingoapp.phase3.AddStoryActivity" />
         <activity android:name="com.chatapp.example.flamingoapp.phase3.StoryActivity" />
-        <activity android:name="com.chatapp.example.flamingoapp.phase3.FollowersActivity" />
         <activity android:name="com.chatapp.example.flamingoapp.phase3.PostDetails" />
         <activity android:name="com.chatapp.example.flamingoapp.phase2.CommentActivity" />
         <activity android:name="com.chatapp.example.flamingoapp.phase3.UserProfileActivity" />
